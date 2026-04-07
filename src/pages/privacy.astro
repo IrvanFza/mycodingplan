@@ -1,0 +1,170 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="Privacy Policy for MyCodingPlan — No user accounts, no database, no personally identifiable information stored."
+>
+  <Navbar />
+
+  <main class="min-h-screen">
+    <!-- Header -->
+    <section class="bg-gradient-to-br from-primary/5 via-base-100 to-secondary/5 py-12">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Breadcrumbs -->
+        <nav aria-label="Breadcrumb" class="mb-6">
+          <ol class="flex items-center gap-2 text-sm">
+            <li><a href="/" class="text-base-content/50 hover:text-primary transition-colors">Home</a></li>
+            <li class="text-base-content/30">/</li>
+            <li class="font-medium">Privacy Policy</li>
+          </ol>
+        </nav>
+        <h1 class="text-3xl sm:text-4xl font-extrabold mb-2">Privacy Policy</h1>
+        <p class="text-base-content/60 max-w-2xl">
+          Last updated: April 7, 2026
+        </p>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-12">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="prose prose-lg max-w-none">
+
+          <!-- Introduction -->
+          <div class="card bg-base-200/50 p-6 mb-8 not-prose">
+            <div class="flex items-start gap-4">
+              <div class="text-3xl">🛡️</div>
+              <div>
+                <h2 class="text-xl font-bold mb-1">Your Privacy Matters</h2>
+                <p class="text-base-content/70">
+                  MyCodingPlan is a fully static, open-source website. We do <strong>not</strong> collect personal information, require user accounts, or store any data in a database.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 1 -->
+          <h2 class="text-2xl font-bold mt-10 mb-4">1. No User Accounts or Database</h2>
+          <p class="text-base-content/80 mb-4">
+            MyCodingPlan is a statically generated website hosted on GitHub Pages. There are:
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-base-content/80 mb-6">
+            <li><strong>No user accounts</strong> — You cannot sign up, log in, or create a profile.</li>
+            <li><strong>No database</strong> — All content is stored as static files in our open-source GitHub repository.</li>
+            <li><strong>No personally identifiable information (PII) stored</strong> — We do not collect your name, email, address, or any other personal data.</li>
+            <li><strong>No cookies for tracking</strong> — We do not use tracking cookies or advertising pixels.</li>
+          </ul>
+
+          <!-- Section 2 -->
+          <h2 class="text-2xl font-bold mt-10 mb-4">2. Cloudflare CDN & Analytics</h2>
+          <p class="text-base-content/80 mb-4">
+            Our website is served through <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" class="link link-primary">Cloudflare</a>, which provides content delivery and DDoS protection. Cloudflare may collect limited, anonymized data as part of their standard service, including:
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-base-content/80 mb-4">
+            <li>Aggregated page view statistics</li>
+            <li>Country-level geographic data (not IP-specific)</li>
+            <li>Browser and device type information (anonymized)</li>
+          </ul>
+          <p class="text-base-content/80 mb-6">
+            This data is privacy-respecting and does not identify individual users. Cloudflare acts as a data processor in compliance with their privacy policy. No personal data is shared with, sold to, or accessible by third parties through our use of Cloudflare.
+          </p>
+
+          <!-- Section 3 -->
+          <h2 class="text-2xl font-bold mt-10 mb-4">3. GitHub Pages Hosting</h2>
+          <p class="text-base-content/80 mb-6">
+            This site is hosted on <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages" target="_blank" rel="noopener noreferrer" class="link link-primary">GitHub Pages</a>. GitHub may collect technical information such as your IP address in their server logs as part of standard web hosting operations. This is governed by <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer" class="link link-primary">GitHub's Privacy Statement</a>.
+          </p>
+
+          <!-- Section 4 -->
+          <h2 class="text-2xl font-bold mt-10 mb-4">4. GitHub Discussions & Giscus Comments</h2>
+          <p class="text-base-content/80 mb-4">
+            We use <a href="https://giscus.app" target="_blank" rel="noopener noreferrer" class="link link-primary">Giscus</a>, a comments system powered by GitHub Discussions, on our plan detail pages. When you interact with comments:
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-base-content/80 mb-4">
+            <li>You must sign in with your <strong>GitHub account</strong> to post a comment.</li>
+            <li>Your comment, GitHub username, and profile picture are publicly visible on the discussion thread.</li>
+            <li>All comment data is stored in <a href="https://github.com/IrvanFza/mycodingplan/discussions" target="_blank" rel="noopener noreferrer" class="link link-primary">GitHub Discussions</a> within our repository.</li>
+            <li>We do not have access to your GitHub credentials. Authentication is handled entirely by GitHub.</li>
+          </ul>
+          <p class="text-base-content/80 mb-6">
+            Your use of Giscus and GitHub Discussions is subject to <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer" class="link link-primary">GitHub's Privacy Statement</a>.
+          </p>
+
+          <!-- Section 5 -->
+          <h2 class="text-2xl font-bold mt-10 mb-4">5. Local Storage</h2>
+          <p class="text-base-content/80 mb-6">
+            Some interactive features on this site (such as the Plan Recommendation Wizard) may store your preferences in your browser's <code class="bg-base-200 px-1.5 py-0.5 rounded text-sm">localStorage</code>. This data never leaves your device and is not transmitted to any server. You can clear this data at any time through your browser settings.
+          </p>
+
+          <!-- Section 6 -->
+          <h2 class="text-2xl font-bold mt-10 mb-4">6. External Links</h2>
+          <p class="text-base-content/80 mb-6">
+            MyCodingPlan contains links to external websites (e.g., plan provider websites, GitHub repositories, tool documentation). We are not responsible for the privacy practices of these third-party sites. We encourage you to review their respective privacy policies when visiting them.
+          </p>
+
+          <!-- Section 7 -->
+          <h2 class="text-2xl font-bold mt-10 mb-4">7. Open Source Transparency</h2>
+          <p class="text-base-content/80 mb-6">
+            MyCodingPlan is fully open source under the MIT License. You can inspect our entire codebase, including how data is handled, at our <a href="https://github.com/IrvanFza/mycodingplan" target="_blank" rel="noopener noreferrer" class="link link-primary">GitHub repository</a>. Transparency is a core value of this project.
+          </p>
+
+          <!-- Section 8 -->
+          <h2 class="text-2xl font-bold mt-10 mb-4">8. Children's Privacy</h2>
+          <p class="text-base-content/80 mb-6">
+            MyCodingPlan does not knowingly collect any information from children under the age of 13. Since we do not collect personal data from any users, this applies universally.
+          </p>
+
+          <!-- Section 9 -->
+          <h2 class="text-2xl font-bold mt-10 mb-4">9. Changes to This Policy</h2>
+          <p class="text-base-content/80 mb-6">
+            We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated "Last updated" date. Since our site is open source, you can also track changes to this policy via our <a href="https://github.com/IrvanFza/mycodingplan/commits/main/src/pages/privacy.astro" target="_blank" rel="noopener noreferrer" class="link link-primary">commit history</a>.
+          </p>
+
+          <!-- Section 10 -->
+          <h2 class="text-2xl font-bold mt-10 mb-4">10. Contact</h2>
+          <p class="text-base-content/80 mb-6">
+            If you have any questions or concerns about this Privacy Policy, please <a href="https://github.com/IrvanFza/mycodingplan/issues/new" target="_blank" rel="noopener noreferrer" class="link link-primary">open a GitHub Issue</a> in our repository.
+          </p>
+
+          <!-- Summary Card -->
+          <div class="card bg-primary/5 border border-primary/20 p-6 not-prose">
+            <h3 class="text-lg font-bold mb-3">📋 Summary</h3>
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div class="flex items-center gap-2">
+                <span class="text-success text-lg">✅</span>
+                <span class="text-sm text-base-content/80">No user accounts</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-success text-lg">✅</span>
+                <span class="text-sm text-base-content/80">No database</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-success text-lg">✅</span>
+                <span class="text-sm text-base-content/80">No tracking cookies</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-success text-lg">✅</span>
+                <span class="text-sm text-base-content/80">No PII collected</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-success text-lg">✅</span>
+                <span class="text-sm text-base-content/80">Fully open source</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-success text-lg">✅</span>
+                <span class="text-sm text-base-content/80">Privacy-respecting analytics</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
