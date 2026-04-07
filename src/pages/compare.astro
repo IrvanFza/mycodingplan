@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import ComparisonMatrix from '../components/ComparisonMatrix.tsx';
+import { getCollection } from 'astro:content';
+
+const allPlans = await getCollection('plans');
+
+// Serialize plan data for the React island
+const planData = allPlans.map(plan => ({
+  name: plan.data.name,
+  slug: plan.data.slug,
+  provider: plan.data.provider,
+  badge: plan.data.badge,
+  price_monthly: plan.data.price_monthly,
+  promotional_price: plan.data.promotional_price ?? null,
+  description: plan.data.description,
+  models: plan.data.models,
+  limits: {
+    requests_per_minute: plan.data.limits.requests_per_minute ?? null,
+    tokens_per_minute: plan.data.limits.tokens_per_minute ?? null,
+    context_window: plan.data.limits.context_window ?? null,
+    daily_message_limit: plan.data.limits.daily_message_limit ?? null,
+  },
+  features: plan.data.features,
+  categories: plan.data.categories,
+  student_discount: plan.data.student_discount,
+  startup_credits: plan.data.startup_credits,
+  tools_compatible: plan.data.tools_compatible,
+  community_score: plan.data.community_score ?? undefined,
+  latency: plan.data.latency ? {
+    average_ms: plan.data.latency.average_ms,
+    uptime_percent: plan.data.latency.uptime_percent,
+  } : undefined,
+}));
+---
+
+<BaseLayout
+  title="Compare AI Coding Plans Side-by-Side"
+  description="Compare up to 4 AI coding plans side-by-side. See pricing, models, limits, tool compatibility, and more in one interactive comparison matrix."
+>
+  <Navbar />
+
+  <main class="min-h-screen">
+    <!-- Header -->
+    <section class="bg-gradient-to-br from-primary/5 via-base-100 to-secondary/5 py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Breadcrumbs -->
+        <nav aria-label="Breadcrumb" class="mb-6">
+          <ol class="flex items-center gap-2 text-sm">
+            <li><a href="/" class="text-base-content/50 hover:text-primary transition-colors">Home</a></li>
+            <li class="text-base-content/30">/</li>
+            <li class="font-medium">Compare</li>
+          </ol>
+        </nav>
+        <h1 class="text-3xl sm:text-4xl font-extrabold mb-2">Compare Plans</h1>
+        <p class="text-base-content/60 max-w-2xl">
+          Select up to 4 AI coding plans and compare them side-by-side on pricing, models, limits, and features. Share your comparison via URL.
+        </p>
+      </div>
+    </section>
+
+    <!-- Comparison Matrix -->
+    <section class="py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ComparisonMatrix client:load plans={planData} />
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

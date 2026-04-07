@@ -1,6 +1,7 @@
 ---
 import PlanLayout from '../../layouts/PlanLayout.astro';
 import PlanDetail from '../../components/PlanDetail.astro';
+import BreakEvenCalculator from '../../components/BreakEvenCalculator.tsx';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -13,6 +14,38 @@ export async function getStaticPaths() {
 
 const { plan } = Astro.props;
 const planData = plan.data;
+
+// Only show calculator on paid plans
+const showCalculator = planData.price_monthly > 0;
+
+// Serialize all plans for the calculator
+const allPlans = await getCollection('plans');
+const serializedPlans = allPlans.map(p => ({
+  name: p.data.name,
+  slug: p.data.slug,
+  provider: p.data.provider,
+  badge: p.data.badge,
+  price_monthly: p.data.price_monthly,
+  promotional_price: p.data.promotional_price ?? null,
+  description: p.data.description,
+  models: p.data.models,
+  limits: {
+    requests_per_minute: p.data.limits.requests_per_minute ?? null,
+    tokens_per_minute: p.data.limits.tokens_per_minute ?? null,
+    context_window: p.data.limits.context_window ?? null,
+    daily_message_limit: p.data.limits.daily_message_limit ?? null,
+  },
+  features: p.data.features,
+  categories: p.data.categories,
+  student_discount: p.data.student_discount,
+  startup_credits: p.data.startup_credits,
+  tools_compatible: p.data.tools_compatible,
+  community_score: p.data.community_score ?? undefined,
+  latency: p.data.latency ? {
+    average_ms: p.data.latency.average_ms,
+    uptime_percent: p.data.latency.uptime_percent,
+  } : undefined,
+}));
 ---
 
 <PlanLayout
@@ -25,4 +58,11 @@ const planData = plan.data;
   planBadge={planData.badge}
 >
   <PlanDetail plan={planData} />
+
+  <!-- Break-Even Calculator (only on paid plans) -->
+  {showCalculator && (
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+      <BreakEvenCalculator client:visible plans={serializedPlans} />
+    </div>
+  )}
 </PlanLayout>

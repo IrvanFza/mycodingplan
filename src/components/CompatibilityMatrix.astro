@@ -1,0 +1,97 @@
+---
+import { getCollection } from 'astro:content';
+
+const allPlans = await getCollection('plans');
+const allTools = await getCollection('tools');
+
+// Define the key tools for the compatibility matrix columns
+const matrixTools = [
+  { slug: 'cursor', name: 'Cursor' },
+  { slug: 'vscode', name: 'VS Code' },
+  { slug: 'jetbrains', name: 'JetBrains' },
+  { slug: 'windsurf', name: 'Windsurf' },
+  { slug: 'claude-code', name: 'Claude Code' },
+  { slug: 'gemini-cli', name: 'Gemini CLI' },
+];
+
+// Build compatibility map: for each plan, check which tools are compatible
+const compatibilityData = allPlans
+  .sort((a, b) => a.data.name.localeCompare(b.data.name))
+  .map(plan => ({
+    slug: plan.data.slug,
+    name: plan.data.name,
+    provider: plan.data.provider,
+    badge: plan.data.badge,
+    compatibility: matrixTools.map(tool => {
+      const isNative = plan.data.tools_compatible.includes(tool.slug);
+      // Check if this tool lists this plan as compatible
+      const toolData = allTools.find(t => t.data.slug === tool.slug);
+      const isViaPlugin = toolData?.data.plans_compatible.includes(plan.data.slug) && !isNative;
+      
+      return {
+        toolSlug: tool.slug,
+        status: isNative ? 'native' as const : isViaPlugin ? 'plugin' as const : 'none' as const,
+      };
+    }),
+  }));
+---
+
+<div class="bg-base-100 rounded-2xl border border-base-300 shadow-sm overflow-hidden">
+  <div class="p-6 border-b border-base-300">
+    <h2 class="text-lg font-bold flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+      </svg>
+      IDE & Tool Compatibility Matrix
+    </h2>
+    <p class="text-sm text-base-content/50 mt-1">See which plans work with your favorite development tools</p>
+    <div class="flex gap-4 mt-3 text-xs text-base-content/60">
+      <span class="flex items-center gap-1">✅ Native support</span>
+      <span class="flex items-center gap-1">⚠️ Via plugin</span>
+      <span class="flex items-center gap-1">❌ Not supported</span>
+    </div>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="table table-sm w-full">
+      <thead>
+        <tr class="bg-base-200/50">
+          <th class="font-bold text-sm sticky left-0 bg-base-200/50 z-10 min-w-[180px]">Plan / API</th>
+          {matrixTools.map(tool => (
+            <th class="text-center min-w-[90px]">
+              <a href={`/tools/${tool.slug}/`} class="hover:text-primary transition-colors text-xs font-semibold">
+                {tool.name}
+              </a>
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {compatibilityData.map(plan => (
+          <tr class="hover:bg-base-200/30">
+            <td class="sticky left-0 bg-base-100 z-10">
+              <a href={`/plans/${plan.slug}/`} class="flex items-center gap-2 hover:text-primary transition-colors">
+                <span class="font-medium text-sm">{plan.name}</span>
+                <span class={`badge badge-xs ${
+                  plan.badge === 'FREE' ? 'badge-success' :
+                  plan.badge === 'PROMO' ? 'badge-warning' : 'badge-info'
+                }`}>{plan.badge}</span>
+              </a>
+            </td>
+            {plan.compatibility.map(comp => (
+              <td class="text-center">
+                {comp.status === 'native' ? (
+                  <a href={`/tools/${comp.toolSlug}/`} class="text-lg hover:scale-125 inline-block transition-transform" title="Native support">✅</a>
+                ) : comp.status === 'plugin' ? (
+                  <a href={`/tools/${comp.toolSlug}/`} class="text-lg hover:scale-125 inline-block transition-transform" title="Via plugin">⚠️</a>
+                ) : (
+                  <span class="text-lg opacity-40" title="Not supported">❌</span>
+                )}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>
