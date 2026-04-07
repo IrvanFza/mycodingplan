@@ -1,0 +1,28 @@
+---
+import PlanLayout from '../../layouts/PlanLayout.astro';
+import PlanDetail from '../../components/PlanDetail.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const plans = await getCollection('plans');
+  return plans.map((plan) => ({
+    params: { slug: plan.data.slug },
+    props: { plan },
+  }));
+}
+
+const { plan } = Astro.props;
+const planData = plan.data;
+---
+
+<PlanLayout
+  title={`${planData.name} — Pricing, Limits & Reviews`}
+  description={`${planData.name} by ${planData.provider}: ${planData.description}. ${planData.price_monthly === 0 ? 'Free' : `$${planData.price_monthly}/mo`}. Compare features, models, and limits.`}
+  planName={planData.name}
+  planSlug={planData.slug}
+  planProvider={planData.provider}
+  planPrice={planData.price_monthly}
+  planBadge={planData.badge}
+>
+  <PlanDetail plan={planData} />
+</PlanLayout>

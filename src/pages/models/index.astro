@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import ModelCard from '../../components/ModelCard.astro';
+import { getCollection } from 'astro:content';
+
+const allModels = await getCollection('models');
+
+// Sort by vibe coding score (descending)
+const sortedModels = [...allModels].sort((a, b) => b.data.vibe_coding_score - a.data.vibe_coding_score);
+
+// Get unique providers
+const providers = [...new Set(allModels.map(m => m.data.provider))].sort();
+---
+
+<BaseLayout
+  title="AI Coding Models — Compare Context Windows & Capabilities"
+  description="Compare AI coding models by vibe coding score, context window size, strengths, and weaknesses. Find the best model for your coding workflow."
+>
+  <Navbar />
+
+  <main class="min-h-screen">
+    <!-- Header -->
+    <section class="bg-gradient-to-br from-primary/5 via-base-100 to-secondary/5 py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Breadcrumbs -->
+        <nav aria-label="Breadcrumb" class="mb-6">
+          <ol class="flex items-center gap-2 text-sm">
+            <li><a href="/" class="text-base-content/50 hover:text-primary transition-colors">Home</a></li>
+            <li class="text-base-content/30">/</li>
+            <li class="font-medium">Models</li>
+          </ol>
+        </nav>
+        <h1 class="text-3xl sm:text-4xl font-extrabold mb-2">AI Coding Models</h1>
+        <p class="text-base-content/60 max-w-2xl">
+          Explore {allModels.length} AI models rated by vibe coding score. Compare context windows, strengths, and find which models are included in each plan.
+        </p>
+      </div>
+    </section>
+
+    <!-- Filters & Grid -->
+    <section class="py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+          <p class="text-sm text-base-content/60">
+            <span class="font-semibold text-base-content" id="visible-count">{allModels.length}</span> models available
+          </p>
+          <div class="flex gap-2 flex-wrap">
+            <!-- Provider filter -->
+            <select id="provider-filter" class="select select-bordered select-sm">
+              <option value="all">All Providers</option>
+              {providers.map((provider) => (
+                <option value={provider}>{provider}</option>
+              ))}
+            </select>
+            <!-- Sort -->
+            <select id="sort-select" class="select select-bordered select-sm">
+              <option value="score-desc">Vibe Score: High → Low</option>
+              <option value="score-asc">Vibe Score: Low → High</option>
+              <option value="context-desc">Context: Largest</option>
+              <option value="name-asc">Name: A → Z</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Model Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="model-grid">
+          {sortedModels.map((model) => (
+            <div
+              class="model-item"
+              data-provider={model.data.provider}
+              data-score={model.data.vibe_coding_score}
+              data-context={model.data.context_window}
+              data-name={model.data.name}
+            >
+              <ModelCard
+                name={model.data.name}
+                slug={model.data.slug}
+                provider={model.data.provider}
+                vibe_coding_score={model.data.vibe_coding_score}
+                context_window={model.data.context_window}
+                description={model.data.description}
+              />
+            </div>
+          ))}
+        </div>
+
+        <div id="no-results" class="hidden text-center py-12">
+          <p class="text-base-content/50 text-lg">No models match your filter.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  const providerFilter = document.getElementById('provider-filter') as HTMLSelectElement;
+  const sortSelect = document.getElementById('sort-select') as HTMLSelectElement;
+  const grid = document.getElementById('model-grid')!;
+  const noResults = document.getElementById('no-results')!;
+  const visibleCount = document.getElementById('visible-count')!;
+
+  function applyFilters() {
+    const items = Array.from(grid.querySelectorAll('.model-item')) as HTMLElement[];
+    const provider = providerFilter.value;
+    let count = 0;
+
+    items.forEach(item => {
+      const matchesProvider = provider === 'all' || item.dataset.provider === provider;
+      item.style.display = matchesProvider ? '' : 'none';
+      if (matchesProvider) count++;
+    });
+
+    visibleCount.textContent = count.toString();
+    noResults.classList.toggle('hidden', count > 0);
+    grid.classList.toggle('hidden', count === 0);
+  }
+
+  function applySort() {
+    const items = Array.from(grid.querySelectorAll('.model-item')) as HTMLElement[];
+    const val = sortSelect.value;
+
+    items.sort((a, b) => {
+      if (val === 'score-desc') return parseFloat(b.dataset.score || '0') - parseFloat(a.dataset.score || '0');
+      if (val === 'score-asc') return parseFloat(a.dataset.score || '0') - parseFloat(b.dataset.score || '0');
+      if (val === 'context-desc') return parseFloat(b.dataset.context || '0') - parseFloat(a.dataset.context || '0');
+      if (val === 'name-asc') return (a.dataset.name || '').localeCompare(b.dataset.name || '');
+      return 0;
+    });
+
+    items.forEach(item => grid.appendChild(item));
+  }
+
+  providerFilter?.addEventListener('change', applyFilters);
+  sortSelect?.addEventListener('change', () => {
+    applySort();
+    applyFilters();
+  });
+</script>

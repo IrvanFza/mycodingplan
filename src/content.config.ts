@@ -53,6 +53,7 @@ const models = defineCollection({
     weaknesses: z.array(z.string()),
     vibe_coding_score: z.number().min(0).max(10),
     plans_available: z.array(z.string()),
+    updated_at: z.string().optional(),
   }),
 });
 
@@ -65,6 +66,7 @@ const tools = defineCollection({
     external_url: z.string().url(),
     features: z.array(z.string()),
     plans_compatible: z.array(z.string()),
+    updated_at: z.string().optional(),
   }),
 });
 

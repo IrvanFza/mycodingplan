@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const models = await getCollection('models');
+  return models.map((model) => ({
+    params: { slug: model.data.slug },
+    props: { model },
+  }));
+}
+
+const { model } = Astro.props;
+const m = model.data;
+
+const allPlans = await getCollection('plans');
+// Find plans that include this model
+const relatedPlans = allPlans.filter(p => p.data.models.includes(m.slug));
+
+const scoreColor = m.vibe_coding_score >= 8.5 ? 'text-success' : m.vibe_coding_score >= 7.0 ? 'text-warning' : 'text-error';
+
+const formatContextWindow = (tokens: number): string => {
+  if (tokens >= 1000000) return `${(tokens / 1000000).toFixed(0)}M`;
+  if (tokens >= 1000) return `${(tokens / 1000).toFixed(0)}K`;
+  return tokens.toString();
+};
+---
+
+<BaseLayout
+  title={`${m.name} — Strengths, Weaknesses & Vibe Score`}
+  description={`${m.name} by ${m.provider}: ${m.description}. Vibe coding score: ${m.vibe_coding_score}/10. Context window: ${formatContextWindow(m.context_window)} tokens.`}
+>
+  <Navbar />
+
+  <main class="min-h-screen">
+    <!-- Breadcrumbs -->
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2 text-sm">
+          <li><a href="/" class="text-base-content/50 hover:text-primary transition-colors">Home</a></li>
+          <li class="text-base-content/30">/</li>
+          <li><a href="/models" class="text-base-content/50 hover:text-primary transition-colors">Models</a></li>
+          <li class="text-base-content/30">/</li>
+          <li class="font-medium">{m.name}</li>
+        </ol>
+      </nav>
+    </div>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <!-- Header -->
+      <div class="bg-base-100 rounded-2xl border border-base-300 shadow-sm p-6 sm:p-8 mb-6">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <h1 class="text-3xl sm:text-4xl font-extrabold mb-1">{m.name}</h1>
+            <p class="text-base-content/60 text-sm">{m.provider}</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <!-- Vibe Score -->
+            <div class="text-center">
+              <div class={`text-4xl font-extrabold ${scoreColor}`}>{m.vibe_coding_score}</div>
+              <div class="text-xs text-base-content/50">Vibe Score</div>
+            </div>
+          </div>
+        </div>
+        <p class="mt-4 text-base-content/70 leading-relaxed">{m.description}</p>
+
+        <!-- Context Window -->
+        <div class="mt-4 inline-flex items-center gap-2 bg-base-200 rounded-lg px-3 py-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-base-content/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+          </svg>
+          <span class="text-sm font-medium">{formatContextWindow(m.context_window)} token context window</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Strengths -->
+        <div class="bg-base-100 rounded-2xl border border-base-300 shadow-sm p-6">
+          <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-success" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            Strengths
+          </h2>
+          <ul class="space-y-2">
+            {m.strengths.map((s) => (
+              <li class="flex items-start gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-success mt-0.5 shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-sm text-base-content/70">{s}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Weaknesses -->
+        <div class="bg-base-100 rounded-2xl border border-base-300 shadow-sm p-6">
+          <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-error" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+            </svg>
+            Weaknesses
+          </h2>
+          <ul class="space-y-2">
+            {m.weaknesses.map((w) => (
+              <li class="flex items-start gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-error mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                </svg>
+                <span class="text-sm text-base-content/70">{w}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Plans including this model -->
+      {relatedPlans.length > 0 && (
+        <div class="bg-base-100 rounded-2xl border border-base-300 shadow-sm p-6 mt-6">
+          <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+            Plans That Include This Model
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {relatedPlans.map((plan) => (
+              <a href={`/plans/${plan.data.slug}/`} class="flex items-center justify-between p-3 rounded-xl border border-base-300 hover:border-primary/30 hover:bg-primary/5 transition-all duration-200 group">
+                <div>
+                  <span class="font-semibold text-sm group-hover:text-primary transition-colors">{plan.data.name}</span>
+                  <p class="text-xs text-base-content/50">{plan.data.provider}</p>
+                </div>
+                <span class={`text-sm font-bold ${plan.data.price_monthly === 0 ? 'text-success' : 'text-base-content'}`}>
+                  {plan.data.price_monthly === 0 ? 'Free' : `$${plan.data.price_monthly}/mo`}
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

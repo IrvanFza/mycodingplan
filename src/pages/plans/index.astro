@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import PlanCard from '../../components/PlanCard.astro';
+import { getCollection } from 'astro:content';
+
+const allPlans = await getCollection('plans');
+
+// Default sort: price low→high
+const sortedPlans = [...allPlans].sort((a, b) => a.data.price_monthly - b.data.price_monthly);
+---
+
+<BaseLayout
+  title="All AI Coding Plans — Pricing, Models & Limits"
+  description="Browse and compare all AI coding plans. Filter by price, provider, and features to find the best coding subscription for your needs."
+>
+  <Navbar />
+
+  <main class="min-h-screen">
+    <!-- Header -->
+    <section class="bg-gradient-to-br from-primary/5 via-base-100 to-secondary/5 py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Breadcrumbs -->
+        <nav aria-label="Breadcrumb" class="mb-6">
+          <ol class="flex items-center gap-2 text-sm">
+            <li><a href="/" class="text-base-content/50 hover:text-primary transition-colors">Home</a></li>
+            <li class="text-base-content/30">/</li>
+            <li class="font-medium">Plans</li>
+          </ol>
+        </nav>
+        <h1 class="text-3xl sm:text-4xl font-extrabold mb-2">AI Coding Plans</h1>
+        <p class="text-base-content/60 max-w-2xl">
+          Browse {allPlans.length} plans across all major AI coding providers. Sort by price, community score, or browse by badge type.
+        </p>
+      </div>
+    </section>
+
+    <!-- Plan Count & Sort -->
+    <section class="py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+          <p class="text-sm text-base-content/60">
+            <span class="font-semibold text-base-content" id="visible-count">{allPlans.length}</span> plans available
+          </p>
+          <div class="flex gap-2">
+            <select id="sort-select" class="select select-bordered select-sm">
+              <option value="price-asc">Price: Low → High</option>
+              <option value="price-desc">Price: High → Low</option>
+              <option value="name-asc">Name: A → Z</option>
+              <option value="score-desc">Community Score</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Plan Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="plan-grid">
+          {sortedPlans.map((plan) => (
+            <div
+              class="plan-item"
+              data-price={plan.data.price_monthly}
+              data-name={plan.data.name}
+              data-score={plan.data.community_score ?? 0}
+              data-badge={plan.data.badge}
+            >
+              <PlanCard
+                name={plan.data.name}
+                slug={plan.data.slug}
+                provider={plan.data.provider}
+                badge={plan.data.badge}
+                price_monthly={plan.data.price_monthly}
+                promotional_price={plan.data.promotional_price}
+                models={plan.data.models}
+                community_score={plan.data.community_score}
+                description={plan.data.description}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  const sortSelect = document.getElementById('sort-select') as HTMLSelectElement;
+  const grid = document.getElementById('plan-grid')!;
+
+  sortSelect?.addEventListener('change', () => {
+    const items = Array.from(grid.querySelectorAll('.plan-item')) as HTMLElement[];
+    
+    items.sort((a, b) => {
+      const val = sortSelect.value;
+      if (val === 'price-asc') return parseFloat(a.dataset.price || '0') - parseFloat(b.dataset.price || '0');
+      if (val === 'price-desc') return parseFloat(b.dataset.price || '0') - parseFloat(a.dataset.price || '0');
+      if (val === 'name-asc') return (a.dataset.name || '').localeCompare(b.dataset.name || '');
+      if (val === 'score-desc') return parseFloat(b.dataset.score || '0') - parseFloat(a.dataset.score || '0');
+      return 0;
+    });
+
+    items.forEach(item => grid.appendChild(item));
+  });
+</script>

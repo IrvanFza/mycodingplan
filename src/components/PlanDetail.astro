@@ -1,0 +1,316 @@
+---
+interface PlanData {
+  name: string;
+  slug: string;
+  provider: string;
+  badge: 'FREE' | 'PROMO' | 'PAID';
+  price_monthly: number;
+  promotional_price?: number | null;
+  promotional_duration?: string | null;
+  description: string;
+  external_url: string;
+  models: string[];
+  limits: {
+    requests_per_minute?: number | null;
+    tokens_per_minute?: number | null;
+    context_window?: number | null;
+    daily_message_limit?: number | string | null;
+  };
+  features: string[];
+  categories: string[];
+  student_discount: boolean;
+  startup_credits: boolean;
+  tools_compatible: string[];
+  history?: { date: string; event: string }[];
+  community_reviews_summary?: string;
+  community_score?: number;
+  latency?: {
+    average_ms?: number;
+    uptime_percent?: number;
+  };
+}
+
+interface Props {
+  plan: PlanData;
+}
+
+const { plan } = Astro.props;
+
+const badgeColor = {
+  FREE: 'badge-success',
+  PROMO: 'badge-warning',
+  PAID: 'badge-info',
+}[plan.badge];
+
+const priceDisplay = plan.price_monthly === 0 ? 'Free' : `$${plan.price_monthly}/mo`;
+
+const formatNumber = (n: number): string => {
+  if (n >= 1000000) return `${(n / 1000000).toFixed(1)}M`;
+  if (n >= 1000) return `${(n / 1000).toFixed(0)}K`;
+  return n.toString();
+};
+
+const getLatencyColor = (ms?: number) => {
+  if (!ms) return 'text-base-content/50';
+  if (ms <= 500) return 'text-success';
+  if (ms <= 1500) return 'text-warning';
+  return 'text-error';
+};
+
+const getUptimeColor = (pct?: number) => {
+  if (!pct) return 'text-base-content/50';
+  if (pct >= 99.5) return 'text-success';
+  if (pct >= 98) return 'text-warning';
+  return 'text-error';
+};
+---
+
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+  <!-- Header Section -->
+  <div class="bg-base-100 rounded-2xl border border-base-300 shadow-sm p-6 sm:p-8 mb-6">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div>
+        <div class="flex items-center gap-3 mb-2">
+          <h1 class="text-3xl sm:text-4xl font-extrabold">{plan.name}</h1>
+          <span class={`badge ${badgeColor} badge-lg font-semibold`}>{plan.badge}</span>
+        </div>
+        <p class="text-base-content/60 text-sm">{plan.provider}</p>
+      </div>
+      <div class="flex flex-col items-end gap-2">
+        <div>
+          {plan.promotional_price !== null && plan.promotional_price !== undefined ? (
+            <div class="text-right">
+              <span class="text-3xl font-extrabold text-primary">${plan.promotional_price}/mo</span>
+              <div class="flex items-center gap-2 mt-1">
+                <span class="text-sm text-base-content/40 line-through">${plan.price_monthly}/mo</span>
+                <span class="badge badge-warning badge-xs">{plan.promotional_duration}</span>
+              </div>
+            </div>
+          ) : (
+            <span class={`text-3xl font-extrabold ${plan.price_monthly === 0 ? 'text-success' : 'text-base-content'}`}>{priceDisplay}</span>
+          )}
+        </div>
+        <a href={plan.external_url} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm gap-1">
+          Visit site
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+      </div>
+    </div>
+    <p class="mt-4 text-base-content/70 leading-relaxed">{plan.description}</p>
+
+    <!-- Compare button -->
+    <div class="mt-4">
+      <a href={`/compare/?plans=${plan.slug}`} class="btn btn-outline btn-sm gap-1">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+        Compare this plan
+      </a>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Left Column -->
+    <div class="lg:col-span-2 space-y-6">
+      <!-- Pricing & Limits Table -->
+      <div class="bg-base-100 rounded-2xl border border-base-300 shadow-sm p-6">
+        <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+          Pricing & Limits
+        </h2>
+        <div class="overflow-x-auto">
+          <table class="table table-sm">
+            <tbody>
+              <tr>
+                <td class="font-medium text-base-content/70 w-48">Requests/min (RPM)</td>
+                <td>{plan.limits.requests_per_minute ? formatNumber(plan.limits.requests_per_minute) : '—'}</td>
+              </tr>
+              <tr>
+                <td class="font-medium text-base-content/70">Tokens/min (TPM)</td>
+                <td>{plan.limits.tokens_per_minute ? formatNumber(plan.limits.tokens_per_minute) : '—'}</td>
+              </tr>
+              <tr>
+                <td class="font-medium text-base-content/70">Context Window</td>
+                <td>{plan.limits.context_window ? formatNumber(plan.limits.context_window) + ' tokens' : '—'}</td>
+              </tr>
+              <tr>
+                <td class="font-medium text-base-content/70">Daily Message Limit</td>
+                <td>{plan.limits.daily_message_limit ?? '—'}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Available Models -->
+      {plan.models.length > 0 && (
+        <div class="bg-base-100 rounded-2xl border border-base-300 shadow-sm p-6">
+          <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            Available Models
+          </h2>
+          <div class="flex flex-wrap gap-2">
+            {plan.models.map((model) => (
+              <a href={`/models/${model}/`} class="badge badge-outline badge-lg hover:badge-primary transition-colors duration-200 gap-1 cursor-pointer">
+                {model}
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Features -->
+      {plan.features.length > 0 && (
+        <div class="bg-base-100 rounded-2xl border border-base-300 shadow-sm p-6">
+          <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            Features
+          </h2>
+          <ul class="space-y-2">
+            {plan.features.map((feature) => (
+              <li class="flex items-start gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-success mt-0.5 shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-sm text-base-content/70">{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <!-- Pricing History Timeline -->
+      {plan.history && plan.history.length > 0 && (
+        <div class="bg-base-100 rounded-2xl border border-base-300 shadow-sm p-6">
+          <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Pricing History
+          </h2>
+          <ul class="timeline timeline-vertical timeline-compact">
+            {plan.history.map((entry, idx) => (
+              <li>
+                {idx > 0 && <hr class="bg-primary/20" />}
+                <div class="timeline-start text-xs font-medium text-base-content/50 whitespace-nowrap">{entry.date}</div>
+                <div class="timeline-middle">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4 text-primary">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <div class="timeline-end text-sm text-base-content/70 pb-4">{entry.event}</div>
+                {idx < plan.history!.length - 1 && <hr class="bg-primary/20" />}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+
+    <!-- Right Sidebar -->
+    <div class="space-y-6">
+      <!-- Categories / Tags -->
+      {plan.categories.length > 0 && (
+        <div class="bg-base-100 rounded-2xl border border-base-300 shadow-sm p-6">
+          <h2 class="text-lg font-bold mb-3">Categories</h2>
+          <div class="flex flex-wrap gap-2">
+            {plan.categories.map((cat) => (
+              <span class="badge badge-outline badge-sm">{cat}</span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Tool Compatibility -->
+      {plan.tools_compatible.length > 0 && (
+        <div class="bg-base-100 rounded-2xl border border-base-300 shadow-sm p-6">
+          <h2 class="text-lg font-bold mb-3">Compatible Tools</h2>
+          <div class="flex flex-wrap gap-2">
+            {plan.tools_compatible.map((tool) => (
+              <a href={`/tools/${tool}/`} class="badge badge-outline badge-sm hover:badge-primary transition-colors duration-200 cursor-pointer">{tool}</a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Student / Startup -->
+      {(plan.student_discount || plan.startup_credits) && (
+        <div class="bg-base-100 rounded-2xl border border-base-300 shadow-sm p-6">
+          <h2 class="text-lg font-bold mb-3">Discounts & Credits</h2>
+          <div class="space-y-2">
+            {plan.student_discount && (
+              <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-success" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-sm font-medium">Student Discount Available</span>
+              </div>
+            )}
+            {plan.startup_credits && (
+              <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-success" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-sm font-medium">Startup Credits Available</span>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      <!-- Latency & Uptime -->
+      {plan.latency && (plan.latency.average_ms || plan.latency.uptime_percent) && (
+        <div class="bg-base-100 rounded-2xl border border-base-300 shadow-sm p-6">
+          <h2 class="text-lg font-bold mb-3">Performance</h2>
+          <div class="space-y-3">
+            {plan.latency.average_ms && (
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-base-content/70">Avg Latency</span>
+                <span class={`text-sm font-semibold ${getLatencyColor(plan.latency.average_ms)}`}>{plan.latency.average_ms}ms</span>
+              </div>
+            )}
+            {plan.latency.uptime_percent && (
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-base-content/70">Uptime</span>
+                <span class={`text-sm font-semibold ${getUptimeColor(plan.latency.uptime_percent)}`}>{plan.latency.uptime_percent}%</span>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      <!-- Community Score -->
+      {plan.community_score !== undefined && (
+        <div class="bg-base-100 rounded-2xl border border-base-300 shadow-sm p-6">
+          <h2 class="text-lg font-bold mb-3">Community Score</h2>
+          <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-warning" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <span class="text-2xl font-extrabold">{plan.community_score}</span>
+            <span class="text-sm text-base-content/50">/ 100</span>
+          </div>
+        </div>
+      )}
+
+      <!-- Community Reviews Summary -->
+      {plan.community_reviews_summary && (
+        <div class="bg-base-100 rounded-2xl border border-base-300 shadow-sm p-6">
+          <h2 class="text-lg font-bold mb-3">Community Reviews</h2>
+          <p class="text-sm text-base-content/70 leading-relaxed">{plan.community_reviews_summary}</p>
+        </div>
+      )}
+    </div>
+  </div>
+</div>

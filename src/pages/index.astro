@@ -2,22 +2,267 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import PlanCard from '../components/PlanCard.astro';
+import { getCollection } from 'astro:content';
+
+const allPlans = await getCollection('plans');
+
+// Sort: FREE first, then PROMO, then by price
+const sortedPlans = [...allPlans].sort((a, b) => {
+  const badgeOrder = { FREE: 0, PROMO: 1, PAID: 2 };
+  const orderDiff = badgeOrder[a.data.badge] - badgeOrder[b.data.badge];
+  if (orderDiff !== 0) return orderDiff;
+  return a.data.price_monthly - b.data.price_monthly;
+});
+
+const freePlans = allPlans.filter(p => p.data.badge === 'FREE');
+const promoPlan = allPlans.filter(p => p.data.badge === 'PROMO');
+
+// Unique categories across all plans
+const allCategories = [...new Set(allPlans.flatMap(p => p.data.categories))].sort();
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'MyCodingPlan',
+  url: 'https://mycodingplan.com',
+  description: 'Compare AI coding plans and find your perfect setup. Browse free and paid AI coding subscriptions, models, and tools.',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: 'https://mycodingplan.com/plans/?q={search_term_string}',
+    'query-input': 'required name=search_term_string',
+  },
+};
 ---
 
-<BaseLayout title="Coming Soon" description="MyCodingPlan - Compare AI coding plans and find your perfect setup">
+<BaseLayout
+  title="Compare AI Coding Plans & Find Your Perfect Setup"
+  description="Compare 25+ AI coding plans side-by-side. Find the best free and paid subscriptions for tools like Cursor, Copilot, Claude, and more."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </Fragment>
+
   <Navbar />
-  <main class="min-h-screen flex items-center justify-center">
-    <div class="text-center px-4">
-      <h1 class="text-4xl md:text-6xl font-bold mb-4">Coming Soon</h1>
-      <p class="text-lg md:text-xl text-base-content/70 mb-8">
-        MyCodingPlan is under construction. We're building the ultimate resource for comparing AI coding plans.
-      </p>
-      <div class="flex gap-4 justify-center">
-        <a href="https://github.com/IrvanFza/mycodingplan" class="btn btn-primary">
-          View on GitHub
-        </a>
+
+  <main class="min-h-screen">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-primary/5 via-base-100 to-secondary/5 py-16 sm:py-24">
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary/10 rounded-full blur-3xl"></div>
       </div>
-    </div>
+      <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-xs font-semibold mb-6 tracking-wide">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+          </svg>
+          {allPlans.length} PLANS COMPARED
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+          Find Your Perfect <br class="hidden sm:block" />
+          <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">AI Coding Plan</span>
+        </h1>
+        <p class="text-lg sm:text-xl text-base-content/60 max-w-2xl mx-auto mb-8 leading-relaxed">
+          Compare free and paid AI coding subscriptions side-by-side. From Cursor to Copilot, Claude to Gemini — discover the plan that matches your workflow and budget.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="#plans" class="btn btn-primary btn-lg gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            Browse Plans
+          </a>
+          <a href="/compare" class="btn btn-outline btn-lg gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+            Compare Plans
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-16 bg-base-200/30">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-center mb-10">How It Works</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+            <h3 class="font-bold text-lg mb-2">Browse & Search</h3>
+            <p class="text-sm text-base-content/60">Explore 25+ AI coding plans with detailed pricing, models, and feature comparisons.</p>
+          </div>
+          <div class="text-center">
+            <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+            </div>
+            <h3 class="font-bold text-lg mb-2">Compare Side-by-Side</h3>
+            <p class="text-sm text-base-content/60">Put plans head-to-head with our comparison tool to see pricing, limits, and features at a glance.</p>
+          </div>
+          <div class="text-center">
+            <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3 class="font-bold text-lg mb-2">Choose & Code</h3>
+            <p class="text-sm text-base-content/60">Pick the plan that fits your budget and workflow, then start coding with AI-powered tools.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Free Plans -->
+    {freePlans.length > 0 && (
+      <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between mb-8">
+            <div>
+              <h2 class="text-2xl font-bold">🆓 Free Plans</h2>
+              <p class="text-sm text-base-content/60 mt-1">Start coding with AI for $0/month</p>
+            </div>
+            <a href="/plans" class="btn btn-ghost btn-sm gap-1">
+              View all
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {freePlans.map((plan) => (
+              <PlanCard
+                name={plan.data.name}
+                slug={plan.data.slug}
+                provider={plan.data.provider}
+                badge={plan.data.badge}
+                price_monthly={plan.data.price_monthly}
+                promotional_price={plan.data.promotional_price}
+                models={plan.data.models}
+                community_score={plan.data.community_score}
+                description={plan.data.description}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- All Plans Directory -->
+    <section id="plans" class="py-16 bg-base-200/30">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+          <div>
+            <h2 class="text-2xl font-bold">All Plans</h2>
+            <p class="text-sm text-base-content/60 mt-1">{allPlans.length} plans available</p>
+          </div>
+        </div>
+
+        <!-- Category Quick-Filter Pills -->
+        <div class="flex flex-wrap gap-2 mb-6" id="filter-pills">
+          <button class="btn btn-sm btn-primary filter-pill active" data-filter="all">All</button>
+          <button class="btn btn-sm btn-ghost filter-pill" data-filter="FREE">Free</button>
+          <button class="btn btn-sm btn-ghost filter-pill" data-filter="PROMO">Promo</button>
+          <button class="btn btn-sm btn-ghost filter-pill" data-filter="PAID">Paid</button>
+        </div>
+
+        <!-- Search -->
+        <div class="mb-6">
+          <div class="relative max-w-md">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-3 top-1/2 -translate-y-1/2 text-base-content/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input
+              type="text"
+              id="plan-search"
+              placeholder="Search plans by name, provider, or feature..."
+              class="input input-bordered w-full pl-10"
+            />
+          </div>
+        </div>
+
+        <!-- Plan Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="plan-grid">
+          {sortedPlans.map((plan) => (
+            <div class="plan-item" data-badge={plan.data.badge} data-name={plan.data.name.toLowerCase()} data-provider={plan.data.provider.toLowerCase()} data-features={plan.data.features.join(' ').toLowerCase()}>
+              <PlanCard
+                name={plan.data.name}
+                slug={plan.data.slug}
+                provider={plan.data.provider}
+                badge={plan.data.badge}
+                price_monthly={plan.data.price_monthly}
+                promotional_price={plan.data.promotional_price}
+                models={plan.data.models}
+                community_score={plan.data.community_score}
+                description={plan.data.description}
+              />
+            </div>
+          ))}
+        </div>
+
+        <div id="no-results" class="hidden text-center py-12">
+          <p class="text-base-content/50 text-lg">No plans match your search.</p>
+        </div>
+      </div>
+    </section>
   </main>
+
   <Footer />
 </BaseLayout>
+
+<script>
+  // Client-side filtering
+  const filterPills = document.querySelectorAll('.filter-pill');
+  const searchInput = document.getElementById('plan-search') as HTMLInputElement;
+  const planGrid = document.getElementById('plan-grid')!;
+  const planItems = document.querySelectorAll('.plan-item') as NodeListOf<HTMLElement>;
+  const noResults = document.getElementById('no-results')!;
+
+  let activeFilter = 'all';
+
+  function applyFilters() {
+    const query = searchInput?.value.toLowerCase().trim() || '';
+    let visibleCount = 0;
+
+    planItems.forEach((item) => {
+      const badge = item.dataset.badge || '';
+      const name = item.dataset.name || '';
+      const provider = item.dataset.provider || '';
+      const features = item.dataset.features || '';
+
+      const matchesFilter = activeFilter === 'all' || badge === activeFilter;
+      const matchesSearch = !query || name.includes(query) || provider.includes(query) || features.includes(query);
+
+      if (matchesFilter && matchesSearch) {
+        item.style.display = '';
+        visibleCount++;
+      } else {
+        item.style.display = 'none';
+      }
+    });
+
+    noResults.classList.toggle('hidden', visibleCount > 0);
+    planGrid.classList.toggle('hidden', visibleCount === 0);
+  }
+
+  filterPills.forEach((pill) => {
+    pill.addEventListener('click', () => {
+      filterPills.forEach((p) => {
+        p.classList.remove('btn-primary');
+        p.classList.add('btn-ghost');
+      });
+      pill.classList.remove('btn-ghost');
+      pill.classList.add('btn-primary');
+      activeFilter = (pill as HTMLElement).dataset.filter || 'all';
+      applyFilters();
+    });
+  });
+
+  searchInput?.addEventListener('input', applyFilters);
+</script>

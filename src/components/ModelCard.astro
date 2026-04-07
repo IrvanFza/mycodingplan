@@ -1,0 +1,60 @@
+---
+interface Props {
+  name: string;
+  slug: string;
+  provider: string;
+  vibe_coding_score: number;
+  context_window: number;
+  description: string;
+}
+
+const { name, slug, provider, vibe_coding_score, context_window, description } = Astro.props;
+
+const formatContextWindow = (tokens: number): string => {
+  if (tokens >= 1000000) return `${(tokens / 1000000).toFixed(0)}M`;
+  if (tokens >= 1000) return `${(tokens / 1000).toFixed(0)}K`;
+  return tokens.toString();
+};
+
+const scoreColor = vibe_coding_score >= 8.5 ? 'text-success' : vibe_coding_score >= 7.0 ? 'text-warning' : 'text-error';
+const scoreRingColor = vibe_coding_score >= 8.5 ? 'stroke-success' : vibe_coding_score >= 7.0 ? 'stroke-warning' : 'stroke-error';
+---
+
+<a href={`/models/${slug}/`} class="model-card card bg-base-100 border border-base-300 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group" id={`model-card-${slug}`}>
+  <div class="card-body p-5">
+    <!-- Header -->
+    <div class="flex items-start justify-between gap-3">
+      <div class="flex-1 min-w-0">
+        <h3 class="card-title text-base font-bold group-hover:text-primary transition-colors duration-200 leading-tight">{name}</h3>
+        <p class="text-xs text-base-content/50 mt-0.5">{provider}</p>
+      </div>
+      <!-- Vibe Score Circle -->
+      <div class="relative flex items-center justify-center shrink-0" title={`Vibe coding score: ${vibe_coding_score}/10`}>
+        <svg class="w-12 h-12 -rotate-90" viewBox="0 0 36 36">
+          <path class="stroke-base-200" stroke-width="3" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+          <path class={scoreRingColor} stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray={`${(vibe_coding_score / 10) * 100}, 100`} d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+        </svg>
+        <span class={`absolute text-xs font-bold ${scoreColor}`}>{vibe_coding_score}</span>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <p class="text-sm text-base-content/60 mt-2 line-clamp-2 leading-relaxed">{description}</p>
+
+    <!-- Context Window -->
+    <div class="flex items-center justify-between mt-3 pt-3 border-t border-base-200">
+      <div class="flex items-center gap-1.5">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-base-content/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+        </svg>
+        <span class="text-xs text-base-content/60">{formatContextWindow(context_window)} tokens</span>
+      </div>
+      <span class="text-xs font-medium text-primary group-hover:translate-x-1 transition-transform duration-200 flex items-center gap-1">
+        View details
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </span>
+    </div>
+  </div>
+</a>
