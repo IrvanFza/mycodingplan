@@ -1,0 +1,85 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0e27;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#111b3d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d1526;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="20" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)" />
+
+  <!-- Decorative grid lines -->
+  <g opacity="0.05" stroke="#ffffff" stroke-width="1">
+    <line x1="200" y1="0" x2="200" y2="630" />
+    <line x1="400" y1="0" x2="400" y2="630" />
+    <line x1="600" y1="0" x2="600" y2="630" />
+    <line x1="800" y1="0" x2="800" y2="630" />
+    <line x1="1000" y1="0" x2="1000" y2="630" />
+    <line x1="0" y1="157" x2="1200" y2="157" />
+    <line x1="0" y1="315" x2="1200" y2="315" />
+    <line x1="0" y1="472" x2="1200" y2="472" />
+  </g>
+
+  <!-- Glow orbs -->
+  <circle cx="200" cy="200" r="100" fill="#3b82f6" opacity="0.08" filter="url(#softGlow)" />
+  <circle cx="1000" cy="430" r="120" fill="#8b5cf6" opacity="0.08" filter="url(#softGlow)" />
+
+  <!-- Code decoration (left) -->
+  <g opacity="0.1" fill="#94a3b8" font-family="monospace" font-size="14">
+    <text x="60" y="100">const plan = await</text>
+    <text x="60" y="120">  findBestPlan({</text>
+    <text x="60" y="140">    budget: 20,</text>
+    <text x="60" y="160">    models: ["claude"]</text>
+    <text x="60" y="180">  });</text>
+  </g>
+
+  <!-- Code decoration (right) -->
+  <g opacity="0.1" fill="#94a3b8" font-family="monospace" font-size="14">
+    <text x="900" y="430">compare(plans) {</text>
+    <text x="900" y="450">  return plans</text>
+    <text x="900" y="470">    .sort(byValue)</text>
+    <text x="900" y="490">    .slice(0, 3);</text>
+    <text x="900" y="510">}</text>
+  </g>
+
+  <!-- Accent line -->
+  <rect x="520" y="240" width="160" height="3" rx="1.5" fill="url(#accent)" filter="url(#glow)" />
+
+  <!-- Main title -->
+  <text x="600" y="310" text-anchor="middle" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="72" font-weight="700" fill="#ffffff" letter-spacing="-1">
+    MyCodingPlan
+  </text>
+
+  <!-- Tagline -->
+  <text x="600" y="370" text-anchor="middle" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="24" font-weight="400" fill="#94a3b8">
+    Compare AI Coding Plans &amp; Find Your Perfect Setup
+  </text>
+
+  <!-- Bottom accent line -->
+  <rect x="540" y="400" width="120" height="3" rx="1.5" fill="url(#accent)" filter="url(#glow)" />
+
+  <!-- URL at bottom -->
+  <text x="600" y="580" text-anchor="middle" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="16" font-weight="500" fill="#64748b">
+    mycodingplan.com
+  </text>
+</svg>
