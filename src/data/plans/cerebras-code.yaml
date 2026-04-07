@@ -1,0 +1,30 @@
+name: "Cerebras Code"
+slug: "cerebras-code"
+provider: "Cerebras"
+badge: "PAID"
+price_monthly: 50.00
+promotional_price: null
+promotional_duration: null
+description: "High-throughput coding plan with large daily token allocation"
+external_url: "https://cerebras.ai"
+models:
+  - open-source-models
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: "Large daily tokens"
+features:
+  - "High throughput"
+  - "Open-source coding models"
+  - "Large daily allocation"
+categories:
+  - paid
+  - open-weight
+student_discount: false
+startup_credits: false
+tools_compatible: []
+history:
+  - date: "2026 Q1"
+    event: "Launched $50/mo coding plan"
+updated_at: "2026-04-07"

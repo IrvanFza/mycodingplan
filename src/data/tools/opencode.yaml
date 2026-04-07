@@ -1,0 +1,14 @@
+name: "OpenCode"
+slug: "opencode"
+description: "The open source AI coding agent for developers."
+external_url: "https://opencode.ai"
+features:
+  - "Open source"
+  - "AI coding agent"
+  - "500+ routed models"
+  - "Community-driven"
+plans_compatible:
+  - opencode-go
+  - ollama-free
+  - ollama-pro
+updated_at: "2026-04-07"

@@ -1,0 +1,17 @@
+name: "DeepSeek V3"
+slug: "deepseek-v3"
+provider: "DeepSeek"
+description: "Open-weight model with excellent coding capabilities and competitive performance at a fraction of the cost."
+context_window: 128000
+strengths:
+  - "Open-weight and self-hostable"
+  - "Strong code generation"
+  - "Very cost-effective"
+  - "Competitive with closed-source models"
+weaknesses:
+  - "Occasional rate limiting on API"
+  - "Less polished instruction following"
+vibe_coding_score: 8.3
+plans_available:
+  - synthetic-pack
+updated_at: "2026-04-07"

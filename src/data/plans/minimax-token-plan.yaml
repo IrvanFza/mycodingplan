@@ -1,0 +1,30 @@
+name: "MiniMax Token Plan"
+slug: "minimax-token-plan"
+provider: "MiniMax"
+badge: "PAID"
+price_monthly: 20.00
+promotional_price: null
+promotional_duration: null
+description: "MiniMax coding subscription using prompts-per-5-hours quotas for interactive coding tools"
+external_url: "https://minimax.ai"
+models:
+  - minimax-m2-7
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: "Prompts per 5-hours"
+features:
+  - "Prompts-per-5-hours quotas"
+  - "Interactive coding tools"
+  - "MiniMax M2 models"
+categories:
+  - paid
+  - closed-source
+student_discount: false
+startup_credits: false
+tools_compatible: []
+history:
+  - date: "2026 Q1"
+    event: "Price $20/mo token plan"
+updated_at: "2026-04-07"

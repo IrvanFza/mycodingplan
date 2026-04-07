@@ -1,0 +1,17 @@
+name: "Claude 3.5 Sonnet"
+slug: "claude-3-5-sonnet"
+provider: "Anthropic"
+description: "Best-in-class coding model with strong zero-shot accuracy and exceptional reasoning for complex refactors."
+context_window: 200000
+strengths:
+  - "Exceptional zero-shot code generation"
+  - "Strong reasoning for complex refactors"
+  - "Large 200K context window"
+  - "Excellent instruction following"
+weaknesses:
+  - "Higher latency than smaller models"
+  - "Rate limits can frustrate power users"
+vibe_coding_score: 9.2
+plans_available:
+  - claude-pro
+updated_at: "2026-04-07"

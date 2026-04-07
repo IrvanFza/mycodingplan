@@ -1,0 +1,30 @@
+name: "Kilo Pass Pro"
+slug: "kilo-pass-pro"
+provider: "Kilo"
+badge: "PAID"
+price_monthly: 19.00
+promotional_price: null
+promotional_duration: null
+description: "Optional usage subscription that converts monthly spend into boosted model credits"
+external_url: "https://kilo.ai"
+models: []
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: "Boosted model credits"
+features:
+  - "500+ routed models via Kilo Gateway"
+  - "Pay-as-you-go overflow"
+  - "Multi-provider access"
+categories:
+  - paid
+  - open-weight
+student_discount: false
+startup_credits: false
+tools_compatible:
+  - kilo
+history:
+  - date: "2026 Q1"
+    event: "Price $19/mo for Pass Pro"
+updated_at: "2026-04-07"

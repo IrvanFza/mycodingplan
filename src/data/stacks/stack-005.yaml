@@ -1,0 +1,10 @@
+id: "stack-005"
+author: "privacydev"
+title: "Privacy-First Stack"
+tools:
+  - opencode
+  - vscode
+monthly_cost: 0
+description: "Privacy-first setup using open-weight models: OpenCode with local Ollama models + VS Code. Zero data sent to third-party servers, runs entirely on your machine."
+upvotes: 52
+submitted_at: "2026-03-25"

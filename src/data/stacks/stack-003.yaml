@@ -1,0 +1,11 @@
+id: "stack-003"
+author: "terminalking"
+title: "CLI Power User"
+tools:
+  - claude-code
+  - opencode
+  - kimi-cli
+monthly_cost: 20
+description: "Terminal-first coding setup: Claude Pro ($20/mo) with Claude Code CLI + OpenCode agent + Kimi CLI. For developers who live in the terminal."
+upvotes: 35
+submitted_at: "2026-03-20"

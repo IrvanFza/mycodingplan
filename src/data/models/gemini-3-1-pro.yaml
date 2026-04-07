@@ -1,0 +1,17 @@
+name: "Gemini 3.1 Pro"
+slug: "gemini-3-1-pro"
+provider: "Google"
+description: "Google's most capable Gemini model with extended context and strong coding performance for complex projects."
+context_window: 2000000
+strengths:
+  - "Massive 2M token context window"
+  - "Strong multi-step reasoning"
+  - "Excellent full-project generation"
+  - "Google ecosystem integration"
+weaknesses:
+  - "Higher latency for long contexts"
+  - "Occasional formatting issues"
+vibe_coding_score: 8.7
+plans_available:
+  - google-ai-pro
+updated_at: "2026-04-07"

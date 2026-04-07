@@ -1,0 +1,34 @@
+name: "Edlide Pro"
+slug: "edlide-pro"
+provider: "Edlide"
+badge: "PAID"
+price_monthly: 19.99
+promotional_price: null
+promotional_duration: null
+description: "VS Code-based IDE + CLI subscription focused on open-model coding workflows"
+external_url: "https://edlide.com"
+models:
+  - glm-4.7
+  - glm-5
+  - kimi-k2.5
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: "Fixed daily request quotas"
+features:
+  - "VS Code-based IDE"
+  - "CLI integration"
+  - "Open-model focus"
+  - "Fixed daily quotas"
+categories:
+  - paid
+  - open-weight
+student_discount: false
+startup_credits: false
+tools_compatible:
+  - edlide
+history:
+  - date: "2026 Q1"
+    event: "Launched $19.99/mo Pro tier"
+updated_at: "2026-04-07"

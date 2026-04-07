@@ -1,0 +1,12 @@
+name: "Mistral Vibe"
+slug: "mistral-vibe"
+description: "Le Chat is Mistral's assistant interface for chat, productivity, and coding workflows. Paid plans increase usage limits and coding features."
+external_url: "https://mistral.ai"
+features:
+  - "Mistral assistant interface"
+  - "Chat and productivity"
+  - "Coding workflows"
+  - "Le Chat integration"
+plans_compatible:
+  - mistral-pro
+updated_at: "2026-04-07"

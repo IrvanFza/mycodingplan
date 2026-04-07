@@ -1,0 +1,38 @@
+name: "GitHub Copilot Pro"
+slug: "github-copilot-pro"
+provider: "GitHub (Microsoft)"
+badge: "PAID"
+price_monthly: 10.00
+promotional_price: null
+promotional_duration: null
+description: "IDE-native AI coding assistant with premium requests for chat, agent mode, and CLI tasks"
+external_url: "https://github.com/features/copilot"
+models:
+  - claude-models
+  - gemini-models
+  - openai-models
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: "Premium request quotas"
+features:
+  - "IDE-native integration"
+  - "Multi-IDE support"
+  - "Agent mode"
+  - "CLI tasks"
+  - "Premium model access"
+categories:
+  - paid
+  - closed-source
+student_discount: true
+startup_credits: true
+tools_compatible:
+  - vscode
+  - jetbrains
+history:
+  - date: "2026 Q1"
+    event: "Price $10/mo with multi-model support"
+  - date: "2025 Q4"
+    event: "Added Claude and Gemini models"
+updated_at: "2026-04-07"

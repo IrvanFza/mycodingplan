@@ -1,0 +1,33 @@
+name: "Synthetic Subscription Pack"
+slug: "synthetic-pack"
+provider: "Synthetic"
+badge: "PAID"
+price_monthly: 30.00
+promotional_price: null
+promotional_duration: null
+description: "Flat-fee agent runtime with message-rate limits and included daily tool-call allowance"
+external_url: "https://synthetic.ai"
+models:
+  - deepseek-variants
+  - qwen-variants
+  - kimi-variants
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: "Message-rate limits"
+features:
+  - "Flat-fee agent runtime"
+  - "Daily tool-call allowance"
+  - "Open-weight model variants"
+  - "Multiple model families"
+categories:
+  - paid
+  - open-weight
+student_discount: false
+startup_credits: false
+tools_compatible: []
+history:
+  - date: "2026 Q1"
+    event: "Price $30/mo subscription pack"
+updated_at: "2026-04-07"

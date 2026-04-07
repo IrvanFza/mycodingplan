@@ -1,0 +1,31 @@
+name: "Kiro Pro"
+slug: "kiro-pro"
+provider: "Kiro"
+badge: "PAID"
+price_monthly: 20.00
+promotional_price: null
+promotional_duration: null
+description: "Multi-model subscription with value-capped usage and pay-as-you-go overflow"
+external_url: "https://kiro.ai"
+models:
+  - claude-models
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: "Value-capped usage"
+features:
+  - "Multi-model subscription"
+  - "Pay-as-you-go overflow"
+  - "Agentic IDE and CLI"
+categories:
+  - paid
+  - closed-source
+student_discount: false
+startup_credits: false
+tools_compatible:
+  - kiro
+history:
+  - date: "2026 Q1"
+    event: "Price $20/mo"
+updated_at: "2026-04-07"

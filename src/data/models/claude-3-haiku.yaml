@@ -1,0 +1,16 @@
+name: "Claude 3 Haiku"
+slug: "claude-3-haiku"
+provider: "Anthropic"
+description: "Fastest and most compact Claude model, ideal for quick code completions and lightweight coding tasks."
+context_window: 200000
+strengths:
+  - "Extremely fast response times"
+  - "Low cost per token"
+  - "Good for simple coding tasks"
+weaknesses:
+  - "Less capable for complex reasoning"
+  - "Lower accuracy on multi-step tasks"
+vibe_coding_score: 6.5
+plans_available:
+  - claude-pro
+updated_at: "2026-04-07"

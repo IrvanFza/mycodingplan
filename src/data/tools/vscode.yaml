@@ -1,0 +1,15 @@
+name: "VS Code"
+slug: "vscode"
+description: "Visual Studio Code is the most popular code editor in the world. While not an AI tool itself, it serves as the platform for many AI coding assistants and extensions."
+external_url: "https://code.visualstudio.com"
+features:
+  - "Most popular code editor"
+  - "Extension ecosystem"
+  - "Multi-language support"
+  - "AI extension support"
+  - "Cross-platform"
+plans_compatible:
+  - github-copilot-pro
+  - google-ai-pro
+  - zai-glm-coding-plan-pro
+updated_at: "2026-04-07"

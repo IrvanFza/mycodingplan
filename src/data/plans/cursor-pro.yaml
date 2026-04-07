@@ -1,0 +1,34 @@
+name: "Cursor Pro"
+slug: "cursor-pro"
+provider: "Cursor"
+badge: "PAID"
+price_monthly: 20.00
+promotional_price: null
+promotional_duration: null
+description: "AI-first code editor with agent mode, cloud agents, and usage-based frontier model access"
+external_url: "https://cursor.com"
+models:
+  - openai-models
+  - claude-models
+  - gemini-models
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: "Usage-based access"
+features:
+  - "Agent mode"
+  - "Cloud agents"
+  - "Deep codebase understanding"
+  - "Multi-model support"
+categories:
+  - paid
+  - closed-source
+student_discount: false
+startup_credits: false
+tools_compatible:
+  - cursor
+history:
+  - date: "2026 Q1"
+    event: "Price $20/mo with agent mode"
+updated_at: "2026-04-07"

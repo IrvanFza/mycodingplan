@@ -1,0 +1,34 @@
+name: "Xiaomi MiMo Token Plan"
+slug: "xiaomi-mimo-token-plan"
+provider: "Xiaomi"
+badge: "PROMO"
+price_monthly: 6.00
+promotional_price: 5.28
+promotional_duration: "promotional rate"
+description: "Xiaomi MiMo token-based subscription giving monthly credit allowances for coding tools like OpenClaw, Claude Code, OpenCode, and KiloCode"
+external_url: "https://mimo.ai"
+models:
+  - mimo-v2-pro
+  - mimo-v2-omni
+  - mimo-v2-tts
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: "Token-based monthly credit"
+features:
+  - "Monthly credit allowances"
+  - "Supports multiple coding tools"
+  - "Token-based pricing"
+categories:
+  - paid
+  - closed-source
+student_discount: false
+startup_credits: false
+tools_compatible:
+  - opencode
+  - claude-code
+history:
+  - date: "2026 Q1"
+    event: "Promotional rate $5.28/month"
+updated_at: "2026-04-07"

@@ -1,0 +1,33 @@
+name: "Windsurf Free"
+slug: "windsurf-free"
+provider: "Codeium"
+badge: "FREE"
+price_monthly: 0.00
+promotional_price: null
+promotional_duration: null
+description: "25 prompt credits/month Across leading models (OpenAI, Claude, Gemini, xAI, and more)"
+external_url: "https://codeium.com/windsurf"
+models:
+  - codeium-base
+  - openai-models
+  - claude-models
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: "25 prompt credits/month"
+features:
+  - "Cascade flow for AI coding"
+  - "Multi-model support"
+  - "Free tier with credits"
+categories:
+  - free
+  - closed-source
+student_discount: false
+startup_credits: false
+tools_compatible:
+  - windsurf
+history:
+  - date: "2026 Q1"
+    event: "Free tier with 25 prompt credits/month"
+updated_at: "2026-04-07"

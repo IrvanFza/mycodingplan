@@ -1,0 +1,10 @@
+id: "stack-002"
+author: "prodev-sarah"
+title: "Pro Developer Stack"
+tools:
+  - cursor
+  - claude-code
+monthly_cost: 40
+description: "Premium coding setup: Cursor Pro ($20/mo) + Claude Pro ($20/mo) with Claude Code CLI. Maximum AI coding power for professional developers."
+upvotes: 63
+submitted_at: "2026-03-18"

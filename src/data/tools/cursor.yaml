@@ -1,0 +1,15 @@
+name: "Cursor"
+slug: "cursor"
+description: "Cursor is an AI-first code editor built on the VS Code foundation. It features deep codebase understanding through its proprietary indexing and multi-file editing capabilities."
+external_url: "https://cursor.com"
+features:
+  - "AI-first code editor"
+  - "VS Code foundation"
+  - "Deep codebase understanding"
+  - "Multi-file editing"
+  - "Agent mode"
+  - "Cloud agents"
+plans_compatible:
+  - cursor-pro
+  - windsurf-free
+updated_at: "2026-04-07"

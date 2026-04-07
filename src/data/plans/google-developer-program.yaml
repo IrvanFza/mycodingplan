@@ -1,0 +1,32 @@
+name: "Google Developer Program Free"
+slug: "google-developer-program"
+provider: "Google"
+badge: "FREE"
+price_monthly: 0.00
+promotional_price: null
+promotional_duration: null
+description: "Basic access to AI developer tools"
+external_url: "https://ai.google.dev"
+models:
+  - gemini-3.1-flash
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: "Free tier limits"
+features:
+  - "Basic Gemini API access"
+  - "Gemini Code Assist integrations"
+  - "Free developer tier"
+categories:
+  - free
+  - closed-source
+student_discount: false
+startup_credits: false
+tools_compatible:
+  - gemini-cli
+  - vscode
+history:
+  - date: "2026 Q1"
+    event: "Free developer tier Gemini 3.1 Flash access"
+updated_at: "2026-04-07"

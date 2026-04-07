@@ -1,0 +1,33 @@
+name: "OpenCode Go"
+slug: "opencode-go"
+provider: "OpenCode"
+badge: "PROMO"
+price_monthly: 10.00
+promotional_price: 5.00
+promotional_duration: "first month"
+description: "Optional usage subscription that converts monthly spend into boosted model credits"
+external_url: "https://opencode.ai"
+models:
+  - big-pickle
+  - minimax-m2
+  - kimi-k2.5
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: "Value-capped usage"
+features:
+  - "500+ routed models via gateway"
+  - "Pay-as-you-go overflow"
+  - "Open-source tool"
+categories:
+  - paid
+  - open-weight
+student_discount: false
+startup_credits: false
+tools_compatible:
+  - opencode
+history:
+  - date: "2026 Q1"
+    event: "Promotional pricing $5 first month"
+updated_at: "2026-04-07"

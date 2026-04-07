@@ -1,0 +1,32 @@
+name: "ChatGPT Plus/Pro Free"
+slug: "chatgpt-plus-free"
+provider: "OpenAI"
+badge: "FREE"
+price_monthly: 0.00
+promotional_price: null
+promotional_duration: null
+description: "Free ChatGPT subscription tier that includes Codex agent access for coding tasks"
+external_url: "https://chat.openai.com"
+models:
+  - gpt-4o
+  - gpt-4-turbo
+  - gpt-3.5-turbo
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: "Limited free tier"
+features:
+  - "GPT models available in ChatGPT Free tier"
+  - "Codex agent access for coding tasks"
+categories:
+  - free
+  - closed-source
+student_discount: false
+startup_credits: false
+tools_compatible:
+  - codex
+history:
+  - date: "2026 Q1"
+    event: "Free tier includes basic Codex agent access"
+updated_at: "2026-04-07"

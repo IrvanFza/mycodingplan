@@ -1,0 +1,12 @@
+name: "Codex"
+slug: "codex"
+description: "Codex is OpenAI's coding agent experience available through CLI/IDE/app interfaces. It can inspect repositories, edit files, and run commands."
+external_url: "https://openai.com/codex"
+features:
+  - "Coding agent experience"
+  - "CLI/IDE/app interfaces"
+  - "Repository inspection"
+  - "File editing"
+plans_compatible:
+  - chatgpt-plus-free
+updated_at: "2026-04-07"

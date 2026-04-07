@@ -1,0 +1,16 @@
+name: "GPT-4 Turbo"
+slug: "gpt-4-turbo"
+provider: "OpenAI"
+description: "High-capability OpenAI model with 128K context window, optimized for speed and cost efficiency."
+context_window: 128000
+strengths:
+  - "Large 128K context window"
+  - "Good balance of speed and quality"
+  - "Strong code understanding"
+weaknesses:
+  - "Superseded by GPT-4o in most tasks"
+  - "Higher latency than GPT-4o-mini"
+vibe_coding_score: 7.8
+plans_available:
+  - chatgpt-plus-free
+updated_at: "2026-04-07"

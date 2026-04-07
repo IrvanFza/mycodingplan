@@ -1,0 +1,33 @@
+name: "Z.ai GLM Coding Plan Pro"
+slug: "zai-glm-coding-plan-pro"
+provider: "Z.ai"
+badge: "PAID"
+price_monthly: 10.00
+promotional_price: null
+promotional_duration: null
+description: "Rolling-window coding quota plan for supported tools, with 5-hour and weekly caps"
+external_url: "https://zhipuai.ai"
+models:
+  - glm-4.7
+  - glm-5
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: "5-hour and weekly caps"
+features:
+  - "Rolling-window quotas"
+  - "5-hour and weekly caps"
+  - "GLM model access"
+  - "Supported tools integration"
+categories:
+  - paid
+  - closed-source
+student_discount: false
+startup_credits: false
+tools_compatible:
+  - vscode
+history:
+  - date: "2026 Q1"
+    event: "Price $10/mo Pro tier"
+updated_at: "2026-04-07"

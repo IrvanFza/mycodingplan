@@ -1,0 +1,12 @@
+name: "Kimi CLI"
+slug: "kimi-cli"
+description: "Kimi Code CLI is an AI agent that runs in the terminal, helping you complete software development tasks and terminal operations."
+external_url: "https://kimi.moonshot.cn"
+features:
+  - "Terminal-based AI agent"
+  - "Software development tasks"
+  - "Terminal operations"
+  - "Kimi model integration"
+plans_compatible:
+  - kimi
+updated_at: "2026-04-07"

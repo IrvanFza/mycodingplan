@@ -1,0 +1,18 @@
+name: "Kimi K2.5"
+slug: "kimi-k2-5"
+provider: "Moonshot AI"
+description: "Moonshot AI's coding-focused model with strong context understanding and multi-step task execution."
+context_window: 200000
+strengths:
+  - "Long context support"
+  - "Good at multi-step tasks"
+  - "Competitive coding performance"
+weaknesses:
+  - "Smaller ecosystem compared to GPT/Claude"
+  - "Limited IDE integrations"
+vibe_coding_score: 7.0
+plans_available:
+  - kimi
+  - opencode-go
+  - alibaba
+updated_at: "2026-04-07"

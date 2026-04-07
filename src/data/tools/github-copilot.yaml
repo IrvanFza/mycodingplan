@@ -1,0 +1,13 @@
+name: "GitHub Copilot"
+slug: "github-copilot"
+description: "GitHub Copilot is an AI pair programmer that integrates directly into popular IDEs including VS Code, JetBrains, Neovim, and more."
+external_url: "https://github.com/features/copilot"
+features:
+  - "IDE-native integration"
+  - "Multiple IDE support"
+  - "AI pair programming"
+  - "Code completions"
+  - "Chat assistance"
+plans_compatible:
+  - github-copilot-pro
+updated_at: "2026-04-07"

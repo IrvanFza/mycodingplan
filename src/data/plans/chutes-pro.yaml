@@ -1,0 +1,29 @@
+name: "Chutes Pro"
+slug: "chutes-pro"
+provider: "Chutes"
+badge: "PAID"
+price_monthly: 3.00
+promotional_price: null
+promotional_duration: null
+description: "Multi-model subscription with value-capped usage and pay-as-you-go overflow"
+external_url: "https://chutes.ai"
+models: []
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: "Value-capped usage"
+features:
+  - "Multi-model access"
+  - "Pay-as-you-go overflow"
+  - "Model availability varies by tier"
+categories:
+  - paid
+  - open-weight
+student_discount: false
+startup_credits: false
+tools_compatible: []
+history:
+  - date: "2026 Q1"
+    event: "Launched $3/mo Pro tier"
+updated_at: "2026-04-07"

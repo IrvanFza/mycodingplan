@@ -1,0 +1,31 @@
+name: "Kimi"
+slug: "kimi"
+provider: "Moonshot AI"
+badge: "PAID"
+price_monthly: 19.00
+promotional_price: null
+promotional_duration: null
+description: "Chat and code assistant subscription with Kimi models"
+external_url: "https://kimi.moonshot.cn"
+models:
+  - kimi-models
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: "Subscription limits"
+features:
+  - "Kimi model access"
+  - "Chat and code assistant"
+  - "Chinese language optimization"
+categories:
+  - paid
+  - closed-source
+student_discount: false
+startup_credits: false
+tools_compatible:
+  - kimi-cli
+history:
+  - date: "2026 Q1"
+    event: "Price $19/mo"
+updated_at: "2026-04-07"

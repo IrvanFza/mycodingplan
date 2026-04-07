@@ -1,0 +1,12 @@
+name: "Edlide"
+slug: "edlide"
+description: "Edlide is a VS Code-based IDE plus CLI stack focused on open-model coding assistants and fixed daily request quotas."
+external_url: "https://edlide.com"
+features:
+  - "VS Code-based IDE"
+  - "CLI integration"
+  - "Open-model focus"
+  - "Fixed daily request quotas"
+plans_compatible:
+  - edlide-pro
+updated_at: "2026-04-07"

@@ -1,0 +1,34 @@
+name: "Windsurf Pro"
+slug: "windsurf-pro"
+provider: "Codeium"
+badge: "PAID"
+price_monthly: 15.00
+promotional_price: null
+promotional_duration: null
+description: "AI-powered IDE with Cascade flow for autonomous multi-step coding tasks"
+external_url: "https://codeium.com/windsurf"
+models:
+  - openai-models
+  - claude-models
+  - gemini-models
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: "Usage-based access"
+features:
+  - "Cascade flow for autonomous coding"
+  - "Multi-step coding tasks"
+  - "Multi-model support"
+  - "IDE integration"
+categories:
+  - paid
+  - closed-source
+student_discount: false
+startup_credits: false
+tools_compatible:
+  - windsurf
+history:
+  - date: "2026 Q1"
+    event: "Price $15/mo Pro tier"
+updated_at: "2026-04-07"

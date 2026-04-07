@@ -1,0 +1,14 @@
+name: "JetBrains IDEs"
+slug: "jetbrains"
+description: "JetBrains offers a family of powerful IDEs including IntelliJ IDEA, PyCharm, WebStorm, and more. These IDEs are known for their robust features and intelligent code assistance."
+external_url: "https://jetbrains.com"
+features:
+  - "Family of powerful IDEs"
+  - "IntelliJ IDEA"
+  - "PyCharm"
+  - "WebStorm"
+  - "Intelligent code assistance"
+plans_compatible:
+  - jetbrains-ai-pro
+  - github-copilot-pro
+updated_at: "2026-04-07"

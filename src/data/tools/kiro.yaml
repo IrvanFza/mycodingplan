@@ -1,0 +1,12 @@
+name: "Kiro"
+slug: "kiro"
+description: "AI-powered, 'agentic' Integrated Development Environment (IDE) and command-line interface (CLI) developed by Amazon."
+external_url: "https://kiro.ai"
+features:
+  - "Agentic IDE"
+  - "CLI integration"
+  - "Multi-model subscription"
+  - "Pay-as-you-go overflow"
+plans_compatible:
+  - kiro-pro
+updated_at: "2026-04-07"

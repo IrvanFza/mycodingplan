@@ -1,0 +1,12 @@
+name: "Claude Code"
+slug: "claude-code"
+description: "Claude Code is Anthropic's CLI-based coding assistant. It runs in your terminal and can understand your entire codebase."
+external_url: "https://claude.ai/code"
+features:
+  - "CLI-based coding assistant"
+  - "Terminal integration"
+  - "Codebase understanding"
+  - "Anthropic Claude models"
+plans_compatible:
+  - claude-pro
+updated_at: "2026-04-07"

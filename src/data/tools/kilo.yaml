@@ -1,0 +1,13 @@
+name: "Kilo"
+slug: "kilo"
+description: "Kilo is a model gateway and tooling ecosystem that offers broad provider access through a unified interface with optional usage management."
+external_url: "https://kilo.ai"
+features:
+  - "Model gateway"
+  - "500+ routed models"
+  - "Unified interface"
+  - "Pay-as-you-go overflow"
+plans_compatible:
+  - kilo-pass-pro
+  - opencode-go
+updated_at: "2026-04-07"

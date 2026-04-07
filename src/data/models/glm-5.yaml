@@ -1,0 +1,18 @@
+name: "GLM-5"
+slug: "glm-5"
+provider: "Zhipu AI"
+description: "Zhipu AI's latest generation language model with strong coding and reasoning capabilities."
+context_window: 128000
+strengths:
+  - "Strong coding capabilities"
+  - "Good multilingual support"
+  - "Competitive pricing"
+weaknesses:
+  - "Less community adoption outside China"
+  - "Limited English-language benchmarks"
+vibe_coding_score: 7.2
+plans_available:
+  - alibaba
+  - zai-glm-coding-plan-pro
+  - edlide-pro
+updated_at: "2026-04-07"
