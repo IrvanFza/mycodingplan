@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="Coming Soon" description="MyCodingPlan - Compare AI coding plans and find your perfect setup">
+  <Navbar />
+  <main class="min-h-screen flex items-center justify-center">
+    <div class="text-center px-4">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">Coming Soon</h1>
+      <p class="text-lg md:text-xl text-base-content/70 mb-8">
+        MyCodingPlan is under construction. We're building the ultimate resource for comparing AI coding plans.
+      </p>
+      <div class="flex gap-4 justify-center">
+        <a href="https://github.com/IrvanFza/mycodingplan" class="btn btn-primary">
+          View on GitHub
+        </a>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

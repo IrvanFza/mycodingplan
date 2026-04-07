@@ -1,0 +1,50 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { href: '/plans', label: 'Plans' },
+  { href: '/models', label: 'Models' },
+  { href: '/tools', label: 'Tools' },
+  { href: '/compare', label: 'Compare' },
+  { href: '/community', label: 'Community' },
+];
+---
+
+<nav class="navbar bg-base-100 border-b border-base-300">
+  <div class="navbar-start">
+    <a href="/" class="btn btn-ghost text-xl font-bold">
+      MyCodingPlan
+    </a>
+  </div>
+  
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+      {navLinks.map((link) => (
+        <li>
+          <a href={link.href} class:list={[{ 'active': currentPath.startsWith(link.href) }]}>
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+  
+  <div class="navbar-end">
+    <div class="dropdown dropdown-end lg:hidden">
+      <label tabindex="0" class="btn btn-ghost">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </label>
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+        {navLinks.map((link) => (
+          <li>
+            <a href={link.href} class:list={[{ 'active': currentPath.startsWith(link.href) }]}>
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</nav>
