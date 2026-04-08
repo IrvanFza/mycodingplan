@@ -2,14 +2,14 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="footer footer-center p-10 bg-base-200 text-base-content">
-  <nav class="grid grid-flow-col gap-4">
+<footer class="p-8 bg-base-200 text-base-content flex flex-col md:flex-row items-center justify-between gap-6">
+  <nav class="flex flex-wrap justify-center md:justify-start gap-4">
     <a href="/privacy-policy" class="link link-hover">Privacy Policy</a>
     <a href="/disclaimer" class="link link-hover">Disclaimer</a>
     <a href="https://github.com/IrvanFza/mycodingplan" class="link link-hover">GitHub</a>
   </nav>
 
-  <aside>
+  <aside class="text-center md:text-right">
     <p class="text-sm">
       © {currentYear} <a href="/" class="link link-primary">MyCodingPlan</a>
       · Built with ❤️ using <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="link link-primary">Astro</a>
