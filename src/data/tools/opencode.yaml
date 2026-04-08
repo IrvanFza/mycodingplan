@@ -2,6 +2,7 @@ name: "OpenCode"
 slug: "opencode"
 description: "The open source AI coding agent for developers."
 external_url: "https://opencode.ai"
+tool_type: cli
 features:
   - "Open source"
   - "AI coding agent"

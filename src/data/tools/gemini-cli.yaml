@@ -2,6 +2,7 @@ name: "Gemini CLI"
 slug: "gemini-cli"
 description: "Gemini Code Assist is Google's coding assistant for IDE workflows. It integrates model-powered completions and chat-based coding assistance."
 external_url: "https://ai.google.dev/gemini-code-assist"
+tool_type: cli
 features:
   - "Google Gemini models"
   - "IDE integration"

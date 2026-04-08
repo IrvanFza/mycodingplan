@@ -12,6 +12,7 @@ weaknesses:
   - "Occasional rate limiting on API"
   - "Less polished instruction following"
 vibe_coding_score: 8.3
+model_type: open_weight
 plans_available:
   - synthetic-pack
 updated_at: "2026-04-07"

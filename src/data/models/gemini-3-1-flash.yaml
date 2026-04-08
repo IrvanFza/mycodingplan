@@ -12,6 +12,7 @@ weaknesses:
   - "Less capable than Pro for complex tasks"
   - "Occasional accuracy trade-offs"
 vibe_coding_score: 7.5
+model_type: closed_source
 plans_available:
   - google-developer-program
   - google-ai-pro

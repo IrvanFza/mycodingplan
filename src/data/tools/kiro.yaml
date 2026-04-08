@@ -2,6 +2,7 @@ name: "Kiro"
 slug: "kiro"
 description: "AI-powered, 'agentic' Integrated Development Environment (IDE) and command-line interface (CLI) developed by Amazon."
 external_url: "https://kiro.ai"
+tool_type: ide
 features:
   - "Agentic IDE"
   - "CLI integration"

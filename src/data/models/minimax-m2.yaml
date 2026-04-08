@@ -11,6 +11,7 @@ weaknesses:
   - "Limited Western ecosystem adoption"
   - "Fewer benchmarks available"
 vibe_coding_score: 6.8
+model_type: open_weight
 plans_available:
   - opencode-go
   - minimax-token-plan

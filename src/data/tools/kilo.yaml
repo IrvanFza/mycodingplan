@@ -2,6 +2,7 @@ name: "Kilo"
 slug: "kilo"
 description: "Kilo is a model gateway and tooling ecosystem that offers broad provider access through a unified interface with optional usage management."
 external_url: "https://kilo.ai"
+tool_type: cli
 features:
   - "Model gateway"
   - "500+ routed models"

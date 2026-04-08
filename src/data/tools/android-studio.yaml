@@ -2,6 +2,7 @@ name: "Android Studio"
 slug: "android-studio"
 description: "Android Studio is Google's IDE for Android development and a key environment for Gemini Code Assist usage in mobile development."
 external_url: "https://developer.android.com/studio"
+tool_type: ide
 features:
   - "Android development IDE"
   - "Gemini Code Assist integration"

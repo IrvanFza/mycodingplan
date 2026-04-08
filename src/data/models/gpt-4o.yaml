@@ -12,6 +12,7 @@ weaknesses:
   - "Occasionally verbose in output"
   - "Can hallucinate API details"
 vibe_coding_score: 8.5
+model_type: closed_source
 plans_available:
   - chatgpt-plus-free
   - cursor-pro

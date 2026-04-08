@@ -2,6 +2,7 @@ name: "Google Antigravity"
 slug: "google-antigravity"
 description: "Google Antigravity is an AI-powered integrated development environment (IDE) developed by Google. Announced on November 2025."
 external_url: "https://antigravity.google.com"
+tool_type: ide
 features:
   - "AI-powered IDE"
   - "Google ecosystem integration"

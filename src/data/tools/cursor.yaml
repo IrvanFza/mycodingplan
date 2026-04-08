@@ -2,6 +2,7 @@ name: "Cursor"
 slug: "cursor"
 description: "Cursor is an AI-first code editor built on the VS Code foundation. It features deep codebase understanding through its proprietary indexing and multi-file editing capabilities."
 external_url: "https://cursor.com"
+tool_type: ide
 features:
   - "AI-first code editor"
   - "VS Code foundation"

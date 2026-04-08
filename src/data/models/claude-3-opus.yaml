@@ -11,6 +11,7 @@ weaknesses:
   - "Slower response times"
   - "Higher cost per token via API"
 vibe_coding_score: 8.8
+model_type: closed_source
 plans_available:
   - claude-pro
 updated_at: "2026-04-07"

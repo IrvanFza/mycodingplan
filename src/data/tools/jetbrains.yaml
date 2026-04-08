@@ -2,6 +2,7 @@ name: "JetBrains IDEs"
 slug: "jetbrains"
 description: "JetBrains offers a family of powerful IDEs including IntelliJ IDEA, PyCharm, WebStorm, and more. These IDEs are known for their robust features and intelligent code assistance."
 external_url: "https://jetbrains.com"
+tool_type: ide
 features:
   - "Family of powerful IDEs"
   - "IntelliJ IDEA"

@@ -11,6 +11,7 @@ weaknesses:
   - "Smaller ecosystem compared to GPT/Claude"
   - "Limited IDE integrations"
 vibe_coding_score: 7.0
+model_type: open_weight
 plans_available:
   - kimi
   - opencode-go

@@ -2,6 +2,7 @@ name: "GitHub Copilot"
 slug: "github-copilot"
 description: "GitHub Copilot is an AI pair programmer that integrates directly into popular IDEs including VS Code, JetBrains, Neovim, and more."
 external_url: "https://github.com/features/copilot"
+tool_type: extension
 features:
   - "IDE-native integration"
   - "Multiple IDE support"

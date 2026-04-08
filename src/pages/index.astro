@@ -7,6 +7,13 @@ import RecommendationWizard from '../components/RecommendationWizard.tsx';
 import { getCollection } from 'astro:content';
 
 const allPlans = await getCollection('plans');
+const allModels = await getCollection('models');
+const allTools = await getCollection('tools');
+
+const openWeightModelIds = new Set(allModels.filter(m => m.data.model_type === 'open_weight').map(m => m.data.slug));
+const closedSourceModelIds = new Set(allModels.filter(m => m.data.model_type === 'closed_source').map(m => m.data.slug));
+const cliToolIds = new Set(allTools.filter(t => t.data.tool_type === 'cli').map(t => t.data.slug));
+const ideToolIds = new Set(allTools.filter(t => ['ide', 'extension'].includes(t.data.tool_type)).map(t => t.data.slug));
 
 // Sort: FREE first, then PROMO, then by price
 const sortedPlans = [...allPlans].sort((a, b) => {
@@ -61,6 +68,10 @@ const planDataForWizard = allPlans.map(plan => ({
   student_discount: plan.data.student_discount,
   startup_credits: plan.data.startup_credits,
   tools_compatible: plan.data.tools_compatible,
+  has_open_weight: plan.data.models.some(m => openWeightModelIds.has(m) || openWeightModelIds.has(m.toLowerCase().replace(/ /g, '-'))),
+  has_closed_source: plan.data.models.some(m => closedSourceModelIds.has(m) || closedSourceModelIds.has(m.toLowerCase().replace(/ /g, '-'))),
+  has_cli: plan.data.tools_compatible.some(t => cliToolIds.has(t) || cliToolIds.has(t.toLowerCase().replace(/ /g, '-'))),
+  has_ide: plan.data.tools_compatible.some(t => ideToolIds.has(t) || ideToolIds.has(t.toLowerCase().replace(/ /g, '-'))),
   community_score: plan.data.community_score ?? undefined,
   latency: plan.data.latency ? {
     average_ms: plan.data.latency.average_ms,

@@ -2,6 +2,7 @@ name: "Claude Code"
 slug: "claude-code"
 description: "Claude Code is Anthropic's CLI-based coding assistant. It runs in your terminal and can understand your entire codebase."
 external_url: "https://claude.ai/code"
+tool_type: cli
 features:
   - "CLI-based coding assistant"
   - "Terminal integration"

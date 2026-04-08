@@ -11,6 +11,7 @@ weaknesses:
   - "Less community adoption outside China"
   - "Limited English-language benchmarks"
 vibe_coding_score: 7.2
+model_type: open_weight
 plans_available:
   - alibaba
   - zai-glm-coding-plan-pro

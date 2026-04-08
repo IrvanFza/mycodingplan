@@ -2,6 +2,7 @@ name: "Codex"
 slug: "codex"
 description: "Codex is OpenAI's coding agent experience available through CLI/IDE/app interfaces. It can inspect repositories, edit files, and run commands."
 external_url: "https://openai.com/codex"
+tool_type: cli
 features:
   - "Coding agent experience"
   - "CLI/IDE/app interfaces"

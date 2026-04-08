@@ -12,6 +12,7 @@ weaknesses:
   - "Higher latency than smaller models"
   - "Rate limits can frustrate power users"
 vibe_coding_score: 9.2
+model_type: closed_source
 plans_available:
   - claude-pro
 updated_at: "2026-04-07"

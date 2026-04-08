@@ -2,6 +2,7 @@ name: "VS Code"
 slug: "vscode"
 description: "Visual Studio Code is the most popular code editor in the world. While not an AI tool itself, it serves as the platform for many AI coding assistants and extensions."
 external_url: "https://code.visualstudio.com"
+tool_type: ide
 features:
   - "Most popular code editor"
   - "Extension ecosystem"
