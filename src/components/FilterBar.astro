@@ -1,0 +1,450 @@
+---
+export interface Props {
+  plans: any[];
+}
+
+const { plans } = Astro.props;
+
+const allProviders = [...new Set(plans.map(p => p.provider))].sort();
+const allCategories = [...new Set(plans.flatMap(p => p.categories))].sort();
+const allTools = [...new Set(plans.flatMap(p => p.tools_compatible))].sort();
+
+const PRICE_RANGES = [
+  { value: 'all', label: 'All Prices' },
+  { value: 'free', label: 'Free' },
+  { value: '0-10', label: '$0–10' },
+  { value: '10-20', label: '$10–20' },
+  { value: '20-50', label: '$20–50' },
+  { value: '50+', label: '$50+' },
+];
+
+const BADGE_OPTIONS = [
+  { value: 'all', label: 'All' },
+  { value: 'FREE', label: 'Free' },
+  { value: 'PROMO', label: 'Promo' },
+  { value: 'PAID', label: 'Paid' },
+];
+---
+
+<div class="space-y-3" id="filter-bar-container">
+  <!-- Toggle + Result Count -->
+  <div class="flex items-center justify-between">
+    <button
+      id="filter-toggle-btn"
+      class="btn btn-sm btn-outline gap-2"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+      </svg>
+      Filters
+      <span id="active-filter-badge" class="badge badge-primary badge-xs hidden">0</span>
+    </button>
+    <div class="text-sm text-base-content/60">
+      Showing <span id="visible-count-text" class="font-semibold text-base-content">{plans.length}</span> of {plans.length} plans
+    </div>
+  </div>
+
+  <!-- Active Filter Chips Container -->
+  <div id="active-filters-chips" class="flex flex-wrap gap-2 hidden">
+    <!-- Populated by JS -->
+  </div>
+
+  <!-- Expanded Filter Panel -->
+  <div id="filter-expanded-panel" class="transition-all duration-300 overflow-hidden max-h-0 opacity-0">
+    <div class="bg-base-100 rounded-2xl border border-base-300 shadow-sm p-5 space-y-5">
+      <!-- Price Range -->
+      <div>
+        <label class="text-sm font-semibold mb-2 block">Price Range</label>
+        <div class="flex flex-wrap gap-2" id="filter-group-price">
+          {PRICE_RANGES.map(pr => (
+            <button
+              data-filter-key="priceRange"
+              data-filter-val={pr.value}
+              class="btn btn-xs btn-ghost filter-opt"
+            >
+              {pr.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Badge Type -->
+      <div>
+        <label class="text-sm font-semibold mb-2 block">Badge Type</label>
+        <div class="flex flex-wrap gap-2" id="filter-group-badge">
+          {BADGE_OPTIONS.map(b => (
+            <button
+              data-filter-key="badge"
+              data-filter-val={b.value}
+              class="btn btn-xs btn-ghost filter-opt"
+            >
+              {b.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Provider -->
+      <div>
+        <label class="text-sm font-semibold mb-2 block">Provider</label>
+        <div class="flex flex-wrap gap-2" id="filter-group-provider">
+          {allProviders.map(p => (
+            <button
+              data-filter-key="providers"
+              data-filter-val={p}
+              class="btn btn-xs btn-ghost filter-opt-multi"
+            >
+              {p}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Categories -->
+      <div>
+        <label class="text-sm font-semibold mb-2 block">Categories</label>
+        <div class="flex flex-wrap gap-2" id="filter-group-category">
+          {allCategories.map(c => (
+            <button
+              data-filter-key="categories"
+              data-filter-val={c}
+              class="btn btn-xs btn-ghost filter-opt-multi"
+            >
+              {c}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Tool Compatibility -->
+      <div>
+        <label class="text-sm font-semibold mb-2 block">Tool Compatibility</label>
+        <div class="flex flex-wrap gap-2" id="filter-group-tool">
+          {allTools.map(t => (
+            <button
+              data-filter-key="toolsCompatible"
+              data-filter-val={t}
+              class="btn btn-xs btn-ghost filter-opt-multi"
+            >
+              {t}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Toggles -->
+      <div class="flex flex-wrap gap-4">
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input
+            type="checkbox"
+            id="filter-bool-student"
+            class="checkbox checkbox-sm checkbox-primary"
+          />
+          <span class="text-sm">Student Discount</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input
+            type="checkbox"
+            id="filter-bool-startup"
+            class="checkbox checkbox-sm checkbox-primary"
+          />
+          <span class="text-sm">Startup Credits</span>
+        </label>
+      </div>
+      
+      <div>
+        <button id="btn-clear-all" class="btn btn-ghost btn-sm text-error">Clear All</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let isExpanded = false;
+  const toggleBtn = document.getElementById('filter-toggle-btn');
+  const expandPanel = document.getElementById('filter-expanded-panel');
+
+  if (toggleBtn && expandPanel) {
+    toggleBtn.addEventListener('click', () => {
+      isExpanded = !isExpanded;
+      if (isExpanded) {
+        expandPanel.classList.remove('max-h-0', 'opacity-0');
+        expandPanel.classList.add('max-h-[800px]', 'opacity-100');
+      } else {
+        expandPanel.classList.remove('max-h-[800px]', 'opacity-100');
+        expandPanel.classList.add('max-h-0', 'opacity-0');
+      }
+    });
+  }
+
+  const defaultFilters = {
+    priceRange: 'all',
+    badge: 'all',
+    providers: [],
+    categories: [],
+    studentDiscount: null,
+    startupCredits: null,
+    toolsCompatible: [],
+  };
+
+  let filters = JSON.parse(JSON.stringify(defaultFilters));
+
+  function parseUrl() {
+    const url = new URL(window.location.href);
+    const p = url.searchParams.get('price');
+    if (p) filters.priceRange = p;
+    const b = url.searchParams.get('badge');
+    if (b) filters.badge = b;
+    const provs = url.searchParams.get('providers');
+    if (provs) filters.providers = provs.split(',');
+    const cats = url.searchParams.get('categories');
+    if (cats) filters.categories = cats.split(',');
+    const tools = url.searchParams.get('tools');
+    if (tools) filters.toolsCompatible = tools.split(',');
+    const stud = url.searchParams.get('student');
+    if (stud === 'true') filters.studentDiscount = true;
+    const start = url.searchParams.get('startup');
+    if (start === 'true') filters.startupCredits = true;
+    
+    syncDOM();
+    applyFilters();
+  }
+
+  function updateUrl() {
+    const url = new URL(window.location.href);
+    if (filters.priceRange !== 'all') url.searchParams.set('price', filters.priceRange); else url.searchParams.delete('price');
+    if (filters.badge !== 'all') url.searchParams.set('badge', filters.badge); else url.searchParams.delete('badge');
+    if (filters.providers.length > 0) url.searchParams.set('providers', filters.providers.join(',')); else url.searchParams.delete('providers');
+    if (filters.categories.length > 0) url.searchParams.set('categories', filters.categories.join(',')); else url.searchParams.delete('categories');
+    if (filters.toolsCompatible.length > 0) url.searchParams.set('tools', filters.toolsCompatible.join(',')); else url.searchParams.delete('tools');
+    if (filters.studentDiscount) url.searchParams.set('student', 'true'); else url.searchParams.delete('student');
+    if (filters.startupCredits) url.searchParams.set('startup', 'true'); else url.searchParams.delete('startup');
+
+    window.history.replaceState({}, '', url.toString());
+  }
+
+  function priceInRange(price, range) {
+    switch (range) {
+      case 'all': return true;
+      case 'free': return price === 0;
+      case '0-10': return price >= 0 && price <= 10;
+      case '10-20': return price > 10 && price <= 20;
+      case '20-50': return price > 20 && price <= 50;
+      case '50+': return price > 50;
+      default: return true;
+    }
+  }
+
+  function applyFilters() {
+    const items = document.querySelectorAll('.plan-item');
+    let visibleCount = 0;
+
+    items.forEach(item => {
+      let isMatch = true;
+      const price = parseFloat(item.dataset.price || '0');
+      const badge = item.dataset.badge;
+      const provider = item.dataset.provider;
+      const categories = item.dataset.categories ? item.dataset.categories.split(',') : [];
+      const tools = item.dataset.tools ? item.dataset.tools.split(',') : [];
+      const student = item.dataset.student === 'true';
+      const startup = item.dataset.startup === 'true';
+
+      if (!priceInRange(price, filters.priceRange)) isMatch = false;
+      if (filters.badge !== 'all' && badge !== filters.badge) isMatch = false;
+      if (filters.providers.length > 0 && !filters.providers.includes(provider)) isMatch = false;
+      if (filters.categories.length > 0 && !filters.categories.some(c => categories.includes(c))) isMatch = false;
+      if (filters.studentDiscount && !student) isMatch = false;
+      if (filters.startupCredits && !startup) isMatch = false;
+      if (filters.toolsCompatible.length > 0 && !filters.toolsCompatible.some(t => tools.includes(t))) isMatch = false;
+
+      if (isMatch) {
+         item.style.display = '';
+         visibleCount++;
+      } else {
+         item.style.display = 'none';
+      }
+    });
+
+    const activeCount = getActiveFilterCount();
+    
+    // Update labels
+    const countText = document.getElementById('visible-count-text');
+    if (countText) countText.textContent = visibleCount;
+    
+    const badgeEl = document.getElementById('active-filter-badge');
+    if (badgeEl) {
+      if (activeCount > 0) {
+        badgeEl.textContent = activeCount;
+        badgeEl.classList.remove('hidden');
+      } else {
+        badgeEl.classList.add('hidden');
+      }
+    }
+    
+    const grid = document.getElementById('plan-grid');
+    const noResults = document.getElementById('no-results');
+    if (noResults && grid) {
+        if (visibleCount === 0) {
+            grid.classList.add('hidden');
+            noResults.classList.remove('hidden');
+        } else {
+            grid.classList.remove('hidden');
+            noResults.classList.add('hidden');
+        }
+    }
+
+    renderChips();
+    updateUrl();
+  }
+
+  function getActiveFilterCount() {
+    let count = 0;
+    if (filters.priceRange !== 'all') count++;
+    if (filters.badge !== 'all') count++;
+    if (filters.providers.length > 0) count++;
+    if (filters.categories.length > 0) count++;
+    if (filters.studentDiscount) count++;
+    if (filters.startupCredits) count++;
+    if (filters.toolsCompatible.length > 0) count++;
+    return count;
+  }
+
+  function syncDOM() {
+    // Single opts
+    document.querySelectorAll('.filter-opt').forEach(btn => {
+      const key = btn.dataset.filterKey;
+      const val = btn.dataset.filterVal;
+      if (filters[key] === val) {
+        btn.classList.add('btn-primary');
+        btn.classList.remove('btn-ghost');
+      } else {
+        btn.classList.remove('btn-primary');
+        btn.classList.add('btn-ghost');
+      }
+    });
+
+    // Multi opts
+    document.querySelectorAll('.filter-opt-multi').forEach(btn => {
+      const key = btn.dataset.filterKey;
+      const val = btn.dataset.filterVal;
+      if (filters[key] && filters[key].includes(val)) {
+        btn.classList.add('btn-primary');
+        btn.classList.remove('btn-ghost');
+      } else {
+        btn.classList.remove('btn-primary');
+        btn.classList.add('btn-ghost');
+      }
+    });
+
+    // Checkboxes
+    const stuCheckbox = document.getElementById('filter-bool-student');
+    if (stuCheckbox) stuCheckbox.checked = !!filters.studentDiscount;
+    const startCheckbox = document.getElementById('filter-bool-startup');
+    if (startCheckbox) startCheckbox.checked = !!filters.startupCredits;
+  }
+
+  function handleFilterClick(e) {
+    const btn = e.target.closest('.filter-opt');
+    if (btn) {
+      const key = btn.dataset.filterKey;
+      const val = btn.dataset.filterVal;
+      filters[key] = val;
+      syncDOM();
+      applyFilters();
+      return;
+    }
+
+    const multiBtn = e.target.closest('.filter-opt-multi');
+    if (multiBtn) {
+      const key = multiBtn.dataset.filterKey;
+      const val = multiBtn.dataset.filterVal;
+      if (!filters[key]) filters[key] = [];
+      if (filters[key].includes(val)) {
+        filters[key] = filters[key].filter(v => v !== val);
+      } else {
+        filters[key].push(val);
+      }
+      syncDOM();
+      applyFilters();
+    }
+  }
+
+  const panel = document.getElementById('filter-expanded-panel');
+  if (panel) panel.addEventListener('click', handleFilterClick);
+
+  document.getElementById('filter-bool-student')?.addEventListener('change', e => {
+    filters.studentDiscount = e.target.checked ? true : null;
+    applyFilters();
+  });
+  
+  document.getElementById('filter-bool-startup')?.addEventListener('change', e => {
+    filters.startupCredits = e.target.checked ? true : null;
+    applyFilters();
+  });
+
+  document.getElementById('btn-clear-all')?.addEventListener('click', () => {
+    filters = JSON.parse(JSON.stringify(defaultFilters));
+    syncDOM();
+    applyFilters();
+  });
+
+  function renderChips() {
+    const chipsContainer = document.getElementById('active-filters-chips');
+    if (!chipsContainer) return;
+
+    if (getActiveFilterCount() === 0) {
+      chipsContainer.classList.add('hidden');
+      chipsContainer.innerHTML = '';
+      return;
+    }
+    
+    chipsContainer.classList.remove('hidden');
+    let html = '';
+    
+    const chipTemplate = (label, onRemoveStr) => `
+      <span class="badge gap-1 badge-sm">
+        ${label}
+        <button onclick="${onRemoveStr}" class="cursor-pointer">✕</button>
+      </span>
+    `;
+
+    if (filters.priceRange !== 'all') {
+      html += chipTemplate(`Price: ${filters.priceRange}`, "window.removeFilter('priceRange')");
+    }
+    if (filters.badge !== 'all') {
+      html += chipTemplate(`Badge: ${filters.badge}`, "window.removeFilter('badge')");
+    }
+    filters.providers.forEach(p => {
+      html += chipTemplate(p, `window.removeFilter('providers', '${p}')`);
+    });
+    filters.categories.forEach(c => {
+      html += chipTemplate(c, `window.removeFilter('categories', '${c}')`);
+    });
+    filters.toolsCompatible.forEach(t => {
+      html += chipTemplate(t, `window.removeFilter('toolsCompatible', '${t}')`);
+    });
+    if (filters.studentDiscount) {
+      html += chipTemplate('Student Discount', "window.removeFilter('studentDiscount')");
+    }
+    if (filters.startupCredits) {
+      html += chipTemplate('Startup Credits', "window.removeFilter('startupCredits')");
+    }
+
+    html += `<button onclick="document.getElementById('btn-clear-all').click()" class="btn btn-ghost btn-xs text-error">Clear all</button>`;
+    chipsContainer.innerHTML = html;
+  }
+
+  window.removeFilter = function(key, val) {
+    if (key === 'providers' || key === 'categories' || key === 'toolsCompatible') {
+      filters[key] = filters[key].filter(v => v !== val);
+    } else if (key === 'studentDiscount' || key === 'startupCredits') {
+      filters[key] = null;
+    } else {
+      filters[key] = 'all';
+    }
+    syncDOM();
+    applyFilters();
+  };
+
+  parseUrl();
+</script>
