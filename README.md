@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/favicon.svg" alt="MyCodingPlan logo" width="64" height="64" />
+  <img src="public/favicon.png" alt="MyCodingPlan logo" width="64" height="64" />
 </p>
 
 <h1 align="center">MyCodingPlan</h1>
