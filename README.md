@@ -5,7 +5,7 @@
 <h1 align="center">MyCodingPlan</h1>
 
 <p align="center">
-  <strong>Compare AI coding plans and find your perfect setup — for free.</strong>
+  <strong>A free, open-source directory to compare AI coding plans, models, and tools side-by-side. Find your perfect setup whether you're stacking free tiers or evaluating paid subscriptions.</strong>
 </p>
 
 <p align="center">
@@ -17,11 +17,13 @@
 
 ---
 
-## 🎯 What is MyCodingPlan?
+## 💡 Why This Project Exists
 
-MyCodingPlan is a **free, open-source directory** that helps developers compare AI coding plans, models, and tools side-by-side. Whether you're a budget-conscious student stacking free tiers or a professional evaluating paid subscriptions, MyCodingPlan gives you the data to make an informed choice.
+This project was built from a personal need to manage a "vibe coding" workflow on a tight budget. API-based or Pay-As-You-Go (PAYG) options burn through funds too fast, making subscription-based plans the only viable choice. But with varying limits (tokens vs. requests) and different reset windows (e.g., 5-hour vs. 5-day), manually comparing personal usage against provider plans is tedious.
 
-### Key Features
+Furthermore, while new providers launch "cheaper" and more generous plans almost every month, many come with hidden issues—laggy responses, secretly quantized models, or problematic billing systems that overcharge. This directory is meant to transparently track and compare these plans so you can find your perfect setup.
+
+## ✨ Key Features
 
 - **📋 Plan Directory** — 25+ AI coding plans with detailed pricing, limits, and model info
 - **🤖 Model Profiles** — Vibe coding scores, context windows, and strengths/weaknesses for 12+ models
