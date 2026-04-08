@@ -21,7 +21,7 @@ const navLinks = [
     <ul class="menu menu-horizontal px-1">
       {navLinks.map((link) => (
         <li>
-          <a href={link.href} class:list={[{ 'active': currentPath.startsWith(link.href) }]}>
+          <a href={link.href} class:list={[currentPath === link.href || currentPath === `${link.href}/` || currentPath.startsWith(link.href + '/') ? 'menu-active' : null]}>
             {link.label}
           </a>
         </li>
@@ -53,7 +53,7 @@ const navLinks = [
       <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
         {navLinks.map((link) => (
           <li>
-            <a href={link.href} class:list={[{ 'active': currentPath.startsWith(link.href) }]}>
+            <a href={link.href} class:list={[currentPath === link.href || currentPath === `${link.href}/` || currentPath.startsWith(link.href + '/') ? 'menu-active' : null]}>
               {link.label}
             </a>
           </li>
