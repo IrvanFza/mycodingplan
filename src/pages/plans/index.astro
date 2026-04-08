@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import PlanCard from '../../components/PlanCard.astro';
-import FilterBar from '../../components/FilterBar.tsx';
+import FilterBar from '../../components/FilterBar.astro';
 import { getCollection } from 'astro:content';
 
 const allPlans = await getCollection('plans');
@@ -32,6 +32,7 @@ const planDataForFilter = allPlans.map(plan => ({
   student_discount: plan.data.student_discount,
   startup_credits: plan.data.startup_credits,
   tools_compatible: plan.data.tools_compatible,
+  community_score: plan.data.community_score ?? undefined,
   community_score: plan.data.community_score ?? undefined,
   latency: plan.data.latency ? {
     average_ms: plan.data.latency.average_ms,
@@ -68,9 +69,9 @@ const planDataForFilter = allPlans.map(plan => ({
     <!-- Filter Bar + Plan Grid -->
     <section class="py-8 bg-base-100">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- FilterBar React Island -->
+        <!-- FilterBar Astro Island -->
         <div class="mb-6">
-          <FilterBar client:load plans={planDataForFilter} />
+          <FilterBar plans={planDataForFilter} />
         </div>
 
         <!-- Sort -->
@@ -93,6 +94,11 @@ const planDataForFilter = allPlans.map(plan => ({
               data-name={plan.data.name}
               data-score={plan.data.community_score ?? 0}
               data-badge={plan.data.badge}
+              data-provider={plan.data.provider}
+              data-categories={plan.data.categories.join(',')}
+              data-tools={plan.data.tools_compatible.join(',')}
+              data-student={plan.data.student_discount ? 'true' : 'false'}
+              data-startup={plan.data.startup_credits ? 'true' : 'false'}
             >
               <PlanCard
                 name={plan.data.name}
@@ -140,23 +146,5 @@ const planDataForFilter = allPlans.map(plan => ({
     items.forEach(item => grid.appendChild(item));
   });
 
-  // Listen for FilterBar custom events to show/hide plan cards
-  window.addEventListener('filterbar:change', ((event: CustomEvent) => {
-    const { slugs } = event.detail;
-    const items = document.querySelectorAll('.plan-item') as NodeListOf<HTMLElement>;
-    let visibleCount = 0;
-
-    items.forEach(item => {
-      const slug = item.dataset.slug || '';
-      if (slugs.includes(slug)) {
-        item.style.display = '';
-        visibleCount++;
-      } else {
-        item.style.display = 'none';
-      }
-    });
-
-    noResults.classList.toggle('hidden', visibleCount > 0);
-    grid.classList.toggle('hidden', visibleCount === 0);
-  }) as EventListener);
+  // FilterBar logic will handle visibility directly.
 </script>
