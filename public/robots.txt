@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mycodingplan.com/sitemap.xml
+Sitemap: https://mycodingplan.com/sitemap-index.xml
