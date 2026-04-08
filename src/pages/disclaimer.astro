@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Disclaimer"
+  description="Disclaimer for MyCodingPlan — Informational purposes only, no affiliations, no ads."
+>
+  <Navbar />
+
+  <main class="min-h-screen">
+    <!-- Header -->
+    <section class="bg-gradient-to-br from-primary/5 via-base-100 to-secondary/5 py-12">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Breadcrumbs -->
+        <nav aria-label="Breadcrumb" class="mb-6">
+          <ol class="flex items-center gap-2 text-sm">
+            <li><a href="/" class="text-base-content/50 hover:text-primary transition-colors">Home</a></li>
+            <li class="text-base-content/30">/</li>
+            <li class="font-medium">Disclaimer</li>
+          </ol>
+        </nav>
+        <h1 class="text-3xl sm:text-4xl font-extrabold mb-2">Disclaimer</h1>
+        <p class="text-base-content/60 max-w-2xl">
+          Last updated: April 8, 2026
+        </p>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-12">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="prose prose-lg max-w-none">
+
+          <!-- Introduction -->
+          <div class="card bg-base-200/50 p-6 mb-8 not-prose">
+            <div class="flex items-start gap-4">
+              <div class="text-3xl">⚠️</div>
+              <div>
+                <h2 class="text-xl font-bold mb-1">Informational Purposes Only</h2>
+                <p class="text-base-content/70">
+                  The information provided on MyCodingPlan is for general informational and educational purposes only. It is <strong>not</strong> intended to be professional advice.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 1 -->
+          <h2 class="text-2xl font-bold mt-10 mb-4">1. No Affiliations or Endorsements</h2>
+          <p class="text-base-content/80 mb-6">
+            MyCodingPlan is an independent, community-driven project. We do <strong>not</strong> have any affiliation, partnership, sponsorship, or endorsement with any of the tools, AI models, IDEs, or subscription plan providers mentioned on this website (including but not limited to GitHub, OpenAI, Anthropic, Cursor, etc.). All product and company names are trademarks™ or registered® trademarks of their respective holders. Use of them does not imply any affiliation with or endorsement by them.
+          </p>
+
+          <!-- Section 2 -->
+          <h2 class="text-2xl font-bold mt-10 mb-4">2. Zero Monetization (No Ads or Affiliates)</h2>
+          <p class="text-base-content/80 mb-4">
+            We are committed to providing unbiased, transparent information. Therefore, MyCodingPlan strictly adheres to a zero-monetization policy:
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-base-content/80 mb-6">
+            <li><strong>No Affiliate Links</strong> — We do not earn commissions from any links on this website.</li>
+            <li><strong>No Referral Codes</strong> — We do not participate in any referral programs.</li>
+            <li><strong>No Advertisements</strong> — We do not display ads or sponsored content.</li>
+          </ul>
+
+          <!-- Section 3 -->
+          <h2 class="text-2xl font-bold mt-10 mb-4">3. Accuracy of Information</h2>
+          <p class="text-base-content/80 mb-6">
+            While we strive to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability with respect to the website or the information, pricing, products, services, or related graphics contained on the website. Pricing and features for AI models and subscriptions are subject to change rapidly. Always verify details on the official provider's website.
+          </p>
+
+          <!-- Section 4 -->
+          <h2 class="text-2xl font-bold mt-10 mb-4">4. Open Source Verification</h2>
+          <p class="text-base-content/80 mb-6">
+            Transparency is a core value of this project. Everything on this website—including all data, pricing information, logic, and codes—is fully open-source and can be inspected, validated, and verified on our <a href="https://github.com/IrvanFza/mycodingplan" target="_blank" rel="noopener noreferrer" class="link link-primary">GitHub repository</a>. If you spot an inaccuracy, we encourage you to contribute a correction via a Pull Request.
+          </p>
+
+          <!-- Section 5 -->
+          <h2 class="text-2xl font-bold mt-10 mb-4">5. Privacy</h2>
+          <p class="text-base-content/80 mb-6">
+            We respect your privacy. We do not collect personal information, require user accounts, or store any user data. For full details on how we handle privacy and user data, please read our comprehensive <a href="/privacy" class="link link-primary">Privacy Policy</a>.
+          </p>
+
+          <!-- Section 6 -->
+          <h2 class="text-2xl font-bold mt-10 mb-4">6. Changes to This Disclaimer</h2>
+          <p class="text-base-content/80 mb-6">
+            We may update this Disclaimer from time to time. Any changes will be reflected on this page with an updated "Last updated" date. You can track changes to this document via our <a href="https://github.com/IrvanFza/mycodingplan/commits/main/src/pages/disclaimer.astro" target="_blank" rel="noopener noreferrer" class="link link-primary">commit history</a>.
+          </p>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
