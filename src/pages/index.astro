@@ -20,7 +20,7 @@ const sortedPlans = [...allPlans].sort((a, b) => {
   const badgeOrder = { FREE: 0, PROMO: 1, PAID: 2 };
   const orderDiff = badgeOrder[a.data.badge] - badgeOrder[b.data.badge];
   if (orderDiff !== 0) return orderDiff;
-  return a.data.price_monthly - b.data.price_monthly;
+  return (a.data.price_monthly || 0) - (b.data.price_monthly || 0);
 });
 
 const freePlans = allPlans.filter(p => p.data.badge === 'FREE');
@@ -53,25 +53,25 @@ const planDataForWizard = allPlans.map(plan => ({
   slug: plan.data.slug,
   provider: plan.data.provider,
   badge: plan.data.badge,
-  price_monthly: plan.data.price_monthly,
+  price_monthly: plan.data.price_monthly || plan.data.quotas?.find(q => q.measure === 'currency')?.amount || 0,
   promotional_price: plan.data.promotional_price ?? null,
   description: plan.data.description,
-  models: plan.data.models,
+  models: plan.data.models?.map(m => m.id) || [],
   limits: {
-    requests_per_minute: plan.data.limits.requests_per_minute ?? null,
-    tokens_per_minute: plan.data.limits.tokens_per_minute ?? null,
-    context_window: plan.data.limits.context_window ?? null,
-    daily_message_limit: plan.data.limits.daily_message_limit ?? null,
+    requests_per_minute: plan.data.quotas?.find(q => q.measure === 'requests')?.amount ?? plan.data.limits?.requests_per_minute ?? null,
+    tokens_per_minute: plan.data.quotas?.find(q => q.measure === 'input_tokens')?.amount ?? plan.data.limits?.tokens_per_minute ?? null,
+    context_window: plan.data.limits?.context_window ?? null,
+    daily_message_limit: plan.data.quotas?.find(q => q.window === 'daily' && q.measure === 'requests')?.amount ?? plan.data.limits?.daily_message_limit ?? null,
   },
   features: plan.data.features,
   categories: plan.data.categories,
   student_discount: plan.data.student_discount,
   startup_credits: plan.data.startup_credits,
-  tools_compatible: plan.data.tools_compatible,
-  has_open_weight: plan.data.models.some(m => openWeightModelIds.has(m) || openWeightModelIds.has(m.toLowerCase().replace(/ /g, '-'))),
-  has_closed_source: plan.data.models.some(m => closedSourceModelIds.has(m) || closedSourceModelIds.has(m.toLowerCase().replace(/ /g, '-'))),
-  has_cli: plan.data.tools_compatible.some(t => cliToolIds.has(t) || cliToolIds.has(t.toLowerCase().replace(/ /g, '-'))),
-  has_ide: plan.data.tools_compatible.some(t => ideToolIds.has(t) || ideToolIds.has(t.toLowerCase().replace(/ /g, '-'))),
+  compatible_tools: plan.data.compatible_tools?.map(t => t.id) || [],
+  has_open_weight: (plan.data.models || []).some(m => openWeightModelIds.has(m.id) || openWeightModelIds.has(m.id.toLowerCase().replace(/ /g, '-'))),
+  has_closed_source: (plan.data.models || []).some(m => closedSourceModelIds.has(m.id) || closedSourceModelIds.has(m.id.toLowerCase().replace(/ /g, '-'))),
+  has_cli: (plan.data.compatible_tools || []).some(t => cliToolIds.has(t.id) || cliToolIds.has(t.id.toLowerCase().replace(/ /g, '-'))),
+  has_ide: (plan.data.compatible_tools || []).some(t => ideToolIds.has(t.id) || ideToolIds.has(t.id.toLowerCase().replace(/ /g, '-'))),
   community_score: plan.data.community_score ?? undefined,
   latency: plan.data.latency ? {
     average_ms: plan.data.latency.average_ms,
@@ -264,7 +264,7 @@ const structuredData = {
         <!-- Plan Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="plan-grid">
           {sortedPlans.map((plan) => (
-            <div class="plan-item" data-badge={plan.data.badge} data-name={plan.data.name.toLowerCase()} data-provider={plan.data.provider.toLowerCase()} data-features={plan.data.features.join(' ').toLowerCase()}>
+            <div class="plan-item" data-badge={plan.data.badge} data-name={plan.data.name.toLowerCase()} data-provider={plan.data.provider?.id?.toLowerCase() || ''} data-features={(plan.data.features || []).map(f => typeof f === 'string' ? f : f.id).join(' ').toLowerCase()}>
               <PlanCard
                 name={plan.data.name}
                 slug={plan.data.slug}
