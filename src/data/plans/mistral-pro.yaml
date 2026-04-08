@@ -1,31 +1,40 @@
-name: "Mistral Pro"
-slug: "mistral-pro"
-provider: "Mistral AI"
-badge: "PAID"
+name: Mistral Pro
+slug: mistral-pro
+provider: mistral-ai
+badge: PAID
 price_monthly: 14.99
 promotional_price: null
 promotional_duration: null
-description: "Le Chat subscription with higher limits and Mistral Vibe coding workflows"
-external_url: "https://mistral.ai"
+description: Le Chat subscription with higher limits and Mistral Vibe coding workflows
+external_url: https://mistral.ai
 models:
   - mistral-models
 limits:
   requests_per_minute: null
   tokens_per_minute: null
   context_window: null
-  daily_message_limit: "Higher usage limits"
+  daily_message_limit: Higher usage limits
 features:
-  - "Le Chat interface"
-  - "Mistral Vibe coding workflows"
-  - "Higher usage limits"
+  - le-chat-interface
+  - mistral-vibe-coding-workflows
+  - higher-usage-limits
 categories:
   - paid
   - closed-source
 student_discount: false
 startup_credits: false
-tools_compatible:
-  - mistral-vibe
 history:
-  - date: "2026 Q1"
-    event: "Price $14.99/mo"
-updated_at: "2026-04-07"
+  - date: 2026 Q1
+    event: Price $14.99/mo
+updated_at: '2026-04-07'
+quotas:
+  - measure: currency
+    amount: 14.99
+    window: monthly
+  - measure: requests
+    amount: null
+    window: unlimited
+compatible_tools:
+  - mistral-vibe
+overages:
+  allowed: false

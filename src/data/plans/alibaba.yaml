@@ -1,12 +1,12 @@
-name: "Alibaba Coding Plan"
-slug: "alibaba"
-provider: "Alibaba Cloud"
-badge: "PAID"
-price_monthly: 50.00
+name: Alibaba Coding Plan
+slug: alibaba
+provider: alibaba-cloud
+badge: PAID
+price_monthly: 50
 promotional_price: null
 promotional_duration: null
-description: "Alibaba Cloud Model Studio: Fixed monthly subscription for AI coding tools — top models, predictable pricing, no surprise bills."
-external_url: "https://alibabacloud.com/model-studio"
+description: 'Alibaba Cloud Model Studio: Fixed monthly subscription for AI coding tools — top models, predictable pricing, no surprise bills.'
+external_url: https://alibabacloud.com/model-studio
 models:
   - qwen-3.5-plus
   - kimi-k2.5
@@ -15,20 +15,29 @@ limits:
   requests_per_minute: null
   tokens_per_minute: null
   context_window: null
-  daily_message_limit: "Fixed monthly subscription"
+  daily_message_limit: Fixed monthly subscription
 features:
-  - "Predictable pricing"
-  - "Top model access"
-  - "No surprise bills"
-  - "Qwen and GLM models"
+  - predictable-pricing
+  - top-model-access
+  - no-surprise-bills
+  - qwen-and-glm-models
 categories:
   - paid
   - closed-source
 student_discount: false
 startup_credits: false
-tools_compatible:
-  - vscode
 history:
-  - date: "2026 Q1"
-    event: "Launched fixed $50/mo coding plan"
-updated_at: "2026-04-07"
+  - date: 2026 Q1
+    event: Launched fixed $50/mo coding plan
+updated_at: '2026-04-07'
+quotas:
+  - measure: currency
+    amount: 50
+    window: monthly
+  - measure: requests
+    amount: null
+    window: unlimited
+compatible_tools:
+  - vscode
+overages:
+  allowed: false

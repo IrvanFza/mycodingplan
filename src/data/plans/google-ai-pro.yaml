@@ -1,12 +1,12 @@
-name: "Google AI Pro/Ultra"
-slug: "google-ai-pro"
-provider: "Google"
-badge: "PAID"
+name: Google AI Pro/Ultra
+slug: google-ai-pro
+provider: google
+badge: PAID
 price_monthly: 19.99
 promotional_price: null
 promotional_duration: null
-description: "Gemini subscription tier with higher coding limits for Jules, Gemini CLI, and Gemini Code Assist"
-external_url: "https://ai.google.dev/pricing"
+description: Gemini subscription tier with higher coding limits for Jules, Gemini CLI, and Gemini Code Assist
+external_url: https://ai.google.dev/pricing
 models:
   - gemini-3.1-pro
   - gemini-3.1-flash
@@ -14,22 +14,31 @@ limits:
   requests_per_minute: null
   tokens_per_minute: null
   context_window: null
-  daily_message_limit: "Higher coding limits"
+  daily_message_limit: Higher coding limits
 features:
-  - "Jules integration"
-  - "Gemini CLI access"
-  - "Gemini Code Assist"
-  - "Premium requests"
+  - jules-integration
+  - gemini-cli-access
+  - gemini-code-assist
+  - premium-requests
 categories:
   - paid
   - closed-source
 student_discount: false
 startup_credits: false
-tools_compatible:
+history:
+  - date: 2026 Q1
+    event: Price $19.99/mo for Pro tier
+updated_at: '2026-04-07'
+quotas:
+  - measure: currency
+    amount: 19.99
+    window: monthly
+  - measure: requests
+    amount: null
+    window: unlimited
+compatible_tools:
   - gemini-cli
   - vscode
   - android-studio
-history:
-  - date: "2026 Q1"
-    event: "Price $19.99/mo for Pro tier"
-updated_at: "2026-04-07"
+overages:
+  allowed: false

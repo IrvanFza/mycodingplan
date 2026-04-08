@@ -1,19 +1,19 @@
-name: "Gemini 3.1 Flash"
-slug: "gemini-3-1-flash"
-provider: "Google"
-description: "Google's fast and efficient Gemini model optimized for speed with good coding capabilities at a lower cost."
+name: Gemini 3.1 Flash
+slug: gemini-3-1-flash
+provider: google
+description: Google's fast and efficient Gemini model optimized for speed with good coding capabilities at a lower cost.
 context_window: 1000000
 strengths:
-  - "Very fast response times"
-  - "1M token context window"
-  - "Cost efficient"
-  - "Good for quick code tasks"
+  - Very fast response times
+  - 1M token context window
+  - Cost efficient
+  - Good for quick code tasks
 weaknesses:
-  - "Less capable than Pro for complex tasks"
-  - "Occasional accuracy trade-offs"
+  - Less capable than Pro for complex tasks
+  - Occasional accuracy trade-offs
 vibe_coding_score: 7.5
 model_type: closed_source
 plans_available:
   - google-developer-program
   - google-ai-pro
-updated_at: "2026-04-07"
+updated_at: '2026-04-07'

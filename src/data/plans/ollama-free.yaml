@@ -1,12 +1,12 @@
-name: "Ollama Free"
-slug: "ollama-free"
-provider: "Ollama"
-badge: "FREE"
-price_monthly: 0.00
+name: Ollama Free
+slug: ollama-free
+provider: ollama
+badge: FREE
+price_monthly: 0
 promotional_price: null
 promotional_duration: null
-description: "Basic free tier for Ollama Cloud with access to open models and limited usage"
-external_url: "https://ollama.ai"
+description: Basic free tier for Ollama Cloud with access to open models and limited usage
+external_url: https://ollama.ai
 models:
   - llama-3
   - mistral-7b
@@ -15,19 +15,28 @@ limits:
   requests_per_minute: null
   tokens_per_minute: null
   context_window: null
-  daily_message_limit: "Limited cloud usage"
+  daily_message_limit: Limited cloud usage
 features:
-  - "Open models via Ollama Cloud"
-  - "Local model support"
-  - "Open-source ecosystem"
+  - open-models-via-ollama-cloud
+  - local-model-support
+  - open-source-ecosystem
 categories:
   - free
   - open-weight
 student_discount: false
 startup_credits: false
-tools_compatible:
-  - opencode
 history:
-  - date: "2026 Q1"
-    event: "Free tier launched with cloud access"
-updated_at: "2026-04-07"
+  - date: 2026 Q1
+    event: Free tier launched with cloud access
+updated_at: '2026-04-07'
+quotas:
+  - measure: currency
+    amount: 0
+    window: monthly
+  - measure: requests
+    amount: null
+    window: unlimited
+compatible_tools:
+  - opencode
+overages:
+  allowed: false

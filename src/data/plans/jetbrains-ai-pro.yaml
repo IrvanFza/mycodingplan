@@ -1,31 +1,40 @@
-name: "JetBrains AI Pro"
-slug: "jetbrains-ai-pro"
-provider: "JetBrains"
-badge: "PAID"
-price_monthly: 10.00
+name: JetBrains AI Pro
+slug: jetbrains-ai-pro
+provider: jetbrains
+badge: PAID
+price_monthly: 10
 promotional_price: null
 promotional_duration: null
-description: "JetBrains AI subscription tier using AI Credits for advanced coding assistance in JetBrains IDEs"
-external_url: "https://jetbrains.com/ai"
+description: JetBrains AI subscription tier using AI Credits for advanced coding assistance in JetBrains IDEs
+external_url: https://jetbrains.com/ai
 models: []
 limits:
   requests_per_minute: null
   tokens_per_minute: null
   context_window: null
-  daily_message_limit: "AI Credits based"
+  daily_message_limit: AI Credits based
 features:
-  - "JetBrains IDE integration"
-  - "AI Credits system"
-  - "Advanced coding assistance"
-  - "Multiple providers"
+  - jetbrains-ide-integration
+  - ai-credits-system
+  - advanced-coding-assistance
+  - multiple-providers
 categories:
   - paid
   - closed-source
 student_discount: true
 startup_credits: false
-tools_compatible:
-  - jetbrains
 history:
-  - date: "2026 Q1"
-    event: "Price $10/mo with AI Credits"
-updated_at: "2026-04-07"
+  - date: 2026 Q1
+    event: Price $10/mo with AI Credits
+updated_at: '2026-04-07'
+quotas:
+  - measure: currency
+    amount: 10
+    window: monthly
+  - measure: requests
+    amount: null
+    window: unlimited
+compatible_tools:
+  - jetbrains
+overages:
+  allowed: false

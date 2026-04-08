@@ -1,17 +1,17 @@
-name: "Claude 3 Opus"
-slug: "claude-3-opus"
-provider: "Anthropic"
-description: "Most capable Claude model for complex analysis, math, and coding tasks requiring deep reasoning."
+name: Claude 3 Opus
+slug: claude-3-opus
+provider: anthropic
+description: Most capable Claude model for complex analysis, math, and coding tasks requiring deep reasoning.
 context_window: 200000
 strengths:
-  - "Strongest reasoning capability in Claude family"
-  - "Excellent at complex multi-step coding"
-  - "Superior instruction following"
+  - Strongest reasoning capability in Claude family
+  - Excellent at complex multi-step coding
+  - Superior instruction following
 weaknesses:
-  - "Slower response times"
-  - "Higher cost per token via API"
+  - Slower response times
+  - Higher cost per token via API
 vibe_coding_score: 8.8
 model_type: closed_source
 plans_available:
   - claude-pro
-updated_at: "2026-04-07"
+updated_at: '2026-04-07'

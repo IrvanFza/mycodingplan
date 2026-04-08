@@ -1,31 +1,40 @@
-name: "Ollama Pro"
-slug: "ollama-pro"
-provider: "Ollama"
-badge: "PAID"
-price_monthly: 20.00
+name: Ollama Pro
+slug: ollama-pro
+provider: ollama
+badge: PAID
+price_monthly: 20
 promotional_price: null
 promotional_duration: null
-description: "Ollama Cloud plan with higher usage, concurrent cloud models, and private-model collaboration"
-external_url: "https://ollama.ai"
+description: Ollama Cloud plan with higher usage, concurrent cloud models, and private-model collaboration
+external_url: https://ollama.ai
 models: []
 limits:
   requests_per_minute: null
   tokens_per_minute: null
   context_window: null
-  daily_message_limit: "Higher cloud usage"
+  daily_message_limit: Higher cloud usage
 features:
-  - "Concurrent cloud models"
-  - "Private model collaboration"
-  - "Higher usage limits"
-  - "Open models via Ollama Cloud"
+  - concurrent-cloud-models
+  - private-model-collaboration
+  - higher-usage-limits
+  - open-models-via-ollama-cloud
 categories:
   - paid
   - open-weight
 student_discount: false
 startup_credits: false
-tools_compatible:
-  - opencode
 history:
-  - date: "2026 Q1"
-    event: "Price $20/mo Pro tier"
-updated_at: "2026-04-07"
+  - date: 2026 Q1
+    event: Price $20/mo Pro tier
+updated_at: '2026-04-07'
+quotas:
+  - measure: currency
+    amount: 20
+    window: monthly
+  - measure: requests
+    amount: null
+    window: unlimited
+compatible_tools:
+  - opencode
+overages:
+  allowed: false

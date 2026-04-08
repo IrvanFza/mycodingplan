@@ -1,33 +1,42 @@
-name: "Amazon Q Developer"
-slug: "amazon-q-developer"
-provider: "Amazon Web Services"
-badge: "PAID"
-price_monthly: 19.00
+name: Amazon Q Developer
+slug: amazon-q-developer
+provider: amazon-web-services
+badge: PAID
+price_monthly: 19
 promotional_price: null
 promotional_duration: null
-description: "AWS developer assistant tier for software lifecycle tasks with IDE and cloud workflow integration"
-external_url: "https://aws.amazon.com/q/developer"
+description: AWS developer assistant tier for software lifecycle tasks with IDE and cloud workflow integration
+external_url: https://aws.amazon.com/q/developer
 models:
   - amazon-q
 limits:
   requests_per_minute: null
   tokens_per_minute: null
   context_window: null
-  daily_message_limit: "AWS account integration"
+  daily_message_limit: AWS account integration
 features:
-  - "IDE integration"
-  - "Cloud workflow support"
-  - "Software lifecycle tasks"
-  - "AWS native integration"
+  - ide-integration
+  - cloud-workflow-support
+  - software-lifecycle-tasks
+  - aws-native-integration
 categories:
   - paid
   - closed-source
 student_discount: false
 startup_credits: false
-tools_compatible:
+history:
+  - date: 2026 Q1
+    event: Launched $19/mo developer tier
+updated_at: '2026-04-07'
+quotas:
+  - measure: currency
+    amount: 19
+    window: monthly
+  - measure: requests
+    amount: null
+    window: unlimited
+compatible_tools:
   - vscode
   - jetbrains
-history:
-  - date: "2026 Q1"
-    event: "Launched $19/mo developer tier"
-updated_at: "2026-04-07"
+overages:
+  allowed: false

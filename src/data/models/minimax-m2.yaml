@@ -1,18 +1,18 @@
-name: "MiniMax M2"
-slug: "minimax-m2"
-provider: "MiniMax"
-description: "MiniMax's coding-focused model with competitive performance and token-efficient architecture."
+name: MiniMax M2
+slug: minimax-m2
+provider: minimax
+description: MiniMax's coding-focused model with competitive performance and token-efficient architecture.
 context_window: 128000
 strengths:
-  - "Token-efficient architecture"
-  - "Good coding performance"
-  - "Cost-effective"
+  - Token-efficient architecture
+  - Good coding performance
+  - Cost-effective
 weaknesses:
-  - "Limited Western ecosystem adoption"
-  - "Fewer benchmarks available"
+  - Limited Western ecosystem adoption
+  - Fewer benchmarks available
 vibe_coding_score: 6.8
 model_type: open_weight
 plans_available:
   - opencode-go
   - minimax-token-plan
-updated_at: "2026-04-07"
+updated_at: '2026-04-07'

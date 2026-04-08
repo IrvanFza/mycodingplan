@@ -1,16 +1,16 @@
-name: "GPT-4o"
-slug: "gpt-4o"
-provider: "OpenAI"
-description: "OpenAI's flagship multimodal model with strong coding capabilities and fast response times."
+name: GPT-4o
+slug: gpt-4o
+provider: openai
+description: OpenAI's flagship multimodal model with strong coding capabilities and fast response times.
 context_window: 128000
 strengths:
-  - "Multimodal (text, image, audio)"
-  - "Fast response times"
-  - "Strong code generation"
-  - "Good at following complex instructions"
+  - Multimodal (text, image, audio)
+  - Fast response times
+  - Strong code generation
+  - Good at following complex instructions
 weaknesses:
-  - "Occasionally verbose in output"
-  - "Can hallucinate API details"
+  - Occasionally verbose in output
+  - Can hallucinate API details
 vibe_coding_score: 8.5
 model_type: closed_source
 plans_available:
@@ -19,4 +19,4 @@ plans_available:
   - github-copilot-pro
   - windsurf-pro
   - windsurf-free
-updated_at: "2026-04-07"
+updated_at: '2026-04-07'

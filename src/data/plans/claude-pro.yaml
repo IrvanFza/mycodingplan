@@ -1,12 +1,12 @@
-name: "Claude Pro/Max"
-slug: "claude-pro"
-provider: "Anthropic"
-badge: "PROMO"
-price_monthly: 20.00
-promotional_price: 10.00
-promotional_duration: "first 3 months"
-description: "Claude subscription with higher usage, projects/research features, and included Claude Code access"
-external_url: "https://claude.ai/pricing"
+name: Claude Pro/Max
+slug: claude-pro
+provider: anthropic
+badge: PROMO
+price_monthly: 20
+promotional_price: 10
+promotional_duration: first 3 months
+description: Claude subscription with higher usage, projects/research features, and included Claude Code access
+external_url: https://claude.ai/pricing
 models:
   - claude-3-opus
   - claude-3-5-sonnet
@@ -15,27 +15,36 @@ limits:
   requests_per_minute: null
   tokens_per_minute: null
   context_window: 200000
-  daily_message_limit: "~100 messages"
+  daily_message_limit: ~100 messages
 features:
-  - "Priority access during peak"
-  - "Early access to new features"
-  - "Claude Code CLI included"
-  - "Projects and research features"
+  - priority-access-during-peak
+  - early-access-to-new-features
+  - claude-code-cli-included
+  - projects-and-research-features
 categories:
   - paid
   - closed-source
   - privacy-first
 student_discount: false
 startup_credits: false
-tools_compatible:
+history:
+  - date: 2026 Q1
+    event: Price remained $20/mo, added Claude 3.5 Sonnet
+  - date: 2025 Q3
+    event: Launched Claude 3 Opus access
+  - date: 2025 Q1
+    event: Promotional pricing $10/mo for first 3 months
+updated_at: '2026-04-07'
+quotas:
+  - measure: currency
+    amount: 20
+    window: monthly
+  - measure: requests
+    amount: null
+    window: unlimited
+compatible_tools:
   - claude-code
   - cursor
   - vscode
-history:
-  - date: "2026 Q1"
-    event: "Price remained $20/mo, added Claude 3.5 Sonnet"
-  - date: "2025 Q3"
-    event: "Launched Claude 3 Opus access"
-  - date: "2025 Q1"
-    event: "Promotional pricing $10/mo for first 3 months"
-updated_at: "2026-04-07"
+overages:
+  allowed: false

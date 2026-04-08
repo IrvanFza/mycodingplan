@@ -1,18 +1,18 @@
-name: "Mistral Large"
-slug: "mistral-large"
-provider: "Mistral AI"
-description: "Mistral's flagship model with strong reasoning and coding capabilities, powering Le Chat and Vibe coding workflows."
+name: Mistral Large
+slug: mistral-large
+provider: mistral-ai
+description: Mistral's flagship model with strong reasoning and coding capabilities, powering Le Chat and Vibe coding workflows.
 context_window: 128000
 strengths:
-  - "Strong reasoning and coding"
-  - "Open-weight model family"
-  - "Good European data privacy compliance"
-  - "Le Chat and Vibe integration"
+  - Strong reasoning and coding
+  - Open-weight model family
+  - Good European data privacy compliance
+  - Le Chat and Vibe integration
 weaknesses:
-  - "Smaller model ecosystem"
-  - "Fewer third-party integrations"
+  - Smaller model ecosystem
+  - Fewer third-party integrations
 vibe_coding_score: 7.8
 model_type: open_weight
 plans_available:
   - mistral-pro
-updated_at: "2026-04-07"
+updated_at: '2026-04-07'
