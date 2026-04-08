@@ -240,6 +240,5 @@ We welcome contributions of all kinds! See [CONTRIBUTING.md](CONTRIBUTING.md) fo
 ---
 
 <p align="center">
-  Built with ❤️ using <a href="https://astro.build">Astro</a> · 
-  © 2026 MyCodingPlan
+  Built with ❤️ using <a href="https://astro.build">Astro</a> · © 2026 MyCodingPlan
 </p>
