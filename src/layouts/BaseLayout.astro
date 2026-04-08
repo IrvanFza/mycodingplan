@@ -13,7 +13,7 @@ const canonicalURL = new URL(Astro.url.pathname, site);
 ---
 
 <!doctype html>
-<html lang="en" data-theme="light" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,9 +39,29 @@ const canonicalURL = new URL(Astro.url.pathname, site);
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     
     <slot name="head" />
+    <script is:inline>
+      (function() {
+        const stored = localStorage.getItem('theme');
+        const theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+        if (theme === 'dark') document.documentElement.classList.add('dark');
+      })();
+    </script>
   </head>
   <body class="font-sans antialiased scroll-smooth">
     <slot />
+    <script is:inline>
+      const toggle = document.getElementById('theme-toggle');
+      if (toggle) {
+        toggle.checked = document.documentElement.getAttribute('data-theme') === 'dark';
+        toggle.addEventListener('change', (e) => {
+          const t = e.target.checked ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', t);
+          document.documentElement.classList.toggle('dark', t === 'dark');
+          localStorage.setItem('theme', t);
+        });
+      }
+    </script>
   </body>
 </html>
 
