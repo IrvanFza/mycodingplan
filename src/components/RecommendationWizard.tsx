@@ -25,6 +25,10 @@ interface PlanData {
     average_ms?: number;
     uptime_percent?: number;
   };
+  has_open_weight?: boolean;
+  has_closed_source?: boolean;
+  has_cli?: boolean;
+  has_ide?: boolean;
 }
 
 interface Props {
@@ -47,17 +51,6 @@ interface ScoredPlan {
   score: number;
   reasons: string[];
 }
-
-const OPEN_WEIGHT_PATTERNS = [
-  'deepseek', 'mistral', 'llama', 'qwen', 'ollama', 'glm', 'kimi', 'minimax',
-];
-
-const CLOSED_SOURCE_PATTERNS = [
-  'gpt', 'claude', 'gemini', 'copilot',
-];
-
-const CLI_PATTERNS = ['cli', 'claude-code', 'claudes-code', 'opencode', 'terminal', 'command-line', 'gemini-cli', 'aider', 'codex'];
-const IDE_PATTERNS = ['cursor', 'vscode', 'vs code', 'jetbrains', 'intellij', 'pycharm', 'webstorm', 'idea', 'edlide', 'kiro'];
 
 function isUnlimited(val: number | string | null | undefined): boolean {
   if (val == null) return false;
@@ -89,10 +82,16 @@ function scorePlan(plan: PlanData, state: FormState): ScoredPlan {
           score += Math.round(headroom * 25);
           if (headroom >= 1) reasons.push(`${(tpm / 1000).toFixed(0)}k tokens/min — fits your usage`);
           else reasons.push(`${(tpm / 1000).toFixed(0)}k tokens/min — may be tight`);
+        } else {
+          score += 25; // Unknown/dynamic limit, assume it fits to avoid penalizing
+          reasons.push('Dynamic token limits');
         }
         if (cw != null) {
           score += Math.min(15, Math.round((cw / 200_000) * 15));
           if (cw >= 128_000) reasons.push(`${(cw / 1000).toFixed(0)}k context window`);
+        } else {
+          score += 15;
+          reasons.push('Dynamic context window');
         }
       } else {
         const rpm = plan.limits.requests_per_minute;
@@ -103,6 +102,9 @@ function scorePlan(plan: PlanData, state: FormState): ScoredPlan {
           score += Math.round(headroom * 25);
           if (headroom >= 1) reasons.push(`${rpm} requests/min — fits your usage`);
           else reasons.push(`${rpm} requests/min — may be tight`);
+        } else {
+          score += 25; // Dynamic limits
+          reasons.push(`Dynamic request limits`);
         }
         if (isUnlimited(daily)) {
           score += 15;
@@ -112,6 +114,9 @@ function scorePlan(plan: PlanData, state: FormState): ScoredPlan {
           const headroom = Math.min(1, daily / Math.max(dayTotal, 1));
           score += Math.round(headroom * 15);
           if (headroom >= 1) reasons.push(`${daily} messages/day — enough for you`);
+        } else if (daily == null) {
+          score += 15;
+          reasons.push('Dynamic daily messages');
         }
       }
     }
@@ -120,12 +125,10 @@ function scorePlan(plan: PlanData, state: FormState): ScoredPlan {
   // Tool type (0-30 pts) — CLI vs IDE
   if (state.tool) {
     maxScore += 30;
-    const toolStr = plan.tools_compatible.join(' ').toLowerCase();
-    const patterns = state.tool === 'cli' ? CLI_PATTERNS : IDE_PATTERNS;
     const label = state.tool === 'cli' ? 'CLI' : 'IDE';
+    const hasMatch = state.tool === 'cli' ? plan.has_cli : plan.has_ide;
 
-    const matches = patterns.filter(p => toolStr.includes(p)).length;
-    if (matches > 0) {
+    if (hasMatch) {
       score += 30;
       reasons.push(`Compatible with ${label}`);
     } else {
@@ -136,12 +139,10 @@ function scorePlan(plan: PlanData, state: FormState): ScoredPlan {
   // Model preference (0-30 pts) — open weight vs closed source
   if (state.modelPref) {
     maxScore += 30;
-    const modelStr = plan.models.join(' ').toLowerCase();
-    const patterns = state.modelPref === 'open_weight' ? OPEN_WEIGHT_PATTERNS : CLOSED_SOURCE_PATTERNS;
     const label = state.modelPref === 'open_weight' ? 'open-weight' : 'closed-source';
+    const hasMatch = state.modelPref === 'open_weight' ? plan.has_open_weight : plan.has_closed_source;
 
-    const matched = patterns.filter(p => modelStr.includes(p));
-    if (matched.length > 0) {
+    if (hasMatch) {
       score += 30;
       reasons.push(`Has ${label} models`);
     } else {
@@ -207,7 +208,8 @@ export default function RecommendationWizard({ plans }: Props) {
 
         {/* Row 1: Usage Intensity */}
         <div className="space-y-3">
-          <h3 className="font-semibold text-sm">Usage Intensity (5 hrs/day)</h3>
+          <h3 className="font-semibold text-sm">Average Usage Intensity (5 hrs/day)</h3>
+          <p className="text-xs text-base-content/60">Input your *average* expected usage for a 5-hour window, not absolute burst limits.</p>
           <div className="grid grid-cols-2 gap-3">
             {([
               { value: 'token_avg' as UsageIntensity, label: 'Token Average', placeholder: 'e.g. 50000', icon: '🔢' },
