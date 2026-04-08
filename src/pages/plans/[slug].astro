@@ -38,7 +38,7 @@ const serializedPlans = allPlans.map(p => ({
   categories: p.data.categories,
   student_discount: p.data.student_discount,
   startup_credits: p.data.startup_credits,
-  tools_compatible: p.data.tools_compatible,
+  compatible_tools: p.data.compatible_tools,
   community_score: p.data.community_score ?? undefined,
   latency: p.data.latency ? {
     average_ms: p.data.latency.average_ms,
@@ -313,11 +313,11 @@ const getUptimeColor = (pct?: number) => {
           )}
 
           <!-- Tool Compatibility -->
-          {planData.tools_compatible.length > 0 && (
+          {planData.compatible_tools.length > 0 && (
             <div class="bg-base-100 rounded-2xl border border-base-300 shadow-sm p-6">
               <h2 class="text-lg font-bold mb-3">Compatible Tools</h2>
               <div class="flex flex-wrap gap-2">
-                {planData.tools_compatible.map((tool) => (
+                {planData.compatible_tools.map((tool) => (
                   <a href={`/tools/${tool}/`} class="badge badge-outline badge-sm hover:badge-primary transition-colors duration-200 cursor-pointer">{tool}</a>
                 ))}
               </div>

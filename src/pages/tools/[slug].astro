@@ -17,7 +17,7 @@ const t = tool.data;
 
 const allPlans = await getCollection('plans');
 // Find plans compatible with this tool
-const compatiblePlans = allPlans.filter(p => p.data.tools_compatible.includes(t.slug));
+const compatiblePlans = allPlans.filter(p => p.data.compatible_tools.includes(t.slug));
 ---
 
 <BaseLayout

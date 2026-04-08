@@ -19,7 +19,7 @@ interface PlanData {
   categories: string[];
   student_discount: boolean;
   startup_credits: boolean;
-  tools_compatible: string[];
+  compatible_tools: string[];
   community_score?: number;
   latency?: {
     average_ms?: number;
@@ -44,7 +44,7 @@ const COMPARISON_ROWS: { key: string; label: string; getValue: (p: PlanData) => 
   { key: 'tpm', label: 'Tokens/min', getValue: p => p.limits.tokens_per_minute ? `${(p.limits.tokens_per_minute / 1000).toFixed(0)}K` : '—' },
   { key: 'daily', label: 'Daily Message Limit', getValue: p => p.limits.daily_message_limit?.toString() || '—' },
   { key: 'features', label: 'Features', getValue: p => p.features.join(', ') || '—' },
-  { key: 'tools', label: 'Tool Compatibility', getValue: p => p.tools_compatible.join(', ') || '—' },
+  { key: 'tools', label: 'Tool Compatibility', getValue: p => p.compatible_tools.join(', ') || '—' },
   { key: 'student', label: 'Student Discount', getValue: p => p.student_discount ? '✅ Yes' : '❌ No' },
   { key: 'community', label: 'Community Score', getValue: p => p.community_score != null ? `${p.community_score}/100` : '—' },
   { key: 'latency', label: 'Avg Latency', getValue: p => p.latency?.average_ms ? `${p.latency.average_ms}ms` : '—' },

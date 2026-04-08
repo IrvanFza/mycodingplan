@@ -31,7 +31,7 @@ const planDataForFilter = allPlans.map(plan => ({
   categories: plan.data.categories,
   student_discount: plan.data.student_discount,
   startup_credits: plan.data.startup_credits,
-  tools_compatible: plan.data.tools_compatible,
+  compatible_tools: plan.data.compatible_tools,
   community_score: plan.data.community_score ?? undefined,
   community_score: plan.data.community_score ?? undefined,
   latency: plan.data.latency ? {
@@ -96,7 +96,7 @@ const planDataForFilter = allPlans.map(plan => ({
               data-badge={plan.data.badge}
               data-provider={plan.data.provider}
               data-categories={plan.data.categories.join(',')}
-              data-tools={plan.data.tools_compatible.join(',')}
+              data-tools={plan.data.compatible_tools.join(',')}
               data-student={plan.data.student_discount ? 'true' : 'false'}
               data-startup={plan.data.startup_credits ? 'true' : 'false'}
             >

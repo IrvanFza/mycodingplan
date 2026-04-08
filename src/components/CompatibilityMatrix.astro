@@ -23,7 +23,7 @@ const compatibilityData = allPlans
     provider: plan.data.provider,
     badge: plan.data.badge,
     compatibility: matrixTools.map(tool => {
-      const isNative = plan.data.tools_compatible.includes(tool.slug);
+      const isNative = plan.data.compatible_tools.includes(tool.slug);
       // Check if this tool lists this plan as compatible
       const toolData = allTools.find(t => t.data.slug === tool.slug);
       const isViaPlugin = toolData?.data.plans_compatible.includes(plan.data.slug) && !isNative;

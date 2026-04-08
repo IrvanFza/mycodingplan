@@ -7,7 +7,7 @@ const { plans } = Astro.props;
 
 const allProviders = [...new Set(plans.map(p => p.provider))].sort();
 const allCategories = [...new Set(plans.flatMap(p => p.categories))].sort();
-const allTools = [...new Set(plans.flatMap(p => p.tools_compatible))].sort();
+const allTools = [...new Set(plans.flatMap(p => p.compatible_tools))].sort();
 
 const PRICE_RANGES = [
   { value: 'all', label: 'All Prices' },

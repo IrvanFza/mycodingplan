@@ -19,7 +19,7 @@ interface PlanData {
   categories: string[];
   student_discount: boolean;
   startup_credits: boolean;
-  tools_compatible: string[];
+  compatible_tools: string[];
   community_score?: number;
   latency?: {
     average_ms?: number;
