@@ -51,7 +51,7 @@ const freeStacks = [
 const planDataForWizard = allPlans.map(plan => ({
   name: plan.data.name,
   slug: plan.data.slug,
-  provider: plan.data.provider,
+  provider: plan.data.provider?.id ?? null,
   badge: plan.data.badge,
   price_monthly: plan.data.price_monthly || plan.data.quotas?.find(q => q.measure === 'currency')?.amount || 0,
   promotional_price: plan.data.promotional_price ?? null,
@@ -182,7 +182,7 @@ const structuredData = {
                         <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                       </svg>
                       {plan.name}
-                      <span class="text-xs text-base-content/30">({plan.provider})</span>
+                      <span class="text-xs text-base-content/30">({plan.provider?.id})</span>
                     </a>
                   ))}
                 </div>
@@ -214,11 +214,11 @@ const structuredData = {
               <PlanCard
                 name={plan.data.name}
                 slug={plan.data.slug}
-                provider={plan.data.provider}
+                provider={plan.data.provider?.id}
                 badge={plan.data.badge}
                 price_monthly={plan.data.price_monthly}
                 promotional_price={plan.data.promotional_price}
-                models={plan.data.models}
+                models={(plan.data.models || []).map(m => m.id)}
                 community_score={plan.data.community_score}
                 description={plan.data.description}
               />
@@ -268,11 +268,11 @@ const structuredData = {
               <PlanCard
                 name={plan.data.name}
                 slug={plan.data.slug}
-                provider={plan.data.provider}
+                provider={plan.data.provider?.id}
                 badge={plan.data.badge}
                 price_monthly={plan.data.price_monthly}
                 promotional_price={plan.data.promotional_price}
-                models={plan.data.models}
+                models={(plan.data.models || []).map(m => m.id)}
                 community_score={plan.data.community_score}
                 description={plan.data.description}
               />

@@ -11,12 +11,12 @@ const allPlans = await getCollection('plans');
 const planData = allPlans.map(plan => ({
   name: plan.data.name,
   slug: plan.data.slug,
-  provider: plan.data.provider,
+  provider: plan.data.provider?.id ?? null,
   badge: plan.data.badge,
   price_monthly: plan.data.price_monthly,
   promotional_price: plan.data.promotional_price ?? null,
   description: plan.data.description,
-  models: plan.data.models,
+  models: plan.data.models?.map(m => m.id) || [],
   limits: {
     requests_per_minute: plan.data.limits.requests_per_minute ?? null,
     tokens_per_minute: plan.data.limits.tokens_per_minute ?? null,

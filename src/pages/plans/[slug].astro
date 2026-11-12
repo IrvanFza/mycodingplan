@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 }
 
 const { plan } = Astro.props;
-const planData = plan.data;
+const planData = { ...plan.data, provider: plan.data.provider?.id ?? null, models: (plan.data.models || []).map(m => m.id), compatible_tools: (plan.data.compatible_tools || []).map(t => t.id), features: (plan.data.features || []).map(f => typeof f === "string" ? f : f.id), categories: (plan.data.categories || []).map(c => typeof c === "string" ? c : c.id) };
 
 const showCalculator = planData.price_monthly > 0;
 
@@ -22,12 +22,12 @@ const allPlans = await getCollection('plans');
 const serializedPlans = allPlans.map(p => ({
   name: p.data.name,
   slug: p.data.slug,
-  provider: p.data.provider,
+  provider: p.data.provider?.id ?? null,
   badge: p.data.badge,
   price_monthly: p.data.price_monthly,
   promotional_price: p.data.promotional_price ?? null,
   description: p.data.description,
-  models: p.data.models,
+  models: p.data.models?.map(m => m.id) || [],
   limits: {
     requests_per_minute: p.data.limits.requests_per_minute ?? null,
     tokens_per_minute: p.data.limits.tokens_per_minute ?? null,
@@ -38,7 +38,7 @@ const serializedPlans = allPlans.map(p => ({
   categories: p.data.categories,
   student_discount: p.data.student_discount,
   startup_credits: p.data.startup_credits,
-  compatible_tools: p.data.compatible_tools,
+  compatible_tools: p.data.compatible_tools?.map(t => t.id) || [],
   community_score: p.data.community_score ?? undefined,
   latency: p.data.latency ? {
     average_ms: p.data.latency.average_ms,

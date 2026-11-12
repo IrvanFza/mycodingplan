@@ -92,7 +92,7 @@ const compatiblePlans = allPlans.filter(p => p.data.compatible_tools.includes(t.
                 <a href={`/plans/${plan.data.slug}/`} class="flex items-center justify-between p-3 rounded-xl border border-base-300 hover:border-primary/30 hover:bg-primary/5 transition-all duration-200 group">
                   <div>
                     <span class="font-semibold text-sm group-hover:text-primary transition-colors">{plan.data.name}</span>
-                    <p class="text-xs text-base-content/50">{plan.data.provider}</p>
+                    <p class="text-xs text-base-content/50">{plan.data.provider?.id}</p>
                   </div>
                   <span class={`text-sm font-bold ${plan.data.price_monthly === 0 ? 'text-success' : 'text-base-content'}`}>
                     {plan.data.price_monthly === 0 ? 'Free' : `$${plan.data.price_monthly}/mo`}

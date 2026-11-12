@@ -20,7 +20,7 @@ const compatibilityData = allPlans
   .map(plan => ({
     slug: plan.data.slug,
     name: plan.data.name,
-    provider: plan.data.provider,
+    provider: plan.data.provider?.id ?? null,
     badge: plan.data.badge,
     compatibility: matrixTools.map(tool => {
       const isNative = plan.data.compatible_tools.includes(tool.slug);

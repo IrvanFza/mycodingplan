@@ -15,12 +15,12 @@ const sortedPlans = [...allPlans].sort((a, b) => a.data.price_monthly - b.data.p
 const planDataForFilter = allPlans.map(plan => ({
   name: plan.data.name,
   slug: plan.data.slug,
-  provider: plan.data.provider,
+  provider: plan.data.provider?.id ?? null,
   badge: plan.data.badge,
   price_monthly: plan.data.price_monthly,
   promotional_price: plan.data.promotional_price ?? null,
   description: plan.data.description,
-  models: plan.data.models,
+  models: plan.data.models?.map(m => m.id) || [],
   limits: {
     requests_per_minute: plan.data.limits.requests_per_minute ?? null,
     tokens_per_minute: plan.data.limits.tokens_per_minute ?? null,
@@ -31,7 +31,7 @@ const planDataForFilter = allPlans.map(plan => ({
   categories: plan.data.categories,
   student_discount: plan.data.student_discount,
   startup_credits: plan.data.startup_credits,
-  compatible_tools: plan.data.compatible_tools,
+  compatible_tools: plan.data.compatible_tools?.map(t => t.id) || [],
   community_score: plan.data.community_score ?? undefined,
   community_score: plan.data.community_score ?? undefined,
   latency: plan.data.latency ? {
@@ -94,20 +94,20 @@ const planDataForFilter = allPlans.map(plan => ({
               data-name={plan.data.name}
               data-score={plan.data.community_score ?? 0}
               data-badge={plan.data.badge}
-              data-provider={plan.data.provider}
+              data-provider={plan.data.provider?.id ?? ""}
               data-categories={plan.data.categories.join(',')}
-              data-tools={plan.data.compatible_tools.join(',')}
+              data-tools={(plan.data.compatible_tools || []).map(t => t.id).join(',')}
               data-student={plan.data.student_discount ? 'true' : 'false'}
               data-startup={plan.data.startup_credits ? 'true' : 'false'}
             >
               <PlanCard
                 name={plan.data.name}
                 slug={plan.data.slug}
-                provider={plan.data.provider}
+                provider={plan.data.provider?.id}
                 badge={plan.data.badge}
                 price_monthly={plan.data.price_monthly}
                 promotional_price={plan.data.promotional_price}
-                models={plan.data.models}
+                models={(plan.data.models || []).map(m => m.id)}
                 community_score={plan.data.community_score}
                 description={plan.data.description}
               />
