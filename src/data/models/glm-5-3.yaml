@@ -1,0 +1,22 @@
+name: GLM-5.3
+slug: glm-5-3
+provider: z-ai
+description: Flagship GLM model for long-horizon coding, agents, and complex project delivery.
+context_window: 1000000
+strengths:
+  - Excellent coding-price ratio ($1.40/$4.40)
+  - 1M context, open weights
+  - Backbone of GLM Coding Plans
+weaknesses:
+  - Open weights lag newest API-only rivals slightly
+  - 131K output cap
+vibe_coding_score: 9.1
+model_type: open_weight
+plans_available:
+  - zai-glm-coding-plan-pro
+  - alibaba
+  - edlide-pro
+  - synthetic-pack
+  - zhipuai-glm-coding-plan
+  - opencode-go
+updated_at: '2026-11-13'

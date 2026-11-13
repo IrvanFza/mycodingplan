@@ -8,9 +8,9 @@ promotional_duration: null
 description: Flat-fee agent runtime with message-rate limits and included daily tool-call allowance
 external_url: https://synthetic.ai
 models:
-  - deepseek-v3
-  - glm-5
-  - kimi-k2-5
+  - deepseek-v4-flash
+  - glm-5-3
+  - kimi-k3
 limits:
   requests_per_minute: null
   tokens_per_minute: null

@@ -1,0 +1,17 @@
+name: Gemini 4 Hydrogen
+slug: gemini-4-hydrogen
+provider: google
+description: Google's Gemini 4 model for everyday coding and agentic workflows, with four thinking levels and a 1M-token context window.
+context_window: 1048576
+strengths:
+  - Four selectable thinking levels
+  - Great price for a Gemini 4 model
+  - 64K output for long edits
+weaknesses:
+  - Below Carbon on hardest reasoning
+  - Newest release, thinner ecosystem
+vibe_coding_score: 8.9
+model_type: closed_source
+plans_available:
+  - google-ai-pro
+updated_at: '2026-11-13'

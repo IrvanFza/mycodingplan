@@ -6,9 +6,9 @@ price_monthly: 19
 promotional_price: null
 promotional_duration: null
 description: Chat and code assistant subscription with Kimi models
-external_url: https://kimi.moonshot.cn
+external_url: https://www.kimi.com
 models:
-  - kimi-k2-5
+  - kimi-k3-1-pro
 limits:
   requests_per_minute: null
   tokens_per_minute: null

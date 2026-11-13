@@ -10,7 +10,8 @@ promotional_price: null
 promotional_duration: null
 description: Alibaba Cloud Model Studio token subscription starting from $6/mo — one plan, every modality
 external_url: https://alibabacloud.com/model-studio
-models: [] # Qwen family + routed third-party models — add model files first
+models:
+  - qwen-3-8-max
 limits:
   requests_per_minute: null
   tokens_per_minute: null

@@ -9,8 +9,8 @@ description: Optional usage subscription that converts monthly spend into booste
 external_url: https://opencode.ai
 models:
   - big-pickle
-  - minimax-m2
-  - kimi-k2-5
+  - minimax-m3-1-flash
+  - kimi-k3
 limits:
   requests_per_minute: null
   tokens_per_minute: null

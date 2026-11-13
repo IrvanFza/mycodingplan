@@ -1,0 +1,17 @@
+name: GLM-5.3-Flash
+slug: glm-5-3-flash
+provider: z-ai
+description: Native multimodal GLM model for efficient coding and long-horizon agent tasks.
+context_window: 1000000
+strengths:
+  - Very cheap ($0.15/$0.50)
+  - Native multimodal
+  - 1M context on Flash tier
+weaknesses:
+  - Below GLM-5.3 on complex delivery
+  - Open weights but heavy to self-host
+vibe_coding_score: 8.7
+model_type: open_weight
+plans_available:
+  - zai-glm-coding-plan-pro
+updated_at: '2026-11-13'

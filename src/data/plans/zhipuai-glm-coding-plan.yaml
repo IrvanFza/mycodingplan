@@ -11,7 +11,7 @@ promotional_duration: null
 description: Zhipu GLM Coding Plan China edition — GLM model suite for coding agents via bigmodel.cn
 external_url: https://bigmodel.cn
 models:
-  - glm-5 # docs serve GLM-5.3 — add models/glm-5-3.yaml
+  - glm-5-3
 limits:
   requests_per_minute: null
   tokens_per_minute: null

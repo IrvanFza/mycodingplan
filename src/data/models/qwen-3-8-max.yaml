@@ -1,0 +1,18 @@
+name: Qwen3.8 Max
+slug: qwen-3-8-max
+provider: alibaba
+description: 2.4-trillion-parameter MoE flagship for coding, professional work, multimodal understanding, and long-horizon agentic workflows.
+context_window: 1000000
+strengths:
+  - Alibaba flagship with 1M context
+  - Strong agentic coding
+  - Included in Alibaba Coding Plan
+weaknesses:
+  - Closed weights (open variants are smaller)
+  - Best pricing only via Alibaba plans
+vibe_coding_score: 9.2
+model_type: closed_source
+plans_available:
+  - alibaba
+  - alibaba-ai-token-plan
+updated_at: '2026-11-13'

@@ -1,0 +1,21 @@
+name: Claude Sonnet 5.5
+slug: claude-sonnet-5-5
+provider: anthropic
+description: Fast Claude model for everyday coding, agents, and knowledge work.
+context_window: 1000000
+strengths:
+  - Best speed/intelligence combination
+  - 1M context window
+  - Included in most coding plans
+weaknesses:
+  - Below Opus on hardest reasoning
+  - Output capped at 128K
+vibe_coding_score: 9.3
+model_type: closed_source
+plans_available:
+  - claude-pro
+  - opencode-zen
+  - github-copilot-pro
+  - cursor-pro
+  - windsurf-pro
+updated_at: '2026-11-13'

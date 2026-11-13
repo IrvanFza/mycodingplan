@@ -1,0 +1,18 @@
+name: DeepSeek V4 Flash
+slug: deepseek-v4-flash
+provider: deepseek
+description: October 17 update of DeepSeek V4.1 Flash with improved reasoning, coding, agentic tasks, and visual understanding.
+context_window: 1048576
+strengths:
+  - Extremely cheap ($0.15/$0.60 per MTok)
+  - Open weights, multimodal
+  - Served by most CN coding plans
+weaknesses:
+  - Below V4 Pro on deep reasoning
+  - Speed-optimized, less deliberative
+vibe_coding_score: 8.8
+model_type: open_weight
+plans_available:
+  - synthetic-pack
+  - opencode-zen
+updated_at: '2026-11-13'

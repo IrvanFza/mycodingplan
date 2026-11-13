@@ -11,7 +11,7 @@ promotional_duration: null
 description: Team tier of OpenCode Go — every member gets their own limits, $5/month higher than Go on every model
 external_url: https://opencode.ai/console/go
 models:
-  - minimax-m2
+  - minimax-m3-1-flash
 limits:
   requests_per_minute: null
   tokens_per_minute: null

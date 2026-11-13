@@ -8,8 +8,9 @@ promotional_duration: null
 description: Gemini subscription tier with higher coding limits for Jules, Gemini CLI, and Gemini Code Assist
 external_url: https://ai.google.dev/pricing
 models:
-  - gemini-3-1-pro
-  - gemini-3-1-flash
+  - gemini-4-carbon
+  - gemini-4-hydrogen
+  - gemini-3-8-flash
 limits:
   requests_per_minute: null
   tokens_per_minute: null

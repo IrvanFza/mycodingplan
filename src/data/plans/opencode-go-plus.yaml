@@ -11,7 +11,7 @@ promotional_duration: null
 description: Higher usage limits across boosted models — upper individual tier of the OpenCode Go subscription
 external_url: https://opencode.ai/console/go
 models:
-  - minimax-m2 # existing file also refs big-pickle + kimi-k2.5, which have no model files yet
+  - minimax-m3-1-flash
 limits:
   requests_per_minute: null
   tokens_per_minute: null

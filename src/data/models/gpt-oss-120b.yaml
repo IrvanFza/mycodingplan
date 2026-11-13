@@ -1,0 +1,17 @@
+name: GPT-OSS 120B
+slug: gpt-oss-120b
+provider: openai
+description: Open GPT reasoning model for self-hosted agents and controllable deployments.
+context_window: 131072
+strengths:
+  - OpenAI open weights
+  - Strong reasoning per dollar
+  - Served on Cerebras free tier
+weaknesses:
+  - 131K context
+  - No multimodal input
+vibe_coding_score: 8.4
+model_type: open_weight
+plans_available:
+  - cerebras-code
+updated_at: '2026-11-13'

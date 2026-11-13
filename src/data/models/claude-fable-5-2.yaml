@@ -1,0 +1,17 @@
+name: Claude Fable 5.2
+slug: claude-fable-5-2
+provider: anthropic
+description: Claude's most capable reasoning model for demanding reasoning and long-horizon agentic work.
+context_window: 1000000
+strengths:
+  - Top-tier reasoning on long-horizon agentic tasks
+  - 1M context window
+  - Always-on adaptive thinking
+weaknesses:
+  - Premium pricing ($8/$40 per MTok)
+  - Overkill for simple tasks
+vibe_coding_score: 9.6
+model_type: closed_source
+plans_available:
+  - claude-pro
+updated_at: '2026-11-13'

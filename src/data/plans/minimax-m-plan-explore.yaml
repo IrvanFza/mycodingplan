@@ -12,7 +12,7 @@ promotional_duration: null
 description: M-Plan entry tier — unified access to MiniMax flagship models with 3x usage quota across text, image and speech
 external_url: https://www.minimax.io/m-plan
 models:
-  - minimax-m2 # docs serve M3.1 Flash — add models/minimax-m3-1-flash.yaml
+  - minimax-m3-1-flash
 limits:
   requests_per_minute: null
   tokens_per_minute: null

@@ -1,0 +1,18 @@
+name: Gemini 3.8 Flash
+slug: gemini-3-8-flash
+provider: google
+description: Google's most intelligent Flash model, engineered for long-horizon software engineering, autonomous agents, and complex enterprise workflows.
+context_window: 1048576
+strengths:
+  - Flash-tier pricing with pro-class coding
+  - 65K output tokens
+  - Fast responses
+weaknesses:
+  - Trails Gemini 4 models on reasoning
+  - Same price as older 3.7 Flash
+vibe_coding_score: 8.6
+model_type: closed_source
+plans_available:
+  - google-ai-pro
+  - google-developer-program
+updated_at: '2026-11-13'

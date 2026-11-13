@@ -8,7 +8,7 @@ promotional_duration: null
 description: Le Chat subscription with higher limits and Mistral Vibe coding workflows
 external_url: https://mistral.ai
 models:
-  - mistral-large
+  - mistral-large-4
 limits:
   requests_per_minute: null
   tokens_per_minute: null

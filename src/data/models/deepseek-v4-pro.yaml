@@ -1,0 +1,18 @@
+name: DeepSeek V4 Pro
+slug: deepseek-v4-pro
+provider: deepseek
+description: DeepSeek V4 Pro snapshot with million-token context and support for thinking and non-thinking modes.
+context_window: 1048576
+strengths:
+  - Open weights with 1M context
+  - Very low flagship pricing ($0.66/$1.98)
+  - Huge 393K output limit
+weaknesses:
+  - Self-hosting requires significant compute
+  - CN-first documentation
+vibe_coding_score: 9.2
+model_type: open_weight
+plans_available:
+  - synthetic-pack
+  - opencode-zen
+updated_at: '2026-11-13'

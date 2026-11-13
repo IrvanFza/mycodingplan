@@ -1,0 +1,17 @@
+name: Mistral Large 4
+slug: mistral-large-4
+provider: mistral
+description: Mistral's 1T-parameter multimodal MoE for reasoning, coding, and agentic work.
+context_window: 1048576
+strengths:
+  - EU-hosted option (GDPR-friendly)
+  - 1M context, 262K output
+  - Competitive $0.70/$2.10 pricing
+weaknesses:
+  - Below US/CN frontier labs on coding benchmarks
+  - Smaller coding-plan ecosystem
+vibe_coding_score: 8.5
+model_type: closed_source
+plans_available:
+  - mistral-pro
+updated_at: '2026-11-13'

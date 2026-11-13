@@ -8,9 +8,9 @@ promotional_duration: null
 description: IDE-native AI coding assistant with premium requests for chat, agent mode, and CLI tasks
 external_url: https://github.com/features/copilot
 models:
-  - claude-3-5-sonnet
-  - gemini-3-1-pro
-  - gpt-4o
+  - claude-sonnet-5-5
+  - gemini-4-carbon
+  - gpt-6-1-sol
 limits:
   requests_per_minute: null
   tokens_per_minute: null

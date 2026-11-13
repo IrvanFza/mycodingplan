@@ -1,0 +1,18 @@
+name: GPT-6.1 Terra
+slug: gpt-6-1-terra
+provider: openai
+description: Fast, efficient model for visual reasoning, precise computer use, and clear, natural writing.
+context_window: 1050000
+strengths:
+  - Efficient flagship ($1/$5 per MTok)
+  - Excellent visual reasoning
+  - Great price/performance for agents
+weaknesses:
+  - Below Sol on complex coding
+  - Newest of the 6.1 line, less field-tested
+vibe_coding_score: 9.0
+model_type: closed_source
+plans_available:
+  - chatgpt-plus-free
+  - opencode-zen
+updated_at: '2026-11-13'

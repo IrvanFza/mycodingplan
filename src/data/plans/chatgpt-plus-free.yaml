@@ -8,8 +8,8 @@ promotional_duration: null
 description: Free ChatGPT subscription tier that includes Codex agent access for coding tasks
 external_url: https://chat.openai.com
 models:
-  - gpt-4o
-  - gpt-4-turbo
+  - gpt-6-1-sol
+  - gpt-6-luna
   - gpt-3-5-turbo
 limits:
   requests_per_minute: null

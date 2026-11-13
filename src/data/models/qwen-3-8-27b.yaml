@@ -1,0 +1,17 @@
+name: Qwen3.8 27B
+slug: qwen-3-8-27b
+provider: alibaba
+description: Dense 27B vision-language model for coding, agent tasks, and image and video understanding.
+context_window: 131072
+strengths:
+  - Open weights
+  - Multimodal at small size
+  - Served on Cerebras at high speed
+weaknesses:
+  - 131K context
+  - Dense 27B trails MoE flagships
+vibe_coding_score: 8.2
+model_type: open_weight
+plans_available:
+  - cerebras-code
+updated_at: '2026-11-13'

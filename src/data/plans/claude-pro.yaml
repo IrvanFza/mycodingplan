@@ -8,9 +8,10 @@ promotional_duration: first 3 months
 description: Claude subscription with higher usage, projects/research features, and included Claude Code access
 external_url: https://claude.ai/pricing
 models:
-  - claude-3-opus
-  - claude-3-5-sonnet
-  - claude-3-haiku
+  - claude-fable-5-2
+  - claude-opus-5-5
+  - claude-sonnet-5-5
+  - claude-haiku-5-5
 limits:
   requests_per_minute: null
   tokens_per_minute: null

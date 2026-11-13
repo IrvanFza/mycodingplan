@@ -14,5 +14,4 @@ vibe_coding_score: 6.9
 model_type: open_weight
 plans_available:
   - zai-glm-coding-plan-pro
-  - edlide-pro
 updated_at: '2026-11-13'

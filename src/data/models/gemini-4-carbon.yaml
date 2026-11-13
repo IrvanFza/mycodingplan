@@ -1,0 +1,21 @@
+name: Gemini 4 Carbon
+slug: gemini-4-carbon
+provider: google
+description: Google's most capable reasoning model for complex software engineering, deep math and science, high factual accuracy, and long-horizon autonomous agents.
+context_window: 1048576
+strengths:
+  - Google's strongest coder
+  - 1M context window
+  - High factual accuracy
+weaknesses:
+  - Premium pricing
+  - 32K output cap
+vibe_coding_score: 9.5
+model_type: closed_source
+plans_available:
+  - google-ai-pro
+  - google-developer-program
+  - github-copilot-pro
+  - cursor-pro
+  - windsurf-pro
+updated_at: '2026-11-13'

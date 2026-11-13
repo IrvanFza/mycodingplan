@@ -1,0 +1,23 @@
+name: MiniMax-M3.1-Flash
+slug: minimax-m3-1-flash
+provider: minimax
+description: Frontier multimodal coding model with 1M context window and tunable thinking depth.
+context_window: 1000000
+strengths:
+  - Tunable thinking depth
+  - Massive 524K output limit
+  - Served on MiniMax M-Plan and token plans
+weaknesses:
+  - Flash-only (no Pro tier yet)
+  - Smaller third-party tool ecosystem
+vibe_coding_score: 8.9
+model_type: open_weight
+plans_available:
+  - minimax-token-plan
+  - minimax-m-plan-go
+  - minimax-m-plan-explore
+  - minimax-m-plan-build
+  - opencode-go
+  - opencode-go-plus
+  - opencode-go-teams
+updated_at: '2026-11-13'

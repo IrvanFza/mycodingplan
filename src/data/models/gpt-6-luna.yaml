@@ -1,0 +1,19 @@
+name: GPT-6 Luna
+slug: gpt-6-luna
+provider: openai
+description: OpenAI's most efficient model for focused, high-volume tasks.
+context_window: 1050000
+strengths:
+  - Extremely cheap ($0.10/$0.50 per MTok)
+  - 1M context on a budget model
+  - High throughput
+weaknesses:
+  - Shallow reasoning for hard problems
+  - Occasional instruction drift on long sessions
+vibe_coding_score: 8.0
+model_type: closed_source
+plans_available:
+  - chatgpt-plus-free
+  - windsurf-free
+  - opencode-zen
+updated_at: '2026-11-13'

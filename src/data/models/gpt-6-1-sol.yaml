@@ -1,0 +1,21 @@
+name: GPT-6.1 Sol
+slug: gpt-6-1-sol
+provider: openai
+description: Near-Astra performance for complex coding, computer use, and professional work at a lower cost.
+context_window: 1050000
+strengths:
+  - Flagship-class coding at mid-tier pricing
+  - 1.05M context window
+  - Strong computer-use and tool calling
+weaknesses:
+  - Astra still leads on hardest tasks
+  - Closed weights
+vibe_coding_score: 9.4
+model_type: closed_source
+plans_available:
+  - chatgpt-plus-free
+  - github-copilot-pro
+  - cursor-pro
+  - windsurf-pro
+  - opencode-zen
+updated_at: '2026-11-13'

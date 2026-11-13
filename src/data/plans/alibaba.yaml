@@ -8,9 +8,9 @@ promotional_duration: null
 description: 'Alibaba Cloud Model Studio: Fixed monthly subscription for AI coding tools — top models, predictable pricing, no surprise bills.'
 external_url: https://alibabacloud.com/model-studio
 models:
-  - qwen-3-5-plus
-  - kimi-k2-5
-  - glm-5
+  - qwen-3-8-max
+  - kimi-k3
+  - glm-5-3
 limits:
   requests_per_minute: null
   tokens_per_minute: null

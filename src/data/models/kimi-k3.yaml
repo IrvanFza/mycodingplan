@@ -1,0 +1,19 @@
+name: Kimi K3
+slug: kimi-k3
+provider: moonshot
+description: Multimodal Kimi model with 1M context and toggleable max-effort thinking for long-horizon agent work.
+context_window: 1048576
+strengths:
+  - 1M context, multimodal
+  - Toggleable max-effort thinking
+  - Widely routed across gateways
+weaknesses:
+  - Superseded by K3.1 Pro
+  - Max-effort mode is slower
+vibe_coding_score: 9.0
+model_type: open_weight
+plans_available:
+  - alibaba
+  - synthetic-pack
+  - opencode-go
+updated_at: '2026-11-13'
