@@ -134,7 +134,7 @@ const formatContextWindow = (tokens: number): string => {
                   <p class="text-xs text-base-content/50">{plan.data.provider?.id}</p>
                 </div>
                 <span class={`text-sm font-bold ${plan.data.price_monthly === 0 ? 'text-success' : 'text-base-content'}`}>
-                  {plan.data.price_monthly === 0 ? 'Free' : `$${plan.data.price_monthly}/mo`}
+                  {plan.data.price_monthly === 0 ? 'Free' : plan.data.price_monthly != null ? `$${plan.data.price_monthly}/mo` : 'Price TBA'}
                 </span>
               </a>
             ))}

@@ -98,7 +98,7 @@ const badgeColor = {
   PAID: 'badge-info',
 }[planData.badge];
 
-const priceDisplay = planData.price_monthly === 0 ? 'Free' : `$${planData.price_monthly}/mo`;
+const priceDisplay = planData.price_monthly === 0 ? 'Free' : planData.price_monthly != null ? `$${planData.price_monthly}/mo` : 'Price TBA';
 
 const formatNumber = (n: number): string => {
   if (n >= 1000000) return `${(n / 1000000).toFixed(1)}M`;
@@ -123,7 +123,7 @@ const getUptimeColor = (pct?: number) => {
 
 <BaseLayout
   title={`${planData.name} — Pricing, Limits & Reviews`}
-  description={`${planData.name} by ${planData.provider}: ${planData.description}. ${planData.price_monthly === 0 ? 'Free' : `$${planData.price_monthly}/mo`}. Compare features, models, and limits.`}
+  description={`${planData.name} by ${planData.provider}: ${planData.description}. ${planData.price_monthly === 0 ? 'Free' : planData.price_monthly != null ? `$${planData.price_monthly}/mo` : 'price TBA'}. Compare features, models, and limits.`}
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

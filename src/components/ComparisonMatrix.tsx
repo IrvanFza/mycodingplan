@@ -35,7 +35,7 @@ interface Props {
 const MAX_PLANS = 4;
 
 const COMPARISON_ROWS: { key: string; label: string; getValue: (p: PlanData) => string }[] = [
-  { key: 'price', label: 'Price (monthly)', getValue: p => p.price_monthly === 0 ? 'Free' : `$${p.price_monthly}` },
+  { key: 'price', label: 'Price (monthly)', getValue: p => p.price_monthly === 0 ? 'Free' : p.price_monthly != null ? `$${p.price_monthly}` : 'TBA' },
   { key: 'promo', label: 'Promo Price', getValue: p => p.promotional_price != null ? `$${p.promotional_price}` : '—' },
   { key: 'badge', label: 'Badge', getValue: p => p.badge },
   { key: 'models', label: 'Available Models', getValue: p => p.models.join(', ') || '—' },

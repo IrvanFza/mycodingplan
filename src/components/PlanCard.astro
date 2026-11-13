@@ -19,7 +19,7 @@ const badgeColor = {
   PAID: 'badge-info',
 }[badge];
 
-const priceDisplay = price_monthly === 0 ? 'Free' : `$${price_monthly}/mo`;
+const priceDisplay = price_monthly === 0 ? 'Free' : price_monthly != null ? `$${price_monthly}/mo` : 'Price TBA';
 const hasPromo = promotional_price !== null && promotional_price !== undefined;
 ---
 
@@ -42,7 +42,7 @@ const hasPromo = promotional_price !== null && promotional_price !== undefined;
           <span class="text-sm text-base-content/40 line-through">${price_monthly}/mo</span>
         </div>
       ) : (
-        <span class={`text-2xl font-extrabold ${price_monthly === 0 ? 'text-success' : 'text-base-content'}`}>{priceDisplay}</span>
+        <span class={`text-2xl font-extrabold ${price_monthly === 0 ? 'text-success' : price_monthly == null ? 'text-base-content/60' : 'text-base-content'}`}>{priceDisplay}</span>
       )}
     </div>
 

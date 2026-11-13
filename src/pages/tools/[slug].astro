@@ -95,7 +95,7 @@ const compatiblePlans = allPlans.filter(p => p.data.compatible_tools.includes(t.
                     <p class="text-xs text-base-content/50">{plan.data.provider?.id}</p>
                   </div>
                   <span class={`text-sm font-bold ${plan.data.price_monthly === 0 ? 'text-success' : 'text-base-content'}`}>
-                    {plan.data.price_monthly === 0 ? 'Free' : `$${plan.data.price_monthly}/mo`}
+                    {plan.data.price_monthly === 0 ? 'Free' : plan.data.price_monthly != null ? `$${plan.data.price_monthly}/mo` : 'Price TBA'}
                   </span>
                 </a>
               ))}

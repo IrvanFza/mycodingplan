@@ -9,7 +9,7 @@ import { getCollection } from 'astro:content';
 const allPlans = await getCollection('plans');
 
 // Default sort: price low→high
-const sortedPlans = [...allPlans].sort((a, b) => a.data.price_monthly - b.data.price_monthly);
+const sortedPlans = [...allPlans].sort((a, b) => (a.data.price_monthly ?? Number.MAX_SAFE_INTEGER) - (b.data.price_monthly ?? Number.MAX_SAFE_INTEGER));
 
 // Serialize plan data for the FilterBar React island
 const planDataForFilter = allPlans.map(plan => ({
@@ -90,7 +90,7 @@ const planDataForFilter = allPlans.map(plan => ({
             <div
               class="plan-item"
               data-slug={plan.data.slug}
-              data-price={plan.data.price_monthly}
+              data-price={plan.data.price_monthly ?? ''}
               data-name={plan.data.name}
               data-score={plan.data.community_score ?? 0}
               data-badge={plan.data.badge}
