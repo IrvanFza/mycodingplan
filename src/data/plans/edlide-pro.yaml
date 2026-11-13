@@ -8,9 +8,9 @@ promotional_duration: null
 description: VS Code-based IDE + CLI subscription focused on open-model coding workflows
 external_url: https://edlide.com
 models:
-  - glm-4.7
+  - glm-4-7
   - glm-5
-  - kimi-k2.5
+  - kimi-k2-5
 limits:
   requests_per_minute: null
   tokens_per_minute: null

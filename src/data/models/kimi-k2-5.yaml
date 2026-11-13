@@ -1,6 +1,6 @@
 name: Kimi K2.5
 slug: kimi-k2-5
-provider: moonshot-ai
+provider: moonshot
 description: Moonshot AI's coding-focused model with strong context understanding and multi-step task execution.
 context_window: 200000
 strengths:

@@ -1,0 +1,17 @@
+name: Mistral 7B
+slug: mistral-7b
+provider: mistral
+description: Mistral AI's efficient open-weight 7B instruct model — lightweight local option on Ollama's free tier.
+context_window: 32768
+strengths:
+  - Runs fast on consumer hardware
+  - Open weights under Apache 2.0
+  - 32K context for a small model
+weaknesses:
+  - Limited coding depth vs larger models
+  - English-centric performance
+vibe_coding_score: 5.0
+model_type: open_weight
+plans_available:
+  - ollama-free
+updated_at: '2026-11-13'

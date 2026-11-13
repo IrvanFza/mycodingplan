@@ -1,0 +1,42 @@
+# ClinePass — grounded: .docs/raw/cline-pass.json (docs.cline.bot, fetched 2026-02-13)
+# Requires providers.yaml addition: { id: "cline", name: "Cline", url: "https://cline.bot" }
+# Requires tools/cline.yaml (no cline tool entry exists yet) before compatible_tools can reference it.
+name: ClinePass
+slug: cline-pass
+provider: cline
+badge: PAID
+price_monthly: 9.99
+promotional_price: null
+promotional_duration: null
+description: Low-cost monthly subscription giving reliable access to popular open coding models with 2-5x the API rate limits of standard access
+external_url: https://docs.cline.bot/providers/cline-pass
+models: [] # open coding models (DeepSeek, Qwen, Kimi variants) — add model files first
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: 2-5x standard API rate limits
+features:
+  - 2-5x-api-rate-limits
+  - open-coding-models
+  - optional-provider-in-cline
+  - works-alongside-other-providers
+categories:
+  - paid
+  - open-weight
+student_discount: false
+startup_credits: false
+history:
+  - date: 2026-02
+    event: Docs verified $9.99/mo, 2-5x rate limits
+updated_at: '2026-11-13'
+quotas:
+  - measure: currency
+    amount: 9.99
+    window: monthly
+  - measure: requests
+    amount: null
+    window: monthly
+compatible_tools: [] # requires tools/cline.yaml
+overages:
+  allowed: false

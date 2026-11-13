@@ -1,0 +1,42 @@
+# CommandCode Provider plan — grounded: .docs/raw/commandcode.json (commandcode.ai/docs, fetched 2026-02-13)
+# "Provider plan starts at $15/month + $1.01 processing fee. Pay as you go, no markup."
+# "Start with $15 of API credit, then top up as needed. No monthly minimums."
+# Boosted tiers seen: $10 Go / $100 GOAT / $110 Pro (deepseek-v4.1-flash boosted usage).
+name: CommandCode Provider
+slug: commandcode-provider
+provider: commandcode
+badge: PAID
+price_monthly: 15
+promotional_price: null
+promotional_duration: null
+description: Provider plan with $15 starting API credit and pay-as-you-go top-ups at no markup, plus $1.01 processing fee
+external_url: https://commandcode.ai/provider
+models: [] # deepseek-v4.1-flash boosted; add model files first
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: null
+features:
+  - payg-no-markup
+  - starting-api-credit
+  - boosted-usage-tiers
+  - no-monthly-minimums
+categories:
+  - api
+  - paid
+student_discount: false
+startup_credits: false
+history:
+  - date: 2026-02
+    event: Provider plan $15/mo + $1.01 fee verified in docs
+updated_at: '2026-11-13'
+quotas:
+  - measure: currency
+    amount: 15
+    window: monthly
+compatible_tools: [] # agent gateway — tool support unverified
+overages:
+  allowed: true
+  type: payg
+  pricing_model: no-markup API rates, top up as needed

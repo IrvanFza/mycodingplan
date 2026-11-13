@@ -1,0 +1,18 @@
+name: GLM-4.7
+slug: glm-4-7
+provider: zhipu-ai
+description: Zhipu AI's previous-generation flagship coding model, still served on GLM coding plans alongside GLM-5.
+context_window: 204800
+strengths:
+  - Strong coding and agentic performance
+  - Cheap per-token pricing on Z.AI API
+  - Widely available across coding-plan gateways
+weaknesses:
+  - Superseded by GLM-5 family
+  - 200K context vs 1M on newer models
+vibe_coding_score: 6.9
+model_type: open_weight
+plans_available:
+  - zai-glm-coding-plan-pro
+  - edlide-pro
+updated_at: '2026-11-13'

@@ -8,9 +8,8 @@ promotional_duration: null
 description: 25 prompt credits/month Across leading models (OpenAI, Claude, Gemini, xAI, and more)
 external_url: https://codeium.com/windsurf
 models:
-  - codeium-base
-  - openai-models
-  - claude-models
+  - gpt-4o
+  - claude-3-5-sonnet
 limits:
   requests_per_minute: null
   tokens_per_minute: null

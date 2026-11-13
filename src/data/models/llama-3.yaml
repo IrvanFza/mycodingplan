@@ -1,0 +1,16 @@
+name: Llama 3
+slug: llama-3
+provider: meta
+description: Meta's Llama 3 family (8B/70B) — the open-weight workhorse served locally through Ollama's free tier.
+context_window: 8192
+strengths:
+  - Open weights, runnable locally and free
+  - Huge fine-tune and tooling ecosystem
+weaknesses:
+  - Small 8K context window
+  - Trails newer models on coding benchmarks
+vibe_coding_score: 5.5
+model_type: open_weight
+plans_available:
+  - ollama-free
+updated_at: '2026-11-13'

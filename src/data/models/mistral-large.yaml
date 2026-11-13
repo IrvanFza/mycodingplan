@@ -1,6 +1,6 @@
 name: Mistral Large
 slug: mistral-large
-provider: mistral-ai
+provider: mistral
 description: Mistral's flagship model with strong reasoning and coding capabilities, powering Le Chat and Vibe coding workflows.
 context_window: 128000
 strengths:

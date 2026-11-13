@@ -1,0 +1,44 @@
+# OpenCode Go Teams — grounded: .docs/raw/opencode-go.json (opencode.ai/console/go, fetched 2026-02-13)
+# $20 per member per month; each member gets own limits; $5/mo higher than Go on every model.
+# NOTE: schema has no per-seat price field — price_monthly holds the per-member price.
+name: OpenCode Go Teams
+slug: opencode-go-teams
+provider: opencode
+badge: PAID
+price_monthly: 20 # per member / month
+promotional_price: null
+promotional_duration: null
+description: Team tier of OpenCode Go — every member gets their own limits, $5/month higher than Go on every model
+external_url: https://opencode.ai/console/go
+models:
+  - minimax-m2
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: Per-member limits (+$5/mo vs Go on every model)
+features:
+  - per-member-quotas
+  - team-workspaces
+  - boosted-model-credits
+categories:
+  - paid
+  - enterprise
+student_discount: false
+startup_credits: false
+history:
+  - date: 2026-02
+    event: Go Teams $20/member/mo verified on console/go pricing table
+updated_at: '2026-11-13'
+quotas:
+  - measure: currency
+    amount: 20
+    window: monthly
+  - measure: requests
+    amount: null
+    window: unlimited
+compatible_tools:
+  - opencode
+  - kilo
+overages:
+  allowed: false

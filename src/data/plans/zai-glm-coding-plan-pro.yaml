@@ -8,7 +8,7 @@ promotional_duration: null
 description: Rolling-window coding quota plan for supported tools, with 5-hour and weekly caps
 external_url: https://zhipuai.ai
 models:
-  - glm-4.7
+  - glm-4-7
   - glm-5
 limits:
   requests_per_minute: null

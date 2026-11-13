@@ -1,6 +1,6 @@
 name: Alibaba Coding Plan
 slug: alibaba
-provider: alibaba-cloud
+provider: alibaba
 badge: PAID
 price_monthly: 50
 promotional_price: null
@@ -8,8 +8,8 @@ promotional_duration: null
 description: 'Alibaba Cloud Model Studio: Fixed monthly subscription for AI coding tools — top models, predictable pricing, no surprise bills.'
 external_url: https://alibabacloud.com/model-studio
 models:
-  - qwen-3.5-plus
-  - kimi-k2.5
+  - qwen-3-5-plus
+  - kimi-k2-5
   - glm-5
 limits:
   requests_per_minute: null

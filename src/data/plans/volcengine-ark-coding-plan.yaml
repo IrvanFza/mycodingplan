@@ -1,0 +1,42 @@
+# Volcengine Ark Coding Plan — grounded: .docs/raw/volcengine-coding-plan.json (fetched 2026-02-13)
+# Docs (CN): subscribe on ark.volcengine.com, set model to `ark-code-latest` in coding tools,
+# switch models in console; Auto mode picks model by quality+speed. Models include
+# doubao-seed-*, deepseek-v4.1-flash(-economy). Subscription price not on fetched page.
+name: Volcengine Ark Coding Plan
+slug: volcengine-ark-coding-plan
+provider: volcengine
+badge: PAID
+# TODO: price_monthly — subscription price not on docs page (CN console only)
+promotional_price: null
+promotional_duration: null
+description: Volcengine Ark coding subscription — use ark-code-latest model alias in coding tools with Auto model switching
+external_url: https://www.volcengine.com/docs/82379/1544106
+models: [] # doubao-seed / deepseek-v4.1-flash served under ark-code-latest alias
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: Plan quota (see Ark console)
+features:
+  - ark-code-latest-model-alias
+  - auto-model-switching
+  - doubao-and-deepseek-models
+  - realtime-model-switch-in-tools
+categories:
+  - paid
+  - closed-source
+student_discount: false
+startup_credits: false
+history:
+  - date: 2026-02
+    event: Coding Plan usage docs verified (ark-code-latest, Auto mode)
+updated_at: '2026-11-13'
+quotas:
+  - measure: currency
+    amount: null
+    window: monthly
+compatible_tools:
+  - claude-code
+  - opencode
+overages:
+  allowed: false

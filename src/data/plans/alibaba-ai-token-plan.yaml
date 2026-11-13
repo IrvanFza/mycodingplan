@@ -1,0 +1,40 @@
+# Alibaba AI Token Plan — grounded: .docs/raw/alibaba-coding-plan.json (alibabacloud.com, fetched 2026-02-13)
+# "AI Token Plan *NEW* Starts from $6/mo. Build more, spend less — one plan, every modality."
+# Distinct from existing plans/alibaba.yaml ($50/mo fixed coding plan).
+name: Alibaba AI Token Plan
+slug: alibaba-ai-token-plan
+provider: alibaba
+badge: PAID
+price_monthly: 6 # starting price — higher tiers exist, verify on alibabacloud.com
+promotional_price: null
+promotional_duration: null
+description: Alibaba Cloud Model Studio token subscription starting from $6/mo — one plan, every modality
+external_url: https://alibabacloud.com/model-studio
+models: [] # Qwen family + routed third-party models — add model files first
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: Monthly token allowance
+features:
+  - monthly-token-allowance
+  - every-modality
+  - model-studio-api-access
+categories:
+  - paid
+  - closed-source
+student_discount: false
+startup_credits: false
+history:
+  - date: 2026-02
+    event: AI Token Plan from $6/mo verified on alibabacloud.com
+updated_at: '2026-11-13'
+quotas:
+  - measure: input_tokens
+    amount: null
+    window: monthly
+compatible_tools: [] # Model Studio API — tool support unverified
+overages:
+  allowed: true
+  type: payg
+  pricing_model: model-studio per-token rates

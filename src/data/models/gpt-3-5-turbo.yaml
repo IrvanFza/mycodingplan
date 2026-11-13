@@ -1,0 +1,17 @@
+name: GPT-3.5 Turbo
+slug: gpt-3-5-turbo
+provider: openai
+description: OpenAI's legacy fast, inexpensive model — still available on the API and included in ChatGPT Plus free-tier usage.
+context_window: 16385
+strengths:
+  - Very low latency and cost
+  - Broad SDK and tool compatibility
+weaknesses:
+  - Superseded by GPT-4o and newer generations
+  - Weak on complex agentic coding tasks
+  - 16K context
+vibe_coding_score: 4.5
+model_type: closed_source
+plans_available:
+  - chatgpt-plus-free
+updated_at: '2026-11-13'

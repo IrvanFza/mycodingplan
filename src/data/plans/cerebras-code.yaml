@@ -8,7 +8,9 @@ promotional_duration: null
 description: High-throughput coding plan with large daily token allocation
 external_url: https://cerebras.ai
 models:
-  - open-source-models
+  - deepseek-v3
+  - glm-5
+  - kimi-k2-5
 limits:
   requests_per_minute: null
   tokens_per_minute: null

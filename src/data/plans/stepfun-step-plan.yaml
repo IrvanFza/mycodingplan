@@ -1,0 +1,36 @@
+# StepFun Step Plan (CN) — grounded: catalog entry stepfun-step-plan + docs fetch (low confidence)
+# Global sibling exists in catalog as `stepfun-ai-step-plan`. Price unverified.
+name: StepFun Step Plan
+slug: stepfun-step-plan
+provider: stepfun
+badge: PAID
+# TODO: price_monthly — verify on stepfun.ai
+promotional_price: null
+promotional_duration: null
+description: StepFun subscription plan for coding agents serving Step models (China endpoint)
+external_url: https://platform.stepfun.ai
+models: [] # Step models not yet in models/
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: null
+features:
+  - step-model-access
+  - china-endpoint
+categories:
+  - paid
+  - closed-source
+student_discount: false
+startup_credits: false
+history:
+  - date: 2026-02
+    event: Catalog entry verified (stepfun-step-plan)
+updated_at: '2026-11-13'
+quotas:
+  - measure: currency
+    amount: null
+    window: monthly
+compatible_tools: []
+overages:
+  allowed: false

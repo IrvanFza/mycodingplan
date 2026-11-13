@@ -1,6 +1,6 @@
 name: Kimi
 slug: kimi
-provider: moonshot-ai
+provider: moonshot
 badge: PAID
 price_monthly: 19
 promotional_price: null
@@ -8,7 +8,7 @@ promotional_duration: null
 description: Chat and code assistant subscription with Kimi models
 external_url: https://kimi.moonshot.cn
 models:
-  - kimi-models
+  - kimi-k2-5
 limits:
   requests_per_minute: null
   tokens_per_minute: null

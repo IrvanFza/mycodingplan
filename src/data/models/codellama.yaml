@@ -1,0 +1,16 @@
+name: Code Llama
+slug: codellama
+provider: meta
+description: Meta's code-specialized Llama family (7B–70B) — infill and long-context coding variants, runnable locally via Ollama.
+context_window: 16384
+strengths:
+  - Purpose-trained for code completion and infill
+  - Open weights, free local usage
+weaknesses:
+  - Older generation; outclassed by current coding models
+  - 16K context on standard variants
+vibe_coding_score: 5.2
+model_type: open_weight
+plans_available:
+  - ollama-free
+updated_at: '2026-11-13'

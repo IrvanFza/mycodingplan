@@ -1,0 +1,44 @@
+# OpenCode Go Plus — grounded: .docs/raw/opencode-go.json (opencode.ai/console/go, fetched 2026-02-13)
+# Docs show three tiers: Go $10/mo, Go Plus $40/mo, Go Teams $20/member/mo.
+# Existing plans/opencode-go.yaml covers only Go.
+name: OpenCode Go Plus
+slug: opencode-go-plus
+provider: opencode
+badge: PAID
+price_monthly: 40
+promotional_price: null
+promotional_duration: null
+description: Higher usage limits across boosted models — upper individual tier of the OpenCode Go subscription
+external_url: https://opencode.ai/console/go
+models:
+  - minimax-m2 # existing file also refs big-pickle + kimi-k2.5, which have no model files yet
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: Higher usage limits across Go models
+features:
+  - higher-usage-limits
+  - boosted-model-credits
+  - works-like-any-provider-in-opencode
+categories:
+  - paid
+  - closed-source
+student_discount: false
+startup_credits: false
+history:
+  - date: 2026-02
+    event: Go Plus $40/mo verified on console/go pricing table
+updated_at: '2026-11-13'
+quotas:
+  - measure: currency
+    amount: 40
+    window: monthly
+  - measure: requests
+    amount: null
+    window: unlimited
+compatible_tools:
+  - opencode
+  - kilo
+overages:
+  allowed: false

@@ -8,7 +8,7 @@ promotional_duration: null
 description: MiniMax coding subscription using prompts-per-5-hours quotas for interactive coding tools
 external_url: https://minimax.ai
 models:
-  - minimax-m2-7
+  - minimax-m2
 limits:
   requests_per_minute: null
   tokens_per_minute: null

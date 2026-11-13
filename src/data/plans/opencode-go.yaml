@@ -10,7 +10,7 @@ external_url: https://opencode.ai
 models:
   - big-pickle
   - minimax-m2
-  - kimi-k2.5
+  - kimi-k2-5
 limits:
   requests_per_minute: null
   tokens_per_minute: null

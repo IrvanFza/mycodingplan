@@ -8,7 +8,8 @@ promotional_duration: null
 description: Multi-model subscription with value-capped usage and pay-as-you-go overflow
 external_url: https://kiro.ai
 models:
-  - claude-models
+  - claude-3-5-sonnet
+  - claude-3-opus
 limits:
   requests_per_minute: null
   tokens_per_minute: null

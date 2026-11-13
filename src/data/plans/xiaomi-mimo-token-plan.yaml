@@ -1,16 +1,14 @@
 name: Xiaomi MiMo Token Plan
 slug: xiaomi-mimo-token-plan
-provider: xiaomi
+provider: mimo
 badge: PROMO
 price_monthly: 6
 promotional_price: 5.28
 promotional_duration: promotional rate
-description: Xiaomi MiMo token-based subscription giving monthly credit allowances for coding tools like OpenClaw, Claude Code, OpenCode, and KiloCode
+description: Xiaomi MiMo token-based subscription giving monthly credit allowances for coding tools like OpenClaw, Claude Code, OpenCode, and KiloCode (serves MiMo-V2.6 Pro/Flash)
 external_url: https://mimo.ai
 models:
-  - mimo-v2-pro
-  - mimo-v2-omni
-  - mimo-v2-tts
+  - mimo-v2-6-pro
 limits:
   requests_per_minute: null
   tokens_per_minute: null

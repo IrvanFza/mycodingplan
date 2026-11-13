@@ -1,0 +1,37 @@
+# Umans AI Coding Plan — grounded: .docs/raw/umans-ai-coding-plan.json (fetched 2026-02-13)
+# Docs list per-model pricing inside the plan (e.g. $2.00/$10.00 per 1M tokens flagship,
+# $1.40/$4.40 successor, $0.15/$0.60 small model). Plan price itself unverified.
+name: Umans AI Coding Plan
+slug: umans-ai-coding-plan
+provider: umans
+badge: PAID
+# TODO: price_monthly — plan subscription price not on docs page
+promotional_price: null
+promotional_duration: null
+description: Umans AI coding plan with bundled model access and published per-model rates for flagship and efficient models
+external_url: https://umans.ai
+models: []
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: null
+features:
+  - bundled-model-access
+  - published-per-model-rates
+categories:
+  - paid
+  - closed-source
+student_discount: false
+startup_credits: false
+history:
+  - date: 2026-02
+    event: Catalog + docs verified (per-model rates published)
+updated_at: '2026-11-13'
+quotas:
+  - measure: currency
+    amount: null
+    window: monthly
+compatible_tools: []
+overages:
+  allowed: false

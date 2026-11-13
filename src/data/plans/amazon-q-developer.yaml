@@ -1,14 +1,13 @@
 name: Amazon Q Developer
 slug: amazon-q-developer
-provider: amazon-web-services
+provider: aws
 badge: PAID
 price_monthly: 19
 promotional_price: null
 promotional_duration: null
 description: AWS developer assistant tier for software lifecycle tasks with IDE and cloud workflow integration
 external_url: https://aws.amazon.com/q/developer
-models:
-  - amazon-q
+models: [] # Amazon Q Developer is an agent, not a foundation model
 limits:
   requests_per_minute: null
   tokens_per_minute: null

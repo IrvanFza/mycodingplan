@@ -1,0 +1,48 @@
+# MiniMax M-Plan Explore — grounded: .docs/raw/minimax-coding-plan.json (platform.minimax.io/docs/m-plan)
+# NOTE: distinct product from existing plans/minimax-token-plan.yaml (that one is the CN token plan).
+# Tier quota: 1x baseline. Prices require login (minimax.io/m-plan) — verify before publish.
+# Works via MiniMax Code, or M-Plan API key in Claude Code / Codex / Cursor / OpenCode.
+name: MiniMax M-Plan Explore
+slug: minimax-m-plan-explore
+provider: minimax
+badge: PAID
+# TODO: price_monthly — tier price not public without login
+promotional_price: null
+promotional_duration: null
+description: M-Plan entry tier — unified access to MiniMax flagship models with 3x usage quota across text, image and speech
+external_url: https://www.minimax.io/m-plan
+models:
+  - minimax-m2 # docs serve M3.1 Flash — add models/minimax-m3-1-flash.yaml
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: 5-hour rolling quota (3x tier)
+features:
+  - 5-hour-and-weekly-quotas
+  - 3x-usage-quota
+  - text-image-speech-access
+  - api-key-for-third-party-tools
+categories:
+  - paid
+  - closed-source
+student_discount: false
+startup_credits: false
+history:
+  - date: 2026-02
+    event: M-Plan tiers (Go 1x, Explore 3x) verified in docs
+updated_at: '2026-11-13'
+quotas:
+  - measure: requests
+    amount: null
+    window: 5-hour
+  - measure: requests
+    amount: null
+    window: weekly
+compatible_tools:
+  - claude-code
+  - codex
+  - cursor
+  - opencode
+overages:
+  allowed: false

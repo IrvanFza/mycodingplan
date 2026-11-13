@@ -1,0 +1,19 @@
+name: Big Pickle
+slug: big-pickle
+provider: opencode
+description: OpenCode's in-house boosted model included with OpenCode Go subscriptions — usage-backed by partner models and free of per-token charges on the plan.
+context_window: 200000
+strengths:
+  - Included with OpenCode Go tiers at no extra cost
+  - Tuned for agentic coding workflows
+  - Zero per-token price on OpenCode console
+weaknesses:
+  - Exclusive to the OpenCode ecosystem
+  - Limited transparency on the underlying model stack
+vibe_coding_score: 7.1
+model_type: closed_source
+plans_available:
+  - opencode-go
+  - opencode-go-plus
+  - opencode-go-teams
+updated_at: '2026-11-13'

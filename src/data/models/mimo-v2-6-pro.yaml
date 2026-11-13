@@ -1,0 +1,17 @@
+name: MiMo-V2.6-Pro
+slug: mimo-v2-6-pro
+provider: mimo
+description: Xiaomi's MiMo-V2.6 Pro — the primary coding model served on Xiaomi MiMo token plans, with 1M context and aggressive pricing.
+context_window: 1048576
+strengths:
+  - 1M context window
+  - Very low per-token cost ($0.435/$0.87 per MTok)
+  - Open weights
+weaknesses:
+  - Smaller ecosystem and tool support than frontier labs
+  - Regional availability focused on Asia
+vibe_coding_score: 7.0
+model_type: open_weight
+plans_available:
+  - xiaomi-mimo-token-plan
+updated_at: '2026-11-13'

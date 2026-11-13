@@ -1,6 +1,6 @@
 name: Mistral Pro
 slug: mistral-pro
-provider: mistral-ai
+provider: mistral
 badge: PAID
 price_monthly: 14.99
 promotional_price: null
@@ -8,7 +8,7 @@ promotional_duration: null
 description: Le Chat subscription with higher limits and Mistral Vibe coding workflows
 external_url: https://mistral.ai
 models:
-  - mistral-models
+  - mistral-large
 limits:
   requests_per_minute: null
   tokens_per_minute: null

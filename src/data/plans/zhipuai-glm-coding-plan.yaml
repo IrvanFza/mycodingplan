@@ -1,0 +1,44 @@
+# Zhipu GLM Coding Plan (CN) — grounded: .docs/raw/zhipuai-coding-plan.json + catalog
+# CN sibling of Z.AI GLM Coding Plan (existing plans/zai-glm-coding-plan-pro is the intl $10 tier).
+#bigmodel.cn sells the CN version. Price unverified.
+name: GLM Coding Plan (China)
+slug: zhipuai-glm-coding-plan
+provider: zhipu-ai
+badge: PAID
+# TODO: price_monthly — verify on bigmodel.cn
+promotional_price: null
+promotional_duration: null
+description: Zhipu GLM Coding Plan China edition — GLM model suite for coding agents via bigmodel.cn
+external_url: https://bigmodel.cn
+models:
+  - glm-5 # docs serve GLM-5.3 — add models/glm-5-3.yaml
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: 5-hour and weekly caps
+features:
+  - glm-model-access
+  - china-endpoint
+  - coding-agent-integration
+categories:
+  - paid
+  - closed-source
+student_discount: false
+startup_credits: false
+history:
+  - date: 2026-02
+    event: Catalog entry verified (zhipuai-coding-plan)
+updated_at: '2026-11-13'
+quotas:
+  - measure: currency
+    amount: null
+    window: monthly
+  - measure: requests
+    amount: null
+    window: 5-hour
+compatible_tools:
+  - claude-code
+  - opencode
+overages:
+  allowed: false

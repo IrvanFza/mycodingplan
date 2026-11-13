@@ -1,0 +1,44 @@
+# OpenCode Zen (console PAYG) — grounded: .docs/raw/opencode.json (opencode.ai console models page)
+# "Sign in, add credits, and get an API key" — pay-as-you-go credits, NOT a subscription.
+# Shows the schema's unused PAYG pattern: badge FREE + overages allowed/payg.
+name: OpenCode Zen (Pay-as-you-go)
+slug: opencode-zen
+provider: opencode
+badge: FREE
+price_monthly: 0
+promotional_price: null
+promotional_duration: null
+description: Pay-as-you-go credit console for OpenCode-verified models — sign in, add credits, use with OpenCode or any coding agent
+external_url: https://opencode.ai/console
+models: [] # 139 catalog models incl. Claude, GPT, Gemini variants — add as model files
+limits:
+  requests_per_minute: null
+  tokens_per_minute: null
+  context_window: null
+  daily_message_limit: null
+features:
+  - pay-as-you-go-credits
+  - opencode-verified-models
+  - api-access
+  - no-subscription-required
+categories:
+  - api
+  - closed-source
+student_discount: false
+startup_credits: false
+history:
+  - date: 2026-02
+    event: Console PAYG model list verified (139 models)
+updated_at: '2026-11-13'
+quotas:
+  - measure: credits
+    amount: null
+    window: rolling
+compatible_tools:
+  - opencode
+  - claude-code
+overages:
+  allowed: true
+  type: payg
+  pricing_model: credit top-ups
+  auto_recharge_supported: false
